@@ -1,9 +1,8 @@
 import hashlib
-from flask import jsonify
+from flask import jsonify, request
 import mysql.connector
 import psycopg2
 import time
-
 
 class AddUser:
     def __init__(self, request, logging, conn):
@@ -55,6 +54,23 @@ class AddUser:
                 if result:
                     self.member_id = result[0]
                     self.logging.info(f"User {self.username} added with ID {self.member_id}")
+                    
+                    # Get token for validation
+                    token = self.request.cookies.get('session_token')
+                    if not token and 'Authorization' in self.request.headers:
+                        auth_header = self.request.headers['Authorization']
+                        if auth_header.startswith('Bearer '):
+                            token = auth_header[7:]
+                    
+                    # Log to server if token is valid
+                    from main import log_cims_database_change
+                    log_cims_database_change(
+                        token,
+                        "INSERT",
+                        "members",
+                        self.member_id,
+                        f"Added new member: {self.username}, Email: {self.email}"
+                    )
                 else:
                     self.success = False
                     self.message = "Failed to retrieve member ID after insertion"
