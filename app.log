@@ -1608,3 +1608,233 @@
 2025-04-13 11:02:39,024 - INFO -  * Debugger PIN: 118-583-477
 2025-04-13 11:02:43,318 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
 2025-04-13 11:02:43,447 - INFO -  * Restarting with stat
+2025-04-13 20:45:19,348 - INFO - Connected to database: cs432cims
+2025-04-13 20:45:19,392 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-13 20:45:19,398 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-13 20:45:19,398 - INFO -  * Restarting with stat
+2025-04-13 20:45:20,026 - INFO - Connected to database: cs432cims
+2025-04-13 20:45:20,058 - WARNING -  * Debugger is active!
+2025-04-13 20:45:20,058 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 20:47:27,533 - ERROR - MySQL Error: 1292 (22007): Truncated incorrect DOUBLE value: 'cs432g15'
+2025-04-13 20:47:27,534 - INFO - 127.0.0.1 - - [13/Apr/2025 20:47:27] "[35m[1mPOST /api/auth/login HTTP/1.1[0m" 500 -
+2025-04-13 20:50:23,900 - INFO - 127.0.0.1 - - [13/Apr/2025 20:50:23] "POST /api/auth/login HTTP/1.1" 200 -
+2025-04-13 20:50:55,301 - INFO - 127.0.0.1 - - [13/Apr/2025 20:50:55] "GET /api/auth/status HTTP/1.1" 200 -
+2025-04-13 20:51:50,141 - INFO - 127.0.0.1 - - [13/Apr/2025 20:51:50] "[31m[1mPOST /api/admin/add-user HTTP/1.1[0m" 401 -
+2025-04-13 20:52:33,813 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 20:52:33,880 - INFO -  * Restarting with stat
+2025-04-13 20:52:34,610 - INFO - Connected to database: cs432cims
+2025-04-13 20:52:34,633 - WARNING -  * Debugger is active!
+2025-04-13 20:52:34,640 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 20:52:35,718 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 20:52:35,785 - INFO -  * Restarting with stat
+2025-04-13 20:52:36,505 - INFO - Connected to database: cs432cims
+2025-04-13 20:52:36,530 - WARNING -  * Debugger is active!
+2025-04-13 20:52:36,537 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 20:52:39,984 - INFO - 127.0.0.1 - - [13/Apr/2025 20:52:39] "[35m[1mPOST /api/admin/add-user HTTP/1.1[0m" 500 -
+2025-04-13 20:52:51,998 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 20:52:52,064 - INFO -  * Restarting with stat
+2025-04-13 20:52:54,117 - INFO - Connected to database: cs432cims
+2025-04-13 20:52:54,139 - WARNING -  * Debugger is active!
+2025-04-13 20:52:54,145 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 20:52:58,233 - INFO - 127.0.0.1 - - [13/Apr/2025 20:52:58] "[31m[1mPOST /api/admin/add-user HTTP/1.1[0m" 401 -
+2025-04-13 20:53:26,045 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 20:53:26,110 - INFO -  * Restarting with stat
+2025-04-13 20:53:44,522 - INFO - Connected to database: cs432cims
+2025-04-13 20:53:44,558 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-13 20:53:44,558 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-13 20:53:44,561 - INFO -  * Restarting with stat
+2025-04-13 20:53:45,157 - INFO - Connected to database: cs432cims
+2025-04-13 20:53:45,177 - WARNING -  * Debugger is active!
+2025-04-13 20:53:45,183 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 20:54:10,868 - INFO - 127.0.0.1 - - [13/Apr/2025 20:54:10] "POST /api/auth/login HTTP/1.1" 200 -
+2025-04-13 20:54:24,753 - INFO - 127.0.0.1 - - [13/Apr/2025 20:54:24] "[31m[1mPOST /api/admin/add-user HTTP/1.1[0m" 401 -
+2025-04-13 20:56:46,018 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 20:56:46,083 - INFO -  * Restarting with stat
+2025-04-13 20:56:46,802 - INFO - Connected to database: cs432cims
+2025-04-13 20:56:46,818 - WARNING -  * Debugger is active!
+2025-04-13 20:56:46,835 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 20:56:55,099 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 20:56:55,169 - INFO -  * Restarting with stat
+2025-04-13 20:56:56,545 - INFO - Connected to database: cs432cims
+2025-04-13 20:56:56,571 - WARNING -  * Debugger is active!
+2025-04-13 20:56:56,578 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 20:57:06,880 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 20:57:06,956 - INFO -  * Restarting with stat
+2025-04-13 20:57:07,793 - INFO - Connected to database: cs432cims
+2025-04-13 20:57:07,815 - WARNING -  * Debugger is active!
+2025-04-13 20:57:07,822 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 20:57:11,980 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 20:57:12,044 - INFO -  * Restarting with stat
+2025-04-13 20:57:12,697 - INFO - Connected to database: cs432cims
+2025-04-13 20:57:12,719 - WARNING -  * Debugger is active!
+2025-04-13 20:57:12,726 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 20:57:42,580 - INFO - 127.0.0.1 - - [13/Apr/2025 20:57:42] "[31m[1mPOST /api/admin/add-user HTTP/1.1[0m" 401 -
+2025-04-13 20:57:53,817 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 20:57:53,891 - INFO -  * Restarting with stat
+2025-04-13 20:57:54,563 - INFO - Connected to database: cs432cims
+2025-04-13 20:57:54,584 - WARNING -  * Debugger is active!
+2025-04-13 20:57:54,591 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 20:58:00,800 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 20:58:00,867 - INFO -  * Restarting with stat
+2025-04-13 20:58:01,555 - INFO - Connected to database: cs432cims
+2025-04-13 20:58:01,579 - WARNING -  * Debugger is active!
+2025-04-13 20:58:01,586 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 20:58:11,903 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 20:58:11,971 - INFO -  * Restarting with stat
+2025-04-13 20:58:12,726 - INFO - Connected to database: cs432cims
+2025-04-13 20:58:12,754 - WARNING -  * Debugger is active!
+2025-04-13 20:58:12,759 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 20:58:26,775 - INFO - 127.0.0.1 - - [13/Apr/2025 20:58:26] "[31m[1mPOST /api/admin/add-user HTTP/1.1[0m" 401 -
+2025-04-13 21:00:51,075 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 21:00:51,141 - INFO -  * Restarting with stat
+2025-04-13 21:00:51,824 - INFO - Connected to database: cs432cims
+2025-04-13 21:00:51,854 - WARNING -  * Debugger is active!
+2025-04-13 21:00:51,854 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 21:01:27,928 - INFO - 127.0.0.1 - - [13/Apr/2025 21:01:27] "[31m[1mPOST /api/admin/add-user HTTP/1.1[0m" 401 -
+2025-04-13 21:01:47,373 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 21:01:47,436 - INFO -  * Restarting with stat
+2025-04-13 21:01:48,096 - INFO - Connected to database: cs432cims
+2025-04-13 21:01:48,123 - WARNING -  * Debugger is active!
+2025-04-13 21:01:48,129 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 21:01:56,092 - INFO - 127.0.0.1 - - [13/Apr/2025 21:01:56] "[31m[1mPOST /api/admin/add-user HTTP/1.1[0m" 401 -
+2025-04-13 21:03:49,369 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 21:03:49,450 - INFO -  * Restarting with stat
+2025-04-13 21:03:50,096 - INFO - Connected to database: cs432cims
+2025-04-13 21:03:50,116 - WARNING -  * Debugger is active!
+2025-04-13 21:03:50,122 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 21:03:56,461 - INFO - User new_test_user added with ID 1117
+2025-04-13 21:03:56,487 - INFO - 127.0.0.1 - - [13/Apr/2025 21:03:56] "[35m[1mPOST /api/admin/add-user HTTP/1.1[0m" 500 -
+2025-04-13 21:10:40,933 - INFO - Connected to database: cs432cims
+2025-04-13 21:10:40,972 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-13 21:10:40,972 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-13 21:10:40,974 - INFO -  * Restarting with stat
+2025-04-13 21:10:41,582 - INFO - Connected to database: cs432cims
+2025-04-13 21:10:41,604 - WARNING -  * Debugger is active!
+2025-04-13 21:10:41,610 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 21:11:09,515 - INFO - 127.0.0.1 - - [13/Apr/2025 21:11:09] "POST /api/auth/login HTTP/1.1" 200 -
+2025-04-13 21:14:44,184 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 21:14:44,252 - INFO -  * Restarting with stat
+2025-04-13 21:14:44,931 - INFO - Connected to database: cs432cims
+2025-04-13 21:14:44,951 - WARNING -  * Debugger is active!
+2025-04-13 21:14:44,951 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 21:14:46,041 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 21:14:46,101 - INFO -  * Restarting with stat
+2025-04-13 21:14:46,810 - INFO - Connected to database: cs432cims
+2025-04-13 21:14:46,835 - WARNING -  * Debugger is active!
+2025-04-13 21:14:46,841 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 21:15:15,182 - INFO - User new_test_user added with ID 1120
+2025-04-13 21:15:15,198 - INFO - 127.0.0.1 - - [13/Apr/2025 21:15:15] "[35m[1mPOST /api/admin/add-user HTTP/1.1[0m" 500 -
+2025-04-13 21:15:51,636 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\AddUser.py', reloading
+2025-04-13 21:15:51,705 - INFO -  * Restarting with stat
+2025-04-13 21:15:52,454 - INFO - Connected to database: cs432cims
+2025-04-13 21:15:52,475 - WARNING -  * Debugger is active!
+2025-04-13 21:15:52,482 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 21:15:53,561 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\AddUser.py', reloading
+2025-04-13 21:15:53,627 - INFO -  * Restarting with stat
+2025-04-13 21:16:12,196 - INFO - Connected to database: cs432cims
+2025-04-13 21:16:12,228 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-13 21:16:12,228 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-13 21:16:12,230 - INFO -  * Restarting with stat
+2025-04-13 21:16:12,852 - INFO - Connected to database: cs432cims
+2025-04-13 21:16:12,873 - WARNING -  * Debugger is active!
+2025-04-13 21:16:12,881 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 21:16:27,139 - INFO - 127.0.0.1 - - [13/Apr/2025 21:16:27] "[33mPOST /api/login HTTP/1.1[0m" 404 -
+2025-04-13 21:16:42,597 - INFO - 127.0.0.1 - - [13/Apr/2025 21:16:42] "POST /api/auth/login HTTP/1.1" 200 -
+2025-04-13 21:17:20,137 - INFO - User new_test_user added with ID 1121
+2025-04-13 21:17:20,150 - INFO - 127.0.0.1 - - [13/Apr/2025 21:17:20] "[35m[1mPOST /api/admin/add-user HTTP/1.1[0m" 500 -
+2025-04-13 21:20:39,059 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\AddUser.py', reloading
+2025-04-13 21:20:39,128 - INFO -  * Restarting with stat
+2025-04-13 21:20:39,821 - INFO - Connected to database: cs432cims
+2025-04-13 21:20:39,844 - WARNING -  * Debugger is active!
+2025-04-13 21:20:39,851 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 21:21:15,864 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\AddUser.py', reloading
+2025-04-13 21:21:15,929 - INFO -  * Restarting with stat
+2025-04-13 21:21:16,568 - INFO - Connected to database: cs432cims
+2025-04-13 21:21:16,599 - WARNING -  * Debugger is active!
+2025-04-13 21:21:16,607 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 21:22:41,221 - INFO - User new_test_user added with ID 1122
+2025-04-13 21:22:41,221 - INFO - CIMS DATABASE CHANGE: INSERT | Table: members | Record: 1122 | Added new member: new_test_user, Email: test@example.com
+2025-04-13 21:22:41,271 - INFO - User new_test_user added to login table with ID 1122
+2025-04-13 21:22:41,271 - INFO - 127.0.0.1 - - [13/Apr/2025 21:22:41] "POST /api/admin/add-user HTTP/1.1" 200 -
+2025-04-13 21:24:37,762 - INFO - 127.0.0.1 - - [13/Apr/2025 21:24:37] "POST /api/auth/login HTTP/1.1" 200 -
+2025-04-13 21:24:54,557 - WARNING - Access denied: User new_test_user with role member attempted to access /api/admin/add-user
+2025-04-13 21:24:54,557 - INFO - 127.0.0.1 - - [13/Apr/2025 21:24:54] "[31m[1mPOST /api/admin/add-user HTTP/1.1[0m" 403 -
+2025-04-13 21:26:18,833 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 21:26:18,914 - INFO -  * Restarting with stat
+2025-04-13 21:26:19,632 - INFO - Connected to database: cs432cims
+2025-04-13 21:26:19,654 - WARNING -  * Debugger is active!
+2025-04-13 21:26:19,661 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 21:26:20,737 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 21:26:20,801 - INFO -  * Restarting with stat
+2025-04-13 21:26:21,557 - INFO - Connected to database: cs432cims
+2025-04-13 21:26:21,590 - WARNING -  * Debugger is active!
+2025-04-13 21:26:21,590 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 21:26:22,676 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 21:26:22,738 - INFO -  * Restarting with stat
+2025-04-13 21:26:23,374 - INFO - Connected to database: cs432cims
+2025-04-13 21:26:23,390 - WARNING -  * Debugger is active!
+2025-04-13 21:26:23,406 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 21:27:24,046 - INFO - 127.0.0.1 - - [13/Apr/2025 21:27:24] "POST /api/auth/login HTTP/1.1" 200 -
+2025-04-13 21:28:48,069 - INFO - User new_test_user added to login table with ID 1122
+2025-04-13 21:28:48,082 - INFO - 127.0.0.1 - - [13/Apr/2025 21:28:48] "[35m[1mPOST /api/admin/add-user HTTP/1.1[0m" 500 -
+2025-04-13 21:29:12,905 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 21:29:12,978 - INFO -  * Restarting with stat
+2025-04-13 21:29:13,678 - INFO - Connected to database: cs432cims
+2025-04-13 21:29:13,700 - WARNING -  * Debugger is active!
+2025-04-13 21:29:13,706 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 21:29:17,468 - INFO - User new_test_user added to login table with ID 1122
+2025-04-13 21:29:17,493 - INFO - 127.0.0.1 - - [13/Apr/2025 21:29:17] "[35m[1mPOST /api/admin/add-user HTTP/1.1[0m" 500 -
+2025-04-13 21:30:56,469 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 21:30:56,536 - INFO -  * Restarting with stat
+2025-04-13 21:30:57,261 - INFO - Connected to database: cs432cims
+2025-04-13 21:30:57,287 - WARNING -  * Debugger is active!
+2025-04-13 21:30:57,294 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 21:31:03,877 - INFO - User new_test_user added to login table with ID 1122
+2025-04-13 21:31:03,877 - INFO - CIMS DATABASE CHANGE: INSERT | Table: members | Record: 1122 | Added new member: new_test_user, Email: test@example.com
+2025-04-13 21:31:03,943 - INFO - Server log created for INSERT by testuser123
+2025-04-13 21:31:03,944 - INFO - 127.0.0.1 - - [13/Apr/2025 21:31:03] "POST /api/admin/add-user HTTP/1.1" 200 -
+2025-04-13 21:31:33,971 - INFO - User new_test_user added to login table with ID 1122
+2025-04-13 21:31:33,971 - INFO - CIMS DATABASE CHANGE: INSERT | Table: members | Record: 1122 | Added new member: new_test_user, Email: test@example.com
+2025-04-13 21:31:34,035 - INFO - Server log created for INSERT by testuser123
+2025-04-13 21:31:34,049 - INFO - 127.0.0.1 - - [13/Apr/2025 21:31:34] "POST /api/admin/add-user HTTP/1.1" 200 -
+2025-04-13 21:31:45,629 - INFO - User new_test_auser added with ID 1123
+2025-04-13 21:31:45,629 - INFO - CIMS DATABASE CHANGE: INSERT | Table: members | Record: 1123 | Added new member: new_test_auser, Email: test@example.com
+2025-04-13 21:31:45,712 - INFO - User new_test_auser added to login table with ID 1123
+2025-04-13 21:31:45,712 - INFO - CIMS DATABASE CHANGE: INSERT | Table: members | Record: 1123 | Added new member: new_test_auser, Email: test@example.com
+2025-04-13 21:31:46,263 - INFO - Server log created for INSERT by testuser123
+2025-04-13 21:31:46,263 - INFO - 127.0.0.1 - - [13/Apr/2025 21:31:46] "POST /api/admin/add-user HTTP/1.1" 200 -
+2025-04-14 03:46:01,513 - INFO - Connected to database: cs432cims
+2025-04-14 03:46:01,591 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-14 03:46:01,591 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-14 03:46:01,594 - INFO -  * Restarting with stat
+2025-04-14 03:46:03,128 - INFO - Connected to database: cs432cims
+2025-04-14 03:46:03,186 - WARNING -  * Debugger is active!
+2025-04-14 03:46:03,212 - INFO -  * Debugger PIN: 118-583-477
+2025-04-14 03:46:20,394 - INFO - 127.0.0.1 - - [14/Apr/2025 03:46:20] "[31m[1mPOST /api/admin/add-user HTTP/1.1[0m" 401 -
+2025-04-14 03:46:49,784 - INFO - 127.0.0.1 - - [14/Apr/2025 03:46:49] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 03:47:23,864 - INFO - 127.0.0.1 - - [14/Apr/2025 03:47:23] "[33mPOST /api/auth/login HTTP/1.1[0m" 404 -
+2025-04-14 03:47:30,320 - INFO - 127.0.0.1 - - [14/Apr/2025 03:47:30] "POST /api/auth/login HTTP/1.1" 200 -
+2025-04-14 03:47:50,640 - INFO - 127.0.0.1 - - [14/Apr/2025 03:47:50] "GET /api/auth/status HTTP/1.1" 200 -
+2025-04-14 03:48:25,259 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-14 03:48:25,375 - INFO -  * Restarting with stat
+2025-04-14 03:48:26,597 - INFO - Connected to database: cs432cims
+2025-04-14 03:48:26,634 - WARNING -  * Debugger is active!
+2025-04-14 03:48:26,646 - INFO -  * Debugger PIN: 118-583-477
+2025-04-14 03:49:26,510 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-14 03:49:26,599 - INFO -  * Restarting with stat
+2025-04-14 03:49:27,688 - INFO - Connected to database: cs432cims
+2025-04-14 03:49:27,722 - WARNING -  * Debugger is active!
+2025-04-14 03:49:27,733 - INFO -  * Debugger PIN: 118-583-477
+2025-04-14 03:51:36,088 - WARNING - Access denied: User new_test_user with role member attempted to access /api/admin/dashboard
+2025-04-14 03:51:36,089 - INFO - 127.0.0.1 - - [14/Apr/2025 03:51:36] "[31m[1mGET /api/admin/dashboard HTTP/1.1[0m" 403 -
+2025-04-14 03:51:54,229 - INFO - 127.0.0.1 - - [14/Apr/2025 03:51:54] "[31m[1mGET /api/auth/login HTTP/1.1[0m" 405 -
+2025-04-14 03:52:00,850 - INFO - 127.0.0.1 - - [14/Apr/2025 03:52:00] "POST /api/auth/login HTTP/1.1" 200 -
+2025-04-14 03:53:12,097 - INFO - 127.0.0.1 - - [14/Apr/2025 03:53:12] "POST /api/auth/login HTTP/1.1" 200 -
+2025-04-14 03:53:16,827 - INFO - 127.0.0.1 - - [14/Apr/2025 03:53:16] "[31m[1mPOST /api/auth/login HTTP/1.1[0m" 401 -
+2025-04-14 03:53:21,069 - INFO - 127.0.0.1 - - [14/Apr/2025 03:53:21] "POST /api/auth/login HTTP/1.1" 200 -
+2025-04-14 03:53:39,018 - INFO - 127.0.0.1 - - [14/Apr/2025 03:53:39] "GET /api/admin/dashboard HTTP/1.1" 200 -

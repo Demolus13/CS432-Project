@@ -57,6 +57,71 @@ def get_db_connection(use_cism=True):
     else:
         return mysql.connector.connect(**project_db_config)
 
+def log_cims_database_change(session_token, action, table_name, record_id, details, app_config, db_connection_func):
+    """
+    Log changes to the CIMS database both locally and to server logs.
+    Only logs to server if session is valid.
+    """
+    try:
+        # Always log locally
+        log_message = f"CIMS DATABASE CHANGE: {action} | Table: {table_name} | Record: {record_id} | {details}"
+        logging.info(log_message)
+        
+        # Validate session before logging to server
+        if not session_token:
+            logging.warning(f"Attempted database change without session token: {log_message}")
+            return False
+            
+        try:
+            # Decode the JWT token to verify and get user information
+            decoded = jwt.decode(session_token, app_config['SECRET_KEY'], algorithms=["HS256"])
+            user_id = decoded.get('session_id')
+            username = decoded.get('user')
+            
+            # If successful, log to server database
+            conn = db_connection_func(False)  # True for CIMS database
+            cursor = conn.cursor()
+            
+            # Get request IP and user agent if available
+            ip_address = request.remote_addr if request else None
+            user_agent = request.headers.get('User-Agent') if request else None
+            
+            # Insert into audit_logs table
+            cursor.execute("""
+                INSERT INTO audit_logs 
+                (User_ID, Username, Action, Table_Name, Record_ID, Details, IP_Address, User_Agent) 
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+            """, (
+                user_id,
+                username,
+                action,
+                table_name,
+                str(record_id),
+                details,
+                ip_address,
+                user_agent
+            ))
+            
+            conn.commit()
+            logging.info(f"Server log created for {action} by {username}")
+            return True
+            
+        except jwt.ExpiredSignatureError:
+            logging.warning(f"Expired session attempted database change: {log_message}")
+            return False
+        except jwt.InvalidTokenError:
+            logging.warning(f"Invalid session attempted database change: {log_message}")
+            return False
+            
+    except Exception as e:
+        logging.error(f"Error logging database change: {str(e)}")
+        return False
+    finally:
+        if 'cursor' in locals():
+            cursor.close()
+        if 'conn' in locals():
+            conn.close()
+
 # Role-based access control decorator
 def role_required(allowed_roles):
     def decorator(f):
@@ -181,7 +246,29 @@ def api_auth_status():
 @role_required(['admin'])
 def api_add_user():
     session_id = request.json.get('session_id')
+    # isAuthorised = requests.get(
+    #     "http://10.0.116.125:5000/isAuth",
+    #     params={"session_id": session_id},
+    #     headers={'Content-Type': 'application/json', 'Accept': 'application/json'}
+    # )
+    # print(isAuthorised.content)
+    # if isAuthorised.status_code != 200:
+    #     return jsonify({"error": "Unauthorized"}), 401
     out = AddUser.AddUser(request, logging, get_db_connection())
+
+    token = request.cookies.get('session_token')
+
+    if hasattr(out, 'success') and out.success and hasattr(out, 'member_id') and out.member_id:
+        log_cims_database_change(
+            token,
+            "INSERT",
+            "members",
+            out.member_id,
+            f"Added new member: {out.username}, Email: {out.email}",
+            app.config,
+            get_db_connection
+        )
+    
     return out.response()
 
 @app.route('/api/admin/members/<int:member_id>', methods=['DELETE'])
@@ -256,7 +343,7 @@ def api_update_image():
 # ----------------------- MAINTENANCE REQUESTS -----------------------
 
 @app.route('/api/maintenance/requests', methods=['GET'])
-@role_required(['admin', 'user'])
+@role_required(['admin', 'member'])
 def api_get_maintenance_requests():
     try:
         conn = get_db_connection(use_cism=False)  # Use project database
@@ -297,7 +384,7 @@ def api_get_maintenance_requests():
         conn.close()
 
 @app.route('/api/maintenance/request', methods=['POST'])
-@role_required(['admin', 'user'])
+@role_required(['admin', 'member'])
 def api_create_maintenance_request():
     try:
         data = request.json
@@ -355,7 +442,7 @@ def api_create_maintenance_request():
             conn.close()
 
 @app.route('/api/maintenance/request/<int:request_id>', methods=['GET'])
-@role_required(['admin', 'user'])
+@role_required(['admin', 'member'])
 def api_get_maintenance_request_detail(request_id):
     try:
         conn = get_db_connection(use_cism=False)
@@ -594,7 +681,7 @@ def api_add_maintenance_log():
 # ----------------------- FEEDBACK -----------------------
 
 @app.route('/api/maintenance/feedback', methods=['POST'])
-@role_required(['user'])
+@role_required(['member'])
 def api_submit_feedback():
     try:
         data = request.json
@@ -670,7 +757,7 @@ def api_submit_feedback():
 # ----------------------- NOTIFICATIONS -----------------------
 
 @app.route('/api/notifications/<int:student_id>', methods=['GET'])
-@role_required(['admin', 'user'])
+@role_required(['admin', 'member'])
 def api_get_notifications(student_id):
     try:
         if request.user['role'] == 'user' and 'session_id' in request.user:
@@ -874,7 +961,7 @@ def api_view_security_logs():
 # ----------------------- STUDENT PROFILE -----------------------
 
 @app.route('/api/student/<int:student_id>', methods=['GET'])
-@role_required(['admin', 'user'])
+@role_required(['admin', 'member'])
 def api_get_student_details(student_id):
     try:
         if request.user['role'] == 'user' and 'session_id' in request.user:
