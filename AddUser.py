@@ -42,21 +42,28 @@ class AddUser:
         try:
             cursor.execute("SELECT * FROM members where UserName = (%s);", (self.username,))
             name = cursor.fetchall()
-            # print('name', name)
             if name:
                 self.member_id = name[0][1]  # Assuming the first column is the ID
-                # print('if', name)
                 return
             else:
                 cursor.execute("INSERT INTO members (UserName, emailID, DoB) VALUES (%s, %s, %s);", 
                             (self.username, self.email, self.DoB))
                 self.conn.commit()
+                # Get the ID of the newly inserted member
+                cursor.execute("SELECT ID FROM members WHERE UserName = %s", (self.username,))
+                result = cursor.fetchone()
+                if result:
+                    self.member_id = result[0]
+                    self.logging.info(f"User {self.username} added with ID {self.member_id}")
+                else:
+                    self.success = False
+                    self.message = "Failed to retrieve member ID after insertion"
+                    self.status = 500
         except mysql.connector.Error as e:
             self.success = False
             self.logging.error(f"MySQL Error: {e}")
-            self.success = False
-            self.message = f"'error': {str(e)}"
-            self.status = 400
+            self.message = {'error': str(e)}
+            self.status = 500
         finally:
             cursor.close()
 
@@ -69,23 +76,39 @@ class AddUser:
         pass
 
     def create_login(self):
+        if not self.success or not self.member_id:
+            return
+            
+        cursor = self.conn.cursor()
         try:
-            cursor = self.conn.cursor()
-            cursor.execute("SELECT ID FROM members WHERE UserName = (%s);", (self.username,))
-            name = cursor.fetchall()
-            # print('name',name)
-            self.member_id = name[0][0]
-            # print('login', self.member_id)
-            # if user already exists then just update the password and role
-            cursor.execute('INSERT INTO Login (MemberID, Password, Role) VALUES (%s, %s, %s)', (self.member_id, hashlib.md5(self.data.get('password', '').encode()).hexdigest(), self.data['role']))
+            # Check if login entry already exists
+            cursor.execute("SELECT MemberID FROM Login WHERE MemberID = %s", (str(self.member_id),))
+            login_exists = cursor.fetchone()
+            
+            if login_exists:
+                # Update existing login entry
+                cursor.execute(
+                    'UPDATE Login SET Password = %s, Role = %s WHERE MemberID = %s', 
+                    (hashlib.md5(self.data.get('password', self.username).encode()).hexdigest(), 
+                     self.data['role'], 
+                     str(self.member_id))
+                )
+            else:
+                # Create new login entry
+                cursor.execute(
+                    'INSERT INTO Login (MemberID, Password, Role) VALUES (%s, %s, %s)', 
+                    (str(self.member_id), 
+                     hashlib.md5(self.data.get('password', '').encode()).hexdigest(), 
+                     self.data['role'])
+                )
+            
             self.conn.commit()
-            self.logging.info(f"User {self.username} added to login table")
-            self.message = {'message': 'User added successfully'}
+            self.logging.info(f"User {self.username} added to login table with ID {self.member_id}")
+            self.message = {'message': 'User added successfully with default login credentials'}
             self.status = 200
         except Exception as e:
-            self.message = self.message + ' -- Failed to add user to login table'
+            self.message = {'error': f'Failed to add user to login table: {str(e)}'}
             self.status = 500
-            # print(e)
             self.logging.error(f"Error adding user to login table: {e}")
         finally:
             cursor.close()
@@ -93,5 +116,5 @@ class AddUser:
     def __del__(self):
         try:
             self.conn.close()
-        finally:
+        except:
             pass

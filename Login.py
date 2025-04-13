@@ -7,10 +7,10 @@ import datetime
 class Login:
     def __init__(self, request, conn, logging, secret_key):
         self.data = request.json
-        self.username = self.data.get('username')
+        self.username = self.data.get('user')
         self.password = self.data.get('password')
         self.group = self.data.get('group')
-        self.password = hashlib.md5(self.password.encode()).hexdigest()
+        self.password = hashlib.md5(self.password.encode()).hexdigest() if self.password else None
         self.conn = conn
         self.logging = logging
         self.success = True
@@ -39,23 +39,27 @@ class Login:
 
     def get_session(self):
         if not self.success:
-            return
+            self.response = jsonify({"error": self.message}), 401
+            return self
+            
         self.cursor = self.conn.cursor()
         try:
             # check if member with member id exisits in group mapping with group id or not.
-
             try:
                 cursor = self.conn.cursor(dictionary=True)
                 cursor.execute("SELECT Password, Role FROM Login WHERE MemberID = %s", (self.member_id,))
                 user = cursor.fetchone()
             except Exception as e:
                 print(e)
+                self.response = jsonify({"error": str(e)}), 500
+                return self
             finally:
                 cursor.close()
 
             if not user or self.password != user['Password']:
                 self.response = jsonify({"error": "Invalid credentials"}), 401
-                return
+                return self
+                
             expiry = datetime.datetime.utcnow() + datetime.timedelta(hours=1)
             expiry = expiry.timestamp()
             token = jwt.encode({
@@ -65,20 +69,28 @@ class Login:
                 "group": self.group,
                 "session_id": self.member_id
             }, self.secret_key, algorithm="HS256")
+            
             cursor = self.conn.cursor()
-            print(token)
             cursor.execute('UPDATE Login SET Session = %s, Expiry = %s WHERE MemberID = %s', 
-                           (token, expiry, self.member_id))
+                          (token, expiry, self.member_id))
             self.conn.commit()
-            print('update', token, expiry, self.member_id)
-            return
-            self.response = jsonify({"message": "Login successful", 'session_token': token,
-                                              'max_age':3600, 'username': self.username, 'group': self.group,
-                                              'role': self.role})
-            print('******************************',self.response)
+            
+            # Remove the premature return and set the response
+            response = make_response(jsonify({
+                "message": "Login successful", 
+                'session_token': token,
+                'max_age': 3600, 
+                'username': self.username, 
+                'group': self.group,
+                'role': user['Role']
+            }))
+            response.set_cookie('session_token', token, max_age=3600, httponly=True)
+            self.response = response
+            
             cursor.close()
-            self.conn.comiit()
         except mysql.connector.Error as e:
             self.success = False
             self.logging.error(f"MySQL Error: {e}")
+            self.response = jsonify({"error": str(e)}), 500
+            
         return self

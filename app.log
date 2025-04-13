@@ -956,3 +956,578 @@
 2025-04-08 19:46:53,351 - INFO -  * Debugger PIN: 142-372-511
 2025-04-08 19:46:55,227 - ERROR - Image upload failed: Python type psycopg2.extensions.Binary cannot be converted
 2025-04-08 19:46:55,230 - INFO - 127.0.0.1 - - [08/Apr/2025 19:46:55] "[35m[1mPOST /updateImage HTTP/1.1[0m" 500 -
+2025-04-12 22:41:12,539 - INFO - Connected to database: cs432cims
+2025-04-12 22:41:12,614 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-12 22:41:12,614 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-12 22:41:12,623 - INFO -  * Restarting with stat
+2025-04-12 22:41:13,236 - INFO - Connected to database: cs432cims
+2025-04-12 22:41:13,251 - WARNING -  * Debugger is active!
+2025-04-12 22:41:13,268 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 22:43:22,591 - INFO - Connected to database: cs432cims
+2025-04-12 22:43:22,621 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-12 22:43:22,621 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-12 22:43:22,623 - INFO -  * Restarting with stat
+2025-04-12 22:43:23,214 - INFO - Connected to database: cs432cims
+2025-04-12 22:43:23,234 - WARNING -  * Debugger is active!
+2025-04-12 22:43:23,240 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 22:43:33,569 - INFO - 127.0.0.1 - - [12/Apr/2025 22:43:33] "GET / HTTP/1.1" 200 -
+2025-04-12 22:43:33,649 - INFO - 127.0.0.1 - - [12/Apr/2025 22:43:33] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-12 22:43:51,115 - INFO - 127.0.0.1 - - [12/Apr/2025 22:43:51] "GET / HTTP/1.1" 200 -
+2025-04-12 22:44:23,913 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 22:44:23,985 - INFO -  * Restarting with stat
+2025-04-12 22:44:28,811 - INFO - Connected to database: cs432cims
+2025-04-12 22:44:28,842 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-12 22:44:28,842 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-12 22:44:28,844 - INFO -  * Restarting with stat
+2025-04-12 22:44:29,445 - INFO - Connected to database: cs432cims
+2025-04-12 22:44:29,465 - WARNING -  * Debugger is active!
+2025-04-12 22:44:29,471 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 22:44:35,163 - INFO - 127.0.0.1 - - [12/Apr/2025 22:44:35] "GET / HTTP/1.1" 200 -
+2025-04-12 22:45:13,065 - INFO - 127.0.0.1 - - [12/Apr/2025 22:45:13] "GET /dbcon HTTP/1.1" 200 -
+2025-04-12 22:46:58,702 - INFO - Member None does not exist
+2025-04-12 22:46:58,706 - INFO - 127.0.0.1 - - [12/Apr/2025 22:46:58] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+2025-04-12 22:47:52,828 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 22:47:52,894 - INFO -  * Restarting with stat
+2025-04-12 22:47:53,520 - INFO - Connected to database: cs432cims
+2025-04-12 22:47:53,540 - WARNING -  * Debugger is active!
+2025-04-12 22:47:53,546 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 22:48:08,899 - INFO - Connected to database: cs432cims
+2025-04-12 22:48:08,927 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-12 22:48:08,927 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-12 22:48:08,929 - INFO -  * Restarting with stat
+2025-04-12 22:48:09,585 - INFO - Connected to database: cs432cims
+2025-04-12 22:48:09,607 - WARNING -  * Debugger is active!
+2025-04-12 22:48:09,613 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 22:48:16,923 - INFO - 127.0.0.1 - - [12/Apr/2025 22:48:16] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+2025-04-12 22:49:31,842 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 22:49:31,904 - INFO -  * Restarting with stat
+2025-04-12 22:49:32,599 - INFO - Connected to database: cs432cims
+2025-04-12 22:49:32,622 - WARNING -  * Debugger is active!
+2025-04-12 22:49:32,628 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 22:49:39,853 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 22:49:39,924 - INFO -  * Restarting with stat
+2025-04-12 22:49:40,557 - INFO - Connected to database: cs432cims
+2025-04-12 22:49:40,580 - WARNING -  * Debugger is active!
+2025-04-12 22:49:40,587 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 22:51:43,069 - INFO - 127.0.0.1 - - [12/Apr/2025 22:51:43] "GET / HTTP/1.1" 200 -
+2025-04-12 22:54:25,265 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 22:54:25,431 - INFO -  * Restarting with stat
+2025-04-12 22:54:26,644 - INFO - Connected to database: cs432cims
+2025-04-12 22:54:26,681 - WARNING -  * Debugger is active!
+2025-04-12 22:54:26,696 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 22:54:35,143 - INFO - Connected to database: cs432cims
+2025-04-12 22:54:35,198 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-12 22:54:35,198 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-12 22:54:35,202 - INFO -  * Restarting with stat
+2025-04-12 22:54:36,648 - INFO - Connected to database: cs432cims
+2025-04-12 22:54:36,680 - WARNING -  * Debugger is active!
+2025-04-12 22:54:36,701 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 22:55:46,856 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 22:55:46,974 - INFO -  * Restarting with stat
+2025-04-12 22:55:48,324 - INFO - Connected to database: cs432cims
+2025-04-12 22:55:48,368 - WARNING -  * Debugger is active!
+2025-04-12 22:55:48,387 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 22:55:49,571 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 22:55:49,685 - INFO -  * Restarting with stat
+2025-04-12 22:55:50,836 - INFO - Connected to database: cs432cims
+2025-04-12 22:55:50,876 - WARNING -  * Debugger is active!
+2025-04-12 22:55:50,887 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 22:55:53,626 - INFO - Connected to database: cs432cims
+2025-04-12 22:55:53,681 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-12 22:55:53,681 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-12 22:55:53,684 - INFO -  * Restarting with stat
+2025-04-12 22:55:54,797 - INFO - Connected to database: cs432cims
+2025-04-12 22:55:54,828 - WARNING -  * Debugger is active!
+2025-04-12 22:55:54,838 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 22:56:57,431 - INFO - 127.0.0.1 - - [12/Apr/2025 22:56:57] "[31m[1mPOST /addUser HTTP/1.1[0m" 401 -
+2025-04-12 22:57:58,743 - INFO - 127.0.0.1 - - [12/Apr/2025 22:57:58] "[31m[1mPOST /addUser HTTP/1.1[0m" 401 -
+2025-04-12 22:59:32,849 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 22:59:32,967 - INFO -  * Restarting with stat
+2025-04-12 22:59:34,136 - INFO - Connected to database: cs432cims
+2025-04-12 22:59:34,178 - WARNING -  * Debugger is active!
+2025-04-12 22:59:34,191 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 22:59:39,587 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 22:59:39,843 - INFO -  * Restarting with stat
+2025-04-12 22:59:41,317 - INFO - Connected to database: cs432cims
+2025-04-12 22:59:41,376 - WARNING -  * Debugger is active!
+2025-04-12 22:59:41,395 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 22:59:44,663 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 22:59:44,781 - INFO -  * Restarting with stat
+2025-04-12 22:59:47,561 - INFO - Connected to database: cs432cims
+2025-04-12 22:59:47,613 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-12 22:59:47,613 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-12 22:59:47,616 - INFO -  * Restarting with stat
+2025-04-12 22:59:48,620 - INFO - Connected to database: cs432cims
+2025-04-12 22:59:48,649 - WARNING -  * Debugger is active!
+2025-04-12 22:59:48,665 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 22:59:54,927 - INFO - 127.0.0.1 - - [12/Apr/2025 22:59:54] "[35m[1mPOST /addUser HTTP/1.1[0m" 500 -
+2025-04-12 23:04:51,711 - INFO - Connected to database: cs432cims
+2025-04-12 23:04:51,767 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-12 23:04:51,767 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-12 23:04:51,772 - INFO -  * Restarting with stat
+2025-04-12 23:04:52,880 - INFO - Connected to database: cs432cims
+2025-04-12 23:04:52,908 - WARNING -  * Debugger is active!
+2025-04-12 23:04:52,919 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:05:20,233 - INFO - 127.0.0.1 - - [12/Apr/2025 23:05:20] "[31m[1mPOST /addUser HTTP/1.1[0m" 401 -
+2025-04-12 23:05:29,322 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 23:05:29,459 - INFO -  * Restarting with stat
+2025-04-12 23:05:32,520 - INFO - Connected to database: cs432cims
+2025-04-12 23:05:32,576 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-12 23:05:32,577 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-12 23:05:32,580 - INFO -  * Restarting with stat
+2025-04-12 23:05:33,596 - INFO - Connected to database: cs432cims
+2025-04-12 23:05:33,628 - WARNING -  * Debugger is active!
+2025-04-12 23:05:33,637 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:05:35,996 - INFO - 127.0.0.1 - - [12/Apr/2025 23:05:35] "[31m[1mPOST /addUser HTTP/1.1[0m" 400 -
+2025-04-12 23:06:24,834 - INFO - Connected to database: cs432cims
+2025-04-12 23:06:24,882 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-12 23:06:24,882 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-12 23:06:24,886 - INFO -  * Restarting with stat
+2025-04-12 23:06:25,973 - INFO - Connected to database: cs432cims
+2025-04-12 23:06:26,002 - WARNING -  * Debugger is active!
+2025-04-12 23:06:26,012 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:06:27,547 - INFO - User johndoe added with MemberID 448
+2025-04-12 23:06:27,591 - INFO - User johndoe added to login table with MemberID 448
+2025-04-12 23:06:27,593 - INFO - 127.0.0.1 - - [12/Apr/2025 23:06:27] "POST /addUser HTTP/1.1" 200 -
+2025-04-12 23:09:01,554 - INFO - User johndoe already exists with MemberID 448
+2025-04-12 23:09:01,651 - ERROR - Error adding user to login table: 1062 (23000): Duplicate entry '448' for key 'Login.PRIMARY'
+2025-04-12 23:09:01,652 - INFO - 127.0.0.1 - - [12/Apr/2025 23:09:01] "[35m[1mPOST /addUser HTTP/1.1[0m" 500 -
+2025-04-12 23:13:36,729 - INFO - 127.0.0.1 - - [12/Apr/2025 23:13:36] "[31m[1mPOST /login HTTP/1.1[0m" 400 -
+2025-04-12 23:13:52,772 - INFO - 127.0.0.1 - - [12/Apr/2025 23:13:52] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+2025-04-12 23:14:34,631 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 23:14:34,742 - INFO -  * Restarting with stat
+2025-04-12 23:14:36,320 - INFO - Connected to database: cs432cims
+2025-04-12 23:14:36,358 - WARNING -  * Debugger is active!
+2025-04-12 23:14:36,371 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:14:38,567 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 23:14:38,687 - INFO -  * Restarting with stat
+2025-04-12 23:14:39,787 - INFO - Connected to database: cs432cims
+2025-04-12 23:14:39,825 - WARNING -  * Debugger is active!
+2025-04-12 23:14:39,836 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:14:42,049 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 23:14:42,175 - INFO -  * Restarting with stat
+2025-04-12 23:17:47,073 - INFO - Connected to database: cs432cims
+2025-04-12 23:17:47,142 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-12 23:17:47,142 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-12 23:17:47,149 - INFO -  * Restarting with stat
+2025-04-12 23:17:48,485 - INFO - Connected to database: cs432cims
+2025-04-12 23:17:48,533 - WARNING -  * Debugger is active!
+2025-04-12 23:17:48,592 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:17:53,847 - INFO - 127.0.0.1 - - [12/Apr/2025 23:17:53] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+2025-04-12 23:18:35,475 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 23:18:35,586 - INFO -  * Restarting with stat
+2025-04-12 23:18:36,954 - INFO - Connected to database: cs432cims
+2025-04-12 23:18:36,989 - WARNING -  * Debugger is active!
+2025-04-12 23:18:36,999 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:18:40,328 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 23:18:40,466 - INFO -  * Restarting with stat
+2025-04-12 23:18:41,683 - INFO - Connected to database: cs432cims
+2025-04-12 23:18:41,727 - WARNING -  * Debugger is active!
+2025-04-12 23:18:41,740 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:18:42,883 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 23:18:43,016 - INFO -  * Restarting with stat
+2025-04-12 23:18:44,120 - INFO - Connected to database: cs432cims
+2025-04-12 23:18:44,154 - WARNING -  * Debugger is active!
+2025-04-12 23:18:44,164 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:18:46,461 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 23:18:46,602 - INFO -  * Restarting with stat
+2025-04-12 23:18:48,103 - INFO - Connected to database: cs432cims
+2025-04-12 23:18:48,159 - WARNING -  * Debugger is active!
+2025-04-12 23:18:48,176 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:19:22,239 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 23:19:22,525 - INFO -  * Restarting with stat
+2025-04-12 23:19:23,933 - INFO - Connected to database: cs432cims
+2025-04-12 23:19:23,989 - WARNING -  * Debugger is active!
+2025-04-12 23:19:24,009 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:19:26,274 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 23:19:26,391 - INFO -  * Restarting with stat
+2025-04-12 23:19:27,737 - INFO - Connected to database: cs432cims
+2025-04-12 23:19:27,778 - WARNING -  * Debugger is active!
+2025-04-12 23:19:27,788 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:19:28,926 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 23:19:29,062 - INFO -  * Restarting with stat
+2025-04-12 23:19:30,195 - INFO - Connected to database: cs432cims
+2025-04-12 23:19:30,246 - WARNING -  * Debugger is active!
+2025-04-12 23:19:30,264 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:19:32,495 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 23:19:32,626 - INFO -  * Restarting with stat
+2025-04-12 23:19:33,803 - INFO - Connected to database: cs432cims
+2025-04-12 23:19:33,859 - WARNING -  * Debugger is active!
+2025-04-12 23:19:33,863 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:19:36,098 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 23:19:36,234 - INFO -  * Restarting with stat
+2025-04-12 23:19:37,563 - INFO - Connected to database: cs432cims
+2025-04-12 23:19:37,601 - WARNING -  * Debugger is active!
+2025-04-12 23:19:37,611 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:19:42,990 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 23:19:43,110 - INFO -  * Restarting with stat
+2025-04-12 23:19:44,199 - INFO - Connected to database: cs432cims
+2025-04-12 23:19:44,238 - WARNING -  * Debugger is active!
+2025-04-12 23:19:44,249 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:19:47,035 - INFO - Connected to database: cs432cims
+2025-04-12 23:19:47,098 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-12 23:19:47,098 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-12 23:19:47,101 - INFO -  * Restarting with stat
+2025-04-12 23:19:48,095 - INFO - Connected to database: cs432cims
+2025-04-12 23:19:48,127 - WARNING -  * Debugger is active!
+2025-04-12 23:19:48,138 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:19:50,786 - INFO - 127.0.0.1 - - [12/Apr/2025 23:19:50] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+2025-04-12 23:20:04,154 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 23:20:04,261 - INFO -  * Restarting with stat
+2025-04-12 23:20:05,277 - INFO - Connected to database: cs432cims
+2025-04-12 23:20:05,312 - WARNING -  * Debugger is active!
+2025-04-12 23:20:05,324 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:20:06,460 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 23:20:06,543 - INFO -  * Restarting with stat
+2025-04-12 23:20:07,469 - INFO - Connected to database: cs432cims
+2025-04-12 23:20:07,500 - WARNING -  * Debugger is active!
+2025-04-12 23:20:07,510 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:20:11,449 - INFO - Connected to database: cs432cims
+2025-04-12 23:20:11,519 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-12 23:20:11,520 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-12 23:20:11,525 - INFO -  * Restarting with stat
+2025-04-12 23:20:12,677 - INFO - Connected to database: cs432cims
+2025-04-12 23:20:12,710 - WARNING -  * Debugger is active!
+2025-04-12 23:20:12,722 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:20:14,692 - INFO - 127.0.0.1 - - [12/Apr/2025 23:20:14] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+2025-04-12 23:20:29,778 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 23:20:29,920 - INFO -  * Restarting with stat
+2025-04-12 23:20:30,943 - INFO - Connected to database: cs432cims
+2025-04-12 23:20:30,975 - WARNING -  * Debugger is active!
+2025-04-12 23:20:30,987 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:20:34,265 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 23:20:34,373 - INFO -  * Restarting with stat
+2025-04-12 23:20:35,424 - INFO - Connected to database: cs432cims
+2025-04-12 23:20:35,456 - WARNING -  * Debugger is active!
+2025-04-12 23:20:35,466 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:20:49,450 - INFO - Connected to database: cs432cims
+2025-04-12 23:20:49,507 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-12 23:20:49,507 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-12 23:20:49,510 - INFO -  * Restarting with stat
+2025-04-12 23:20:50,601 - INFO - Connected to database: cs432cims
+2025-04-12 23:20:50,634 - WARNING -  * Debugger is active!
+2025-04-12 23:20:50,645 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:20:53,017 - INFO - 127.0.0.1 - - [12/Apr/2025 23:20:53] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+2025-04-12 23:21:09,859 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 23:21:09,986 - INFO -  * Restarting with stat
+2025-04-12 23:21:11,304 - INFO - Connected to database: cs432cims
+2025-04-12 23:21:11,338 - WARNING -  * Debugger is active!
+2025-04-12 23:21:11,350 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:23:49,995 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 23:23:50,122 - INFO -  * Restarting with stat
+2025-04-12 23:23:51,385 - INFO - Connected to database: cs432cims
+2025-04-12 23:23:51,419 - WARNING -  * Debugger is active!
+2025-04-12 23:23:51,427 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:24:09,723 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 23:24:09,850 - INFO -  * Restarting with stat
+2025-04-12 23:24:11,391 - INFO - Connected to database: cs432cims
+2025-04-12 23:24:11,430 - WARNING -  * Debugger is active!
+2025-04-12 23:24:11,442 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:24:22,219 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 23:24:22,392 - INFO -  * Restarting with stat
+2025-04-12 23:24:23,580 - INFO - Connected to database: cs432cims
+2025-04-12 23:24:23,627 - WARNING -  * Debugger is active!
+2025-04-12 23:24:23,643 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:24:40,480 - INFO - Connected to database: cs432cims
+2025-04-12 23:24:40,535 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-12 23:24:40,535 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-12 23:24:40,540 - INFO -  * Restarting with stat
+2025-04-12 23:24:41,704 - INFO - Connected to database: cs432cims
+2025-04-12 23:24:41,769 - WARNING -  * Debugger is active!
+2025-04-12 23:24:41,789 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:24:50,242 - INFO - Member None does not exist
+2025-04-12 23:24:50,252 - INFO - 127.0.0.1 - - [12/Apr/2025 23:24:50] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+2025-04-12 23:26:44,812 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 23:26:44,925 - INFO -  * Restarting with stat
+2025-04-12 23:26:46,223 - INFO - Connected to database: cs432cims
+2025-04-12 23:26:46,265 - WARNING -  * Debugger is active!
+2025-04-12 23:26:46,278 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:26:48,457 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 23:26:48,672 - INFO -  * Restarting with stat
+2025-04-12 23:26:49,918 - INFO - Connected to database: cs432cims
+2025-04-12 23:26:49,978 - WARNING -  * Debugger is active!
+2025-04-12 23:26:49,998 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:27:01,914 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\AddUser.py', reloading
+2025-04-12 23:27:01,995 - INFO -  * Restarting with stat
+2025-04-12 23:27:03,029 - INFO - Connected to database: cs432cims
+2025-04-12 23:27:03,062 - WARNING -  * Debugger is active!
+2025-04-12 23:27:03,070 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:27:30,740 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\AddUser.py', reloading
+2025-04-12 23:27:30,870 - INFO -  * Restarting with stat
+2025-04-12 23:27:32,195 - INFO - Connected to database: cs432cims
+2025-04-12 23:27:32,253 - WARNING -  * Debugger is active!
+2025-04-12 23:27:32,270 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:27:47,319 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-12 23:27:47,500 - INFO -  * Restarting with stat
+2025-04-12 23:27:48,562 - INFO - Connected to database: cs432cims
+2025-04-12 23:27:48,594 - WARNING -  * Debugger is active!
+2025-04-12 23:27:48,605 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:27:52,309 - INFO - Connected to database: cs432cims
+2025-04-12 23:27:52,379 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-12 23:27:52,379 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-12 23:27:52,379 - INFO -  * Restarting with stat
+2025-04-12 23:27:53,499 - INFO - Connected to database: cs432cims
+2025-04-12 23:27:53,535 - WARNING -  * Debugger is active!
+2025-04-12 23:27:53,547 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:28:09,239 - INFO - User johndoe already exists with MemberID 448
+2025-04-12 23:28:09,651 - ERROR - Error adding user to login table: 1062 (23000): Duplicate entry '448' for key 'Login.PRIMARY'
+2025-04-12 23:28:09,653 - INFO - 127.0.0.1 - - [12/Apr/2025 23:28:09] "[35m[1mPOST /addUser HTTP/1.1[0m" 500 -
+2025-04-12 23:29:38,567 - INFO - User johndoe added with MemberID 449
+2025-04-12 23:29:39,076 - INFO - User johndoe added to login table with MemberID 449
+2025-04-12 23:29:39,078 - INFO - 127.0.0.1 - - [12/Apr/2025 23:29:39] "POST /addUser HTTP/1.1" 200 -
+2025-04-12 23:30:08,067 - INFO - Member None does not exist
+2025-04-12 23:30:08,079 - INFO - 127.0.0.1 - - [12/Apr/2025 23:30:08] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+2025-04-12 23:30:19,506 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\AddUser.py', reloading
+2025-04-12 23:30:19,628 - INFO -  * Restarting with stat
+2025-04-12 23:30:20,846 - INFO - Connected to database: cs432cims
+2025-04-12 23:30:20,894 - WARNING -  * Debugger is active!
+2025-04-12 23:30:20,918 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:30:23,132 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\AddUser.py', reloading
+2025-04-12 23:30:23,276 - INFO -  * Restarting with stat
+2025-04-12 23:30:24,666 - INFO - Connected to database: cs432cims
+2025-04-12 23:30:24,725 - WARNING -  * Debugger is active!
+2025-04-12 23:30:24,739 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:30:29,115 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\AddUser.py', reloading
+2025-04-12 23:30:29,305 - INFO -  * Restarting with stat
+2025-04-12 23:30:30,608 - INFO - Connected to database: cs432cims
+2025-04-12 23:30:30,656 - WARNING -  * Debugger is active!
+2025-04-12 23:30:30,672 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:30:30,800 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\AddUser.py', reloading
+2025-04-12 23:30:30,914 - INFO -  * Restarting with stat
+2025-04-12 23:30:31,909 - INFO - Connected to database: cs432cims
+2025-04-12 23:30:31,952 - WARNING -  * Debugger is active!
+2025-04-12 23:30:31,961 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:30:44,800 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\AddUser.py', reloading
+2025-04-12 23:30:44,945 - INFO -  * Restarting with stat
+2025-04-12 23:30:46,141 - INFO - Connected to database: cs432cims
+2025-04-12 23:30:46,179 - WARNING -  * Debugger is active!
+2025-04-12 23:30:46,189 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:30:54,720 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\AddUser.py', reloading
+2025-04-12 23:30:54,866 - INFO -  * Restarting with stat
+2025-04-12 23:30:56,286 - INFO - Connected to database: cs432cims
+2025-04-12 23:30:56,328 - WARNING -  * Debugger is active!
+2025-04-12 23:30:56,341 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:31:04,898 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\AddUser.py', reloading
+2025-04-12 23:31:05,053 - INFO -  * Restarting with stat
+2025-04-12 23:31:06,650 - INFO - Connected to database: cs432cims
+2025-04-12 23:31:06,701 - WARNING -  * Debugger is active!
+2025-04-12 23:31:06,713 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:31:26,929 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\AddUser.py', reloading
+2025-04-12 23:31:27,046 - INFO -  * Restarting with stat
+2025-04-12 23:31:28,361 - INFO - Connected to database: cs432cims
+2025-04-12 23:31:28,402 - WARNING -  * Debugger is active!
+2025-04-12 23:31:28,412 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:32:29,270 - INFO - Connected to database: cs432cims
+2025-04-12 23:32:29,332 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-12 23:32:29,332 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-12 23:32:29,332 - INFO -  * Restarting with stat
+2025-04-12 23:32:30,501 - INFO - Connected to database: cs432cims
+2025-04-12 23:32:30,535 - WARNING -  * Debugger is active!
+2025-04-12 23:32:30,547 - INFO -  * Debugger PIN: 118-583-477
+2025-04-12 23:32:44,421 - INFO - User johndoe added to login table
+2025-04-12 23:32:44,423 - INFO - 127.0.0.1 - - [12/Apr/2025 23:32:44] "POST /addUser HTTP/1.1" 200 -
+2025-04-12 23:32:55,523 - INFO - 127.0.0.1 - - [12/Apr/2025 23:32:55] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+2025-04-13 09:12:30,254 - INFO - Connected to database: cs432cims
+2025-04-13 09:12:30,383 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-13 09:12:30,385 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-13 09:12:30,385 - INFO -  * Restarting with stat
+2025-04-13 09:12:31,466 - INFO - Connected to database: cs432cims
+2025-04-13 09:12:31,498 - WARNING -  * Debugger is active!
+2025-04-13 09:12:31,522 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 09:13:46,624 - INFO - User testuser123 added with ID 453
+2025-04-13 09:13:46,668 - INFO - User testuser123 added to login table with ID 453
+2025-04-13 09:13:46,713 - INFO - 127.0.0.1 - - [13/Apr/2025 09:13:46] "POST /addUser HTTP/1.1" 200 -
+2025-04-13 09:15:27,890 - INFO - 127.0.0.1 - - [13/Apr/2025 09:15:27] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+2025-04-13 09:19:04,375 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 09:19:04,540 - INFO -  * Restarting with stat
+2025-04-13 09:19:05,968 - INFO - Connected to database: cs432cims
+2025-04-13 09:19:06,001 - WARNING -  * Debugger is active!
+2025-04-13 09:19:06,012 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 09:19:19,739 - INFO - Connected to database: cs432cims
+2025-04-13 09:19:19,846 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-13 09:19:19,846 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-13 09:19:19,849 - INFO -  * Restarting with stat
+2025-04-13 09:19:20,986 - INFO - Connected to database: cs432cims
+2025-04-13 09:19:21,036 - WARNING -  * Debugger is active!
+2025-04-13 09:19:21,051 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 09:19:28,323 - INFO - 127.0.0.1 - - [13/Apr/2025 09:19:28] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2025-04-13 09:21:55,939 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 09:21:56,061 - INFO -  * Restarting with stat
+2025-04-13 09:21:57,225 - INFO - Connected to database: cs432cims
+2025-04-13 09:21:57,273 - WARNING -  * Debugger is active!
+2025-04-13 09:21:57,273 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 09:21:58,467 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 09:21:58,581 - INFO -  * Restarting with stat
+2025-04-13 09:21:59,664 - INFO - Connected to database: cs432cims
+2025-04-13 09:21:59,701 - WARNING -  * Debugger is active!
+2025-04-13 09:21:59,712 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 09:22:01,937 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 09:22:02,056 - INFO -  * Restarting with stat
+2025-04-13 09:22:03,269 - INFO - Connected to database: cs432cims
+2025-04-13 09:22:03,305 - WARNING -  * Debugger is active!
+2025-04-13 09:22:03,315 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 09:22:04,472 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 09:22:04,588 - INFO -  * Restarting with stat
+2025-04-13 09:22:05,801 - INFO - Connected to database: cs432cims
+2025-04-13 09:22:05,838 - WARNING -  * Debugger is active!
+2025-04-13 09:22:05,856 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 09:22:13,290 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 09:22:13,455 - INFO -  * Restarting with stat
+2025-04-13 09:22:14,807 - INFO - Connected to database: cs432cims
+2025-04-13 09:22:14,855 - WARNING -  * Debugger is active!
+2025-04-13 09:22:14,871 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 09:22:17,075 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 09:22:17,186 - INFO -  * Restarting with stat
+2025-04-13 09:22:18,475 - INFO - Connected to database: cs432cims
+2025-04-13 09:22:18,511 - WARNING -  * Debugger is active!
+2025-04-13 09:22:18,523 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 09:22:19,663 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 09:22:19,819 - INFO -  * Restarting with stat
+2025-04-13 09:22:20,932 - INFO - Connected to database: cs432cims
+2025-04-13 09:22:20,978 - WARNING -  * Debugger is active!
+2025-04-13 09:22:20,992 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 09:22:44,306 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 09:22:44,439 - INFO -  * Restarting with stat
+2025-04-13 09:22:45,567 - INFO - Connected to database: cs432cims
+2025-04-13 09:22:45,601 - WARNING -  * Debugger is active!
+2025-04-13 09:22:45,605 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 09:23:06,393 - INFO - Member None does not exist
+2025-04-13 09:23:06,410 - INFO - 127.0.0.1 - - [13/Apr/2025 09:23:06] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+2025-04-13 09:32:57,471 - INFO - 127.0.0.1 - - [13/Apr/2025 09:32:57] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2025-04-13 09:33:04,957 - INFO - Member None does not exist
+2025-04-13 09:33:04,969 - INFO - 127.0.0.1 - - [13/Apr/2025 09:33:04] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+2025-04-13 09:34:05,904 - INFO - Connected to database: cs432cims
+2025-04-13 09:34:05,961 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-13 09:34:05,961 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-13 09:34:05,961 - INFO -  * Restarting with stat
+2025-04-13 09:34:07,374 - INFO - Connected to database: cs432cims
+2025-04-13 09:34:07,411 - WARNING -  * Debugger is active!
+2025-04-13 09:34:07,437 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 09:35:07,766 - INFO - User testuser123 added with ID 454
+2025-04-13 09:35:07,802 - INFO - User testuser123 added to login table with ID 454
+2025-04-13 09:35:07,849 - INFO - 127.0.0.1 - - [13/Apr/2025 09:35:07] "POST /addUser HTTP/1.1" 200 -
+2025-04-13 09:35:30,724 - INFO - 127.0.0.1 - - [13/Apr/2025 09:35:30] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2025-04-13 09:35:50,796 - INFO - Member None does not exist
+2025-04-13 09:35:50,798 - INFO - 127.0.0.1 - - [13/Apr/2025 09:35:50] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+2025-04-13 09:37:14,374 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 09:37:14,497 - INFO -  * Restarting with stat
+2025-04-13 09:37:15,900 - INFO - Connected to database: cs432cims
+2025-04-13 09:37:15,917 - WARNING -  * Debugger is active!
+2025-04-13 09:37:15,931 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 09:37:57,369 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 09:37:57,534 - INFO -  * Restarting with stat
+2025-04-13 09:37:58,640 - INFO - Connected to database: cs432cims
+2025-04-13 09:37:58,681 - WARNING -  * Debugger is active!
+2025-04-13 09:37:58,693 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 09:38:55,139 - INFO - User testuser123 added with ID 455
+2025-04-13 09:38:55,194 - INFO - User testuser123 added to login table with ID 455
+2025-04-13 09:38:55,196 - INFO - 127.0.0.1 - - [13/Apr/2025 09:38:55] "POST /addUser HTTP/1.1" 200 -
+2025-04-13 09:39:25,251 - INFO - Member None does not exist
+2025-04-13 09:39:25,260 - INFO - 127.0.0.1 - - [13/Apr/2025 09:39:25] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+2025-04-13 09:43:54,165 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\Login.py', reloading
+2025-04-13 09:43:54,300 - INFO -  * Restarting with stat
+2025-04-13 09:43:55,430 - INFO - Connected to database: cs432cims
+2025-04-13 09:43:55,463 - WARNING -  * Debugger is active!
+2025-04-13 09:43:55,476 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 09:45:01,914 - INFO - Connected to database: cs432cims
+2025-04-13 09:45:01,979 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-13 09:45:01,979 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-13 09:45:01,983 - INFO -  * Restarting with stat
+2025-04-13 09:45:03,068 - INFO - Connected to database: cs432cims
+2025-04-13 09:45:03,103 - WARNING -  * Debugger is active!
+2025-04-13 09:45:03,114 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 09:45:07,882 - ERROR - MySQL Error: 1292 (22007): Truncated incorrect DOUBLE value: 'john_doe2'
+2025-04-13 09:45:07,883 - INFO - 127.0.0.1 - - [13/Apr/2025 09:45:07] "[35m[1mPOST /login HTTP/1.1[0m" 500 -
+2025-04-13 09:47:07,258 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\AddUser.py', reloading
+2025-04-13 09:47:07,384 - INFO -  * Restarting with stat
+2025-04-13 09:49:28,267 - INFO - Connected to database: cs432cims
+2025-04-13 09:49:28,338 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-13 09:49:28,338 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-13 09:49:28,341 - INFO -  * Restarting with stat
+2025-04-13 09:49:29,443 - INFO - Connected to database: cs432cims
+2025-04-13 09:49:29,482 - WARNING -  * Debugger is active!
+2025-04-13 09:49:29,493 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 09:49:31,203 - INFO - 127.0.0.1 - - [13/Apr/2025 09:49:31] "POST /login HTTP/1.1" 200 -
+2025-04-13 09:52:19,628 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 09:52:19,772 - INFO -  * Restarting with stat
+2025-04-13 09:57:05,431 - INFO - Connected to database: cs432cims
+2025-04-13 09:57:05,492 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-13 09:57:05,493 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-13 09:57:05,496 - INFO -  * Restarting with stat
+2025-04-13 09:57:06,527 - INFO - Connected to database: cs432cims
+2025-04-13 09:57:06,572 - WARNING -  * Debugger is active!
+2025-04-13 09:57:06,589 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 09:57:09,632 - INFO - 127.0.0.1 - - [13/Apr/2025 09:57:09] "[31m[1mGET /isAuth HTTP/1.1[0m" 401 -
+2025-04-13 09:57:22,083 - INFO - 127.0.0.1 - - [13/Apr/2025 09:57:22] "POST /login HTTP/1.1" 200 -
+2025-04-13 09:57:30,948 - INFO - 127.0.0.1 - - [13/Apr/2025 09:57:30] "[31m[1mGET /isAuth HTTP/1.1[0m" 401 -
+2025-04-13 09:59:21,314 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 09:59:21,440 - INFO -  * Restarting with stat
+2025-04-13 09:59:22,670 - INFO - Connected to database: cs432cims
+2025-04-13 09:59:22,704 - WARNING -  * Debugger is active!
+2025-04-13 09:59:22,710 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 09:59:41,944 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 09:59:42,067 - INFO -  * Restarting with stat
+2025-04-13 09:59:43,199 - INFO - Connected to database: cs432cims
+2025-04-13 09:59:43,238 - WARNING -  * Debugger is active!
+2025-04-13 09:59:43,252 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 10:01:03,614 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 10:01:03,759 - INFO -  * Restarting with stat
+2025-04-13 10:01:04,989 - INFO - Connected to database: cs432cims
+2025-04-13 10:01:05,037 - WARNING -  * Debugger is active!
+2025-04-13 10:01:05,048 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 10:02:02,259 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\main.py', reloading
+2025-04-13 10:02:02,392 - INFO -  * Restarting with stat
+2025-04-13 10:02:03,639 - INFO - Connected to database: cs432cims
+2025-04-13 10:02:03,682 - WARNING -  * Debugger is active!
+2025-04-13 10:02:03,697 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 10:03:56,909 - INFO - Connected to database: cs432cims
+2025-04-13 10:03:56,966 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-13 10:03:56,966 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-13 10:03:56,974 - INFO -  * Restarting with stat
+2025-04-13 10:03:58,055 - INFO - Connected to database: cs432cims
+2025-04-13 10:03:58,104 - WARNING -  * Debugger is active!
+2025-04-13 10:03:58,117 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 10:04:07,635 - INFO - 127.0.0.1 - - [13/Apr/2025 10:04:07] "[31m[1mGET /login HTTP/1.1[0m" 405 -
+2025-04-13 10:04:13,125 - INFO - 127.0.0.1 - - [13/Apr/2025 10:04:13] "POST /login HTTP/1.1" 200 -
+2025-04-13 10:04:27,830 - INFO - 127.0.0.1 - - [13/Apr/2025 10:04:27] "POST /login HTTP/1.1" 200 -
+2025-04-13 10:05:12,074 - INFO - 127.0.0.1 - - [13/Apr/2025 10:05:12] "[31m[1mGET /adminDatabaseAccess?action=list_members HTTP/1.1[0m" 401 -
+2025-04-13 10:06:12,760 - INFO - 127.0.0.1 - - [13/Apr/2025 10:06:12] "POST /login HTTP/1.1" 200 -
+2025-04-13 10:10:00,161 - INFO -  * Detected change in 'D:\\Demolus\\WebDForge\\FixIIT\\Login.py', reloading
+2025-04-13 10:10:00,285 - INFO -  * Restarting with stat
+2025-04-13 10:11:32,350 - INFO - Connected to database: cs432cims
+2025-04-13 10:11:32,415 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-13 10:11:32,415 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-13 10:11:32,418 - INFO -  * Restarting with stat
+2025-04-13 10:11:33,572 - INFO - Connected to database: cs432cims
+2025-04-13 10:11:33,606 - WARNING -  * Debugger is active!
+2025-04-13 10:11:33,617 - INFO -  * Debugger PIN: 118-583-477
+2025-04-13 10:11:40,020 - INFO - 127.0.0.1 - - [13/Apr/2025 10:11:40] "POST /login HTTP/1.1" 200 -
+2025-04-13 10:12:19,205 - INFO - 127.0.0.1 - - [13/Apr/2025 10:12:19] "GET /adminDatabaseAccess?action=list_members HTTP/1.1" 200 -
+2025-04-13 10:12:29,977 - INFO - 127.0.0.1 - - [13/Apr/2025 10:12:29] "GET /adminDatabaseAccess?action=list_members HTTP/1.1" 200 -
+2025-04-13 10:12:38,761 - INFO - 127.0.0.1 - - [13/Apr/2025 10:12:38] "GET /adminDatabaseAccess?action=list_members HTTP/1.1" 200 -
+2025-04-13 10:13:48,649 - INFO - 127.0.0.1 - - [13/Apr/2025 10:13:48] "DELETE /deleteMember/37 HTTP/1.1" 200 -
