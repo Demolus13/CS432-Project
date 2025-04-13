@@ -294,31 +294,44 @@ def api_delete_member(member_id):
             cursor.execute("DELETE FROM members WHERE ID = %s", (member_id,))
             conn.commit()
 
-            validate_and_log_cims_change(
+            # Using the correct function name
+            token = request.cookies.get('session_token')
+            log_cims_database_change(
+                token,
                 "DELETE", 
                 "members", 
                 member_id,
-                f"Deleted member: {member_name}, Email: {member_email}"
+                f"Deleted member: {member_name}, Email: {member_email}",
+                app.config,
+                get_db_connection
             )
             return jsonify({"message": f"Member {member_id} deleted successfully"}), 200
         else:
             cursor.execute("DELETE FROM MemberGroupMapping WHERE MemberID = %s", (member_id,))
             conn.commit()
 
-            validate_and_log_cims_change(
+            # Using the correct function name
+            token = request.cookies.get('session_token')
+            log_cims_database_change(
+                token,
                 "DELETE", 
                 "MemberGroupMapping", 
                 member_id,
-                f"Removed group mappings for member: {member_name}"
+                f"Removed group mappings for member: {member_name}",
+                app.config,
+                get_db_connection
             )
             return jsonify({"message": f"Group mappings for member {member_id} were removed successfully"}), 200
 
     except Exception as e:
-        conn.rollback()
+        if 'conn' in locals():
+            conn.rollback()
         return jsonify({"error": str(e)}), 500
     finally:
-        cursor.close()
-        conn.close()
+        if 'cursor' in locals():
+            cursor.close()
+        if 'conn' in locals():
+            conn.close()
 
 # ----------------------- DATABASE & IMAGE -----------------------
 
@@ -338,12 +351,12 @@ def api_db_connection_test():
 
 @app.route('/api/image/update', methods=['POST'])
 def api_update_image():
-    UpdateImage.UpdateImage(request, get_db_connection(), logging).update_image()
+    return UpdateImage.UpdateImage(request, get_db_connection(), logging).update_image()
 
 # ----------------------- MAINTENANCE REQUESTS -----------------------
 
 @app.route('/api/maintenance/requests', methods=['GET'])
-@role_required(['admin', 'member'])
+@role_required(['admin', 'student', 'technician'])
 def api_get_maintenance_requests():
     try:
         conn = get_db_connection(use_cism=False)  # Use project database
@@ -384,7 +397,7 @@ def api_get_maintenance_requests():
         conn.close()
 
 @app.route('/api/maintenance/request', methods=['POST'])
-@role_required(['admin', 'member'])
+@role_required(['admin', 'student'])
 def api_create_maintenance_request():
     try:
         data = request.json
@@ -393,16 +406,17 @@ def api_create_maintenance_request():
             if field not in data:
                 return jsonify({"error": f"Missing required field: {field}"}), 400
 
-        if request.user['role'] == 'user' and 'session_id' in request.user:
+        if (request.user['role'] == 'admin' or request.user['role'] == 'student') and 'session_id' in request.user:
             if str(data['student_id']) != str(request.user['session_id']):
                 logging.warning(
                     f"Unauthorized request creation attempt: User {request.user['user']} tried to create request for student {data['student_id']}"
                 )
                 return jsonify({"error": "You can only create maintenance requests for yourself"}), 403
 
-        conn = get_db_connection(use_cism=False)
-        cursor = conn.cursor()
-        cursor.execute("""
+        # Use project database for maintenance request
+        conn_project = get_db_connection(use_cism=False)
+        cursor_project = conn_project.cursor()
+        cursor_project.execute("""
             INSERT INTO maintenance_requests 
             (Student_ID, Issue_Description, Location, Priority, Status) 
             VALUES (%s, %s, %s, %s, 'submitted')
@@ -412,18 +426,21 @@ def api_create_maintenance_request():
             data['location'],
             data['priority']
         ))
-        request_id = cursor.lastrowid
-        conn.commit()
-
-        cursor.execute("""
-            INSERT INTO notifications 
+        request_id = cursor_project.lastrowid
+        conn_project.commit()
+        
+        # Use CIMS database for notifications
+        conn_cims = get_db_connection(use_cism=True)
+        cursor_cims = conn_cims.cursor()
+        cursor_cims.execute("""
+            INSERT INTO G6_notifications 
             (Student_ID, Message) 
             VALUES (%s, %s)
         """, (
             data['student_id'],
             "Your maintenance request has been submitted successfully."
         ))
-        conn.commit()
+        conn_cims.commit()
 
         return jsonify({
             "message": "Maintenance request created successfully",
@@ -432,17 +449,23 @@ def api_create_maintenance_request():
 
     except Exception as e:
         logging.error(f"Error creating maintenance request: {str(e)}")
-        if 'conn' in locals():
-            conn.rollback()
+        if 'conn_project' in locals():
+            conn_project.rollback()
+        if 'conn_cims' in locals():
+            conn_cims.rollback()
         return jsonify({"error": str(e)}), 500
     finally:
-        if 'cursor' in locals():
-            cursor.close()
-        if 'conn' in locals():
-            conn.close()
+        if 'cursor_project' in locals():
+            cursor_project.close()
+        if 'conn_project' in locals():
+            conn_project.close()
+        if 'cursor_cims' in locals():
+            cursor_cims.close()
+        if 'conn_cims' in locals():
+            conn_cims.close()
 
 @app.route('/api/maintenance/request/<int:request_id>', methods=['GET'])
-@role_required(['admin', 'member'])
+@role_required(['admin'])
 def api_get_maintenance_request_detail(request_id):
     try:
         conn = get_db_connection(use_cism=False)
@@ -458,7 +481,7 @@ def api_get_maintenance_request_detail(request_id):
         if not request_data:
             return jsonify({"error": "Maintenance request not found"}), 404
 
-        if request.user['role'] == 'user' and 'session_id' in request.user:
+        if request.user['role'] == 'admin' and 'session_id' in request.user:
             if str(request_data['Student_ID']) != str(request.user['session_id']):
                 logging.warning(
                     f"Unauthorized access attempt: User {request.user['user']} tried to access request {request_id} belonging to student {request_data['Student_ID']}"
@@ -503,7 +526,7 @@ def api_get_maintenance_request_detail(request_id):
         conn.close()
 
 @app.route('/api/maintenance/request/<int:request_id>', methods=['PUT'])
-@role_required(['admin'])
+@role_required(['admin', 'technician'])
 def api_update_maintenance_request(request_id):
     try:
         data = request.json
@@ -514,20 +537,20 @@ def api_update_maintenance_request(request_id):
         if data['status'] not in valid_statuses:
             return jsonify({"error": f"Invalid status. Must be one of: {', '.join(valid_statuses)}"}), 400
 
-        conn = get_db_connection(use_cism=False)
-        cursor = conn.cursor()
-        cursor.execute("""
+        conn_project = get_db_connection(use_cism=False)
+        cursor_project = conn_project.cursor()
+        cursor_project.execute("""
             UPDATE maintenance_requests
             SET Status = %s
             WHERE Request_ID = %s
         """, (data['status'], request_id))
 
-        if cursor.rowcount == 0:
+        if cursor_project.rowcount == 0:
             return jsonify({"error": "Maintenance request not found"}), 404
 
-        conn.commit()
-        cursor.execute("SELECT Student_ID FROM maintenance_requests WHERE Request_ID = %s", (request_id,))
-        student_id = cursor.fetchone()[0]
+        conn_project.commit()
+        cursor_project.execute("SELECT Student_ID FROM maintenance_requests WHERE Request_ID = %s", (request_id,))
+        student_id = cursor_project.fetchone()[0]
 
         status_message = {
             'in_progress': "Your maintenance request is now in progress.",
@@ -535,25 +558,31 @@ def api_update_maintenance_request(request_id):
             'rejected': "Your maintenance request has been rejected."
         }
         if data['status'] in status_message:
-            cursor.execute("""
-                INSERT INTO notifications 
+            conn_cims = get_db_connection(use_cism=True)
+            cursor_cims = conn_cims.cursor()
+            cursor_cims.execute("""
+                INSERT INTO G6_notifications 
                 (Student_ID, Message) 
                 VALUES (%s, %s)
             """, (student_id, status_message[data['status']]))
-            conn.commit()
+            conn_cims.commit()
+            cursor_cims.close()
+            conn_cims.close()
 
         return jsonify({"message": f"Maintenance request status updated to {data['status']}"}), 200
 
     except Exception as e:
         logging.error(f"Error updating maintenance request: {str(e)}")
-        if 'conn' in locals():
-            conn.rollback()
+        if 'conn_project' in locals():
+            conn_project.rollback()
+        if 'conn_cims' in locals():
+            conn_cims.rollback()
         return jsonify({"error": str(e)}), 500
     finally:
-        if 'cursor' in locals():
-            cursor.close()
-        if 'conn' in locals():
-            conn.close()
+        if 'cursor_project' in locals():
+            cursor_project.close()
+        if 'conn_project' in locals():
+            conn_project.close()
 
 # ----------------------- TECHNICIAN ASSIGNMENT -----------------------
 
@@ -567,13 +596,14 @@ def api_assign_technician():
             if field not in data:
                 return jsonify({"error": f"Missing required field: {field}"}), 400
 
-        conn = get_db_connection(use_cism=False)
-        cursor = conn.cursor()
-        cursor.execute("""
+        # Use project database for everything except notifications
+        conn_project = get_db_connection(use_cism=False)
+        cursor_project = conn_project.cursor()
+        cursor_project.execute("""
             SELECT Status, Student_ID FROM maintenance_requests 
             WHERE Request_ID = %s
         """, (data['request_id'],))
-        request_data = cursor.fetchone()
+        request_data = cursor_project.fetchone()
         if not request_data:
             return jsonify({"error": "Maintenance request not found"}), 404
 
@@ -581,64 +611,75 @@ def api_assign_technician():
         if status in ['completed', 'rejected']:
             return jsonify({"error": f"Cannot assign technician to a {status} request"}), 400
 
-        cursor.execute("SELECT * FROM technicians WHERE Technician_ID = %s", (data['technician_id'],))
-        if not cursor.fetchone():
+        cursor_project.execute("SELECT * FROM technicians WHERE Technician_ID = %s", (data['technician_id'],))
+        if not cursor_project.fetchone():
             return jsonify({"error": "Technician not found"}), 404
 
-        cursor.execute("""
+        cursor_project.execute("""
             SELECT * FROM technician_assignments 
             WHERE Request_ID = %s
         """, (data['request_id'],))
-        if cursor.fetchone():
-            cursor.execute("""
+        if cursor_project.fetchone():
+            cursor_project.execute("""
                 UPDATE technician_assignments 
                 SET Technician_ID = %s, Assigned_Date = CURRENT_TIMESTAMP
                 WHERE Request_ID = %s
             """, (data['technician_id'], data['request_id']))
         else:
-            cursor.execute("""
+            cursor_project.execute("""
                 INSERT INTO technician_assignments 
                 (Technician_ID, Request_ID) 
                 VALUES (%s, %s)
             """, (data['technician_id'], data['request_id']))
 
         if status == 'submitted':
-            cursor.execute("""
+            cursor_project.execute("""
                 UPDATE maintenance_requests
                 SET Status = 'in_progress'
                 WHERE Request_ID = %s
             """, (data['request_id'],))
 
-        cursor.execute("""
+        cursor_project.execute("""
             SELECT * FROM work_orders 
             WHERE Request_ID = %s
         """, (data['request_id'],))
-        if not cursor.fetchone():
-            cursor.execute("""
+        if not cursor_project.fetchone():
+            cursor_project.execute("""
                 INSERT INTO work_orders 
                 (Request_ID, Technician_ID, Remarks) 
                 VALUES (%s, %s, 'Technician assigned')
             """, (data['request_id'], data['technician_id']))
-
-        cursor.execute("""
-            INSERT INTO notifications 
+        
+        conn_project.commit()
+        
+        # Use CIMS database for notifications
+        conn_cims = get_db_connection(use_cism=True)
+        cursor_cims = conn_cims.cursor()
+        cursor_cims.execute("""
+            INSERT INTO G6_notifications 
             (Student_ID, Message) 
             VALUES (%s, %s)
         """, (student_id, "A technician has been assigned to your maintenance request."))
-        conn.commit()
+        conn_cims.commit()
 
         return jsonify({"message": "Technician assigned successfully"}), 200
 
     except Exception as e:
         logging.error(f"Error assigning technician: {str(e)}")
-        if 'conn' in locals():
-            conn.rollback()
+        if 'conn_project' in locals():
+            conn_project.rollback()
+        if 'conn_cims' in locals():
+            conn_cims.rollback()
         return jsonify({"error": str(e)}), 500
     finally:
-        if 'cursor' in locals():
-            cursor.close()
-        if 'conn' in locals():
-            conn.close()
+        if 'cursor_project' in locals():
+            cursor_project.close()
+        if 'conn_project' in locals():
+            conn_project.close()
+        if 'cursor_cims' in locals():
+            cursor_cims.close()
+        if 'conn_cims' in locals():
+            conn_cims.close()
 
 # ----------------------- MAINTENANCE LOGS -----------------------
 
@@ -681,7 +722,7 @@ def api_add_maintenance_log():
 # ----------------------- FEEDBACK -----------------------
 
 @app.route('/api/maintenance/feedback', methods=['POST'])
-@role_required(['member'])
+@role_required(['student'])
 def api_submit_feedback():
     try:
         data = request.json
@@ -757,20 +798,21 @@ def api_submit_feedback():
 # ----------------------- NOTIFICATIONS -----------------------
 
 @app.route('/api/notifications/<int:student_id>', methods=['GET'])
-@role_required(['admin', 'member'])
+@role_required(['admin', 'student'])
 def api_get_notifications(student_id):
     try:
-        if request.user['role'] == 'user' and 'session_id' in request.user:
+        if (request.user['role'] == 'admin' or request.user['role'] == 'student') and 'session_id' in request.user:
             if str(student_id) != str(request.user['session_id']):
                 logging.warning(
                     f"Unauthorized notification access attempt: User {request.user['user']} tried to access notifications for student {student_id}"
                 )
                 return jsonify({"error": "You can only view your own notifications"}), 403
 
-        conn = get_db_connection(use_cism=False)
+        # Use CIMS database for notifications
+        conn = get_db_connection(use_cism=True)
         cursor = conn.cursor(dictionary=True)
         cursor.execute("""
-            SELECT * FROM notifications 
+            SELECT * FROM G6_notifications 
             WHERE Student_ID = %s
             ORDER BY Sent_At DESC
         """, (student_id,))
@@ -961,10 +1003,10 @@ def api_view_security_logs():
 # ----------------------- STUDENT PROFILE -----------------------
 
 @app.route('/api/student/<int:student_id>', methods=['GET'])
-@role_required(['admin', 'member'])
+@role_required(['admin', 'student'])
 def api_get_student_details(student_id):
     try:
-        if request.user['role'] == 'user' and 'session_id' in request.user:
+        if (request.user['role'] == 'admin' or request.user['role'] == 'student') and 'session_id' in request.user:
             if str(student_id) != str(request.user['session_id']):
                 log_unauthorized_database_access(
                     "Attempt to access another student's profile",
@@ -973,27 +1015,33 @@ def api_get_student_details(student_id):
                 )
                 return jsonify({"error": "You can only view your own profile"}), 403
 
-        conn = get_db_connection(use_cism=False)
-        cursor = conn.cursor(dictionary=True)
-        cursor.execute("SELECT * FROM students WHERE Student_ID = %s", (student_id,))
-        student = cursor.fetchone()
+        # Get student details and maintenance requests from project database
+        conn_project = get_db_connection(use_cism=False)
+        cursor_project = conn_project.cursor(dictionary=True)
+        cursor_project.execute("SELECT * FROM students WHERE Student_ID = %s", (student_id,))
+        student = cursor_project.fetchone()
         if not student:
             return jsonify({"error": "Student not found"}), 404
 
-        cursor.execute("""
+        cursor_project.execute("""
             SELECT * FROM maintenance_requests 
             WHERE Student_ID = %s
             ORDER BY Submission_Date DESC
         """, (student_id,))
-        requests_data = cursor.fetchall()
+        requests_data = cursor_project.fetchall()
         student['maintenance_requests'] = requests_data
+        cursor_project.close()
+        conn_project.close()
 
-        cursor.execute("""
-            SELECT * FROM notifications 
+        # Get notifications from CIMS database
+        conn_cims = get_db_connection(use_cism=True)
+        cursor_cims = conn_cims.cursor(dictionary=True)
+        cursor_cims.execute("""
+            SELECT * FROM G6_notifications 
             WHERE Student_ID = %s
             ORDER BY Sent_At DESC
         """, (student_id,))
-        notifications = cursor.fetchall()
+        notifications = cursor_cims.fetchall()
         student['notifications'] = notifications
 
         return jsonify(student), 200
@@ -1002,10 +1050,10 @@ def api_get_student_details(student_id):
         logging.error(f"Error retrieving student details: {str(e)}\n{traceback.format_exc()}")
         return jsonify({"error": str(e)}), 500
     finally:
-        if 'cursor' in locals():
-            cursor.close()
-        if 'conn' in locals():
-            conn.close()
+        if 'cursor_cims' in locals():
+            cursor_cims.close()
+        if 'conn_cims' in locals():
+            conn_cims.close()
 
 # ----------------------- APPLICATION STARTUP -----------------------
 
