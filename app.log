@@ -1838,3 +1838,599 @@
 2025-04-14 03:53:16,827 - INFO - 127.0.0.1 - - [14/Apr/2025 03:53:16] "[31m[1mPOST /api/auth/login HTTP/1.1[0m" 401 -
 2025-04-14 03:53:21,069 - INFO - 127.0.0.1 - - [14/Apr/2025 03:53:21] "POST /api/auth/login HTTP/1.1" 200 -
 2025-04-14 03:53:39,018 - INFO - 127.0.0.1 - - [14/Apr/2025 03:53:39] "GET /api/admin/dashboard HTTP/1.1" 200 -
+2025-04-14 17:12:39,831 - INFO - package: mysql.connector.plugins
+2025-04-14 17:12:39,832 - INFO - plugin_name: caching_sha2_password
+2025-04-14 17:12:39,832 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 17:12:39,850 - INFO - Connected to database: cs432cims
+2025-04-14 17:12:39,879 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-14 17:12:39,879 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-14 17:12:39,892 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 17:12:40,731 - INFO - package: mysql.connector.plugins
+2025-04-14 17:12:40,733 - INFO - plugin_name: caching_sha2_password
+2025-04-14 17:12:40,733 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 17:12:40,752 - INFO - Connected to database: cs432cims
+2025-04-14 17:12:40,765 - WARNING -  * Debugger is active!
+2025-04-14 17:12:40,773 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 17:12:43,473 - INFO - 127.0.0.1 - - [14/Apr/2025 17:12:43] "GET / HTTP/1.1" 200 -
+2025-04-14 17:12:43,738 - INFO - 127.0.0.1 - - [14/Apr/2025 17:12:43] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-14 17:12:49,521 - INFO - 127.0.0.1 - - [14/Apr/2025 17:12:49] "[31m[1mPOST /api/admin/add-user HTTP/1.1[0m" 401 -
+2025-04-14 17:12:51,888 - INFO - package: mysql.connector.plugins
+2025-04-14 17:12:51,888 - INFO - plugin_name: caching_sha2_password
+2025-04-14 17:12:51,889 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 17:12:51,909 - INFO - Connected to database: cs432cims
+2025-04-14 17:12:51,932 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-14 17:12:51,932 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-14 17:12:51,942 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 17:12:52,505 - INFO - package: mysql.connector.plugins
+2025-04-14 17:12:52,506 - INFO - plugin_name: caching_sha2_password
+2025-04-14 17:12:52,506 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 17:12:52,525 - INFO - Connected to database: cs432cims
+2025-04-14 17:12:52,537 - WARNING -  * Debugger is active!
+2025-04-14 17:12:52,544 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 17:13:04,438 - INFO - 127.0.0.1 - - [14/Apr/2025 17:13:04] "[31m[1mPOST /api/admin/add-user HTTP/1.1[0m" 401 -
+2025-04-14 17:13:12,507 - INFO - 127.0.0.1 - - [14/Apr/2025 17:13:12] "[33mPOST /api/auth/login HTTP/1.1[0m" 404 -
+2025-04-14 17:13:54,643 - INFO - 127.0.0.1 - - [14/Apr/2025 17:13:54] "[33mGET /api HTTP/1.1[0m" 404 -
+2025-04-14 17:13:59,093 - INFO - 127.0.0.1 - - [14/Apr/2025 17:13:59] "[33mGET /api/auth HTTP/1.1[0m" 404 -
+2025-04-14 17:14:03,088 - INFO - 127.0.0.1 - - [14/Apr/2025 17:14:03] "[31m[1mGET /api/auth/login HTTP/1.1[0m" 405 -
+2025-04-14 17:14:08,518 - INFO -  * Detected change in 'C:\\Users\\chand\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\flask\\__init__.py', reloading
+2025-04-14 17:14:08,532 - INFO -  * Detected change in 'C:\\Users\\chand\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\flask\\app.py', reloading
+2025-04-14 17:14:09,337 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 17:14:11,236 - INFO - package: mysql.connector.plugins
+2025-04-14 17:14:11,237 - INFO - plugin_name: caching_sha2_password
+2025-04-14 17:14:11,237 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 17:14:11,258 - INFO - Connected to database: cs432cims
+2025-04-14 17:14:11,270 - WARNING -  * Debugger is active!
+2025-04-14 17:14:11,277 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 17:15:13,685 - INFO - 127.0.0.1 - - [14/Apr/2025 17:15:13] "[31m[1mPOST /api/auth/login HTTP/1.1[0m" 401 -
+2025-04-14 17:15:46,808 - INFO - 127.0.0.1 - - [14/Apr/2025 17:15:46] "[33mPOST /api/auth/login HTTP/1.1[0m" 404 -
+2025-04-14 17:16:08,450 - INFO - 127.0.0.1 - - [14/Apr/2025 17:16:08] "[31m[1mPOST /api/admin/add-user HTTP/1.1[0m" 401 -
+2025-04-14 17:16:24,168 - INFO - 127.0.0.1 - - [14/Apr/2025 17:16:24] "[31m[1mPOST /api/admin/add-user HTTP/1.1[0m" 401 -
+2025-04-14 17:17:53,840 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:17:53,841 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:17:54,617 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 17:17:55,220 - INFO - package: mysql.connector.plugins
+2025-04-14 17:17:55,220 - INFO - plugin_name: caching_sha2_password
+2025-04-14 17:17:55,221 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 17:17:55,242 - INFO - Connected to database: cs432cims
+2025-04-14 17:17:55,254 - WARNING -  * Debugger is active!
+2025-04-14 17:17:55,260 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 17:18:18,578 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:18:18,580 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:18:18,580 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:18:19,019 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 17:18:19,695 - INFO - package: mysql.connector.plugins
+2025-04-14 17:18:19,697 - INFO - plugin_name: caching_sha2_password
+2025-04-14 17:18:19,697 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 17:18:19,715 - INFO - Connected to database: cs432cims
+2025-04-14 17:18:19,727 - WARNING -  * Debugger is active!
+2025-04-14 17:18:19,734 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 17:18:39,561 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:18:39,561 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:18:39,561 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:18:40,587 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 17:18:41,214 - INFO - package: mysql.connector.plugins
+2025-04-14 17:18:41,215 - INFO - plugin_name: caching_sha2_password
+2025-04-14 17:18:41,215 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 17:18:41,238 - INFO - Connected to database: cs432cims
+2025-04-14 17:18:41,249 - WARNING -  * Debugger is active!
+2025-04-14 17:18:41,256 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 17:18:59,124 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:18:59,125 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:19:00,060 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 17:19:00,978 - INFO - package: mysql.connector.plugins
+2025-04-14 17:19:00,978 - INFO - plugin_name: caching_sha2_password
+2025-04-14 17:19:00,978 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 17:19:00,996 - INFO - Connected to database: cs432cims
+2025-04-14 17:19:01,011 - WARNING -  * Debugger is active!
+2025-04-14 17:19:01,018 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 17:19:19,488 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:19:19,488 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:19:19,690 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 17:19:21,118 - INFO - package: mysql.connector.plugins
+2025-04-14 17:19:21,119 - INFO - plugin_name: caching_sha2_password
+2025-04-14 17:19:21,119 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 17:19:21,137 - INFO - Connected to database: cs432cims
+2025-04-14 17:19:21,178 - WARNING -  * Debugger is active!
+2025-04-14 17:19:21,201 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 17:19:33,441 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:19:33,441 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:19:33,442 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:19:33,677 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 17:19:34,291 - INFO - package: mysql.connector.plugins
+2025-04-14 17:19:34,292 - INFO - plugin_name: caching_sha2_password
+2025-04-14 17:19:34,292 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 17:19:34,310 - INFO - Connected to database: cs432cims
+2025-04-14 17:19:34,327 - WARNING -  * Debugger is active!
+2025-04-14 17:19:34,338 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 17:20:10,665 - INFO - 127.0.0.1 - - [14/Apr/2025 17:20:10] "[31m[1mPOST /api/auth/login HTTP/1.1[0m" 401 -
+2025-04-14 17:20:12,717 - INFO - 127.0.0.1 - - [14/Apr/2025 17:20:12] "[33mPOST /register HTTP/1.1[0m" 404 -
+2025-04-14 17:20:47,090 - INFO - 127.0.0.1 - - [14/Apr/2025 17:20:47] "[31m[1mPOST /api/auth/login HTTP/1.1[0m" 401 -
+2025-04-14 17:20:49,114 - INFO - 127.0.0.1 - - [14/Apr/2025 17:20:49] "[33mPOST /register HTTP/1.1[0m" 404 -
+2025-04-14 17:21:43,936 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:21:43,936 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:21:43,937 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:21:44,930 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 17:21:45,595 - INFO - package: mysql.connector.plugins
+2025-04-14 17:21:45,596 - INFO - plugin_name: caching_sha2_password
+2025-04-14 17:21:45,596 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 17:21:45,615 - INFO - Connected to database: cs432cims
+2025-04-14 17:21:45,627 - WARNING -  * Debugger is active!
+2025-04-14 17:21:45,634 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 17:22:00,336 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:22:00,337 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:22:00,337 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:22:01,589 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 17:22:03,431 - INFO - package: mysql.connector.plugins
+2025-04-14 17:22:03,432 - INFO - plugin_name: caching_sha2_password
+2025-04-14 17:22:03,432 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 17:22:03,450 - INFO - Connected to database: cs432cims
+2025-04-14 17:22:03,471 - WARNING -  * Debugger is active!
+2025-04-14 17:22:03,483 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 17:22:36,303 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:22:36,304 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:22:36,821 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 17:22:37,444 - INFO - package: mysql.connector.plugins
+2025-04-14 17:22:37,444 - INFO - plugin_name: caching_sha2_password
+2025-04-14 17:22:37,444 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 17:22:37,473 - INFO - Connected to database: cs432cims
+2025-04-14 17:22:37,487 - WARNING -  * Debugger is active!
+2025-04-14 17:22:37,494 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 17:22:54,485 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:22:54,485 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:22:54,486 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:22:55,113 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 17:22:57,078 - INFO - package: mysql.connector.plugins
+2025-04-14 17:22:57,079 - INFO - plugin_name: caching_sha2_password
+2025-04-14 17:22:57,079 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 17:22:57,097 - INFO - Connected to database: cs432cims
+2025-04-14 17:22:57,173 - WARNING -  * Debugger is active!
+2025-04-14 17:22:57,268 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 17:23:12,267 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:23:12,267 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:23:12,268 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:23:13,350 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 17:23:13,984 - INFO - package: mysql.connector.plugins
+2025-04-14 17:23:13,984 - INFO - plugin_name: caching_sha2_password
+2025-04-14 17:23:13,984 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 17:23:14,001 - INFO - Connected to database: cs432cims
+2025-04-14 17:23:14,013 - WARNING -  * Debugger is active!
+2025-04-14 17:23:14,019 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 17:23:38,319 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:23:38,319 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:23:38,752 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 17:23:39,312 - INFO - package: mysql.connector.plugins
+2025-04-14 17:23:39,313 - INFO - plugin_name: caching_sha2_password
+2025-04-14 17:23:39,313 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 17:23:39,332 - INFO - Connected to database: cs432cims
+2025-04-14 17:23:39,344 - WARNING -  * Debugger is active!
+2025-04-14 17:23:39,351 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 17:23:56,697 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:23:56,706 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:23:56,708 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:23:56,852 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 17:23:57,769 - INFO - package: mysql.connector.plugins
+2025-04-14 17:23:57,769 - INFO - plugin_name: caching_sha2_password
+2025-04-14 17:23:57,769 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 17:23:57,786 - INFO - Connected to database: cs432cims
+2025-04-14 17:23:57,805 - WARNING -  * Debugger is active!
+2025-04-14 17:23:57,816 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 17:24:11,840 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 17:24:12,384 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 17:24:13,021 - INFO - package: mysql.connector.plugins
+2025-04-14 17:24:13,021 - INFO - plugin_name: caching_sha2_password
+2025-04-14 17:24:13,021 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 17:24:13,056 - INFO - Connected to database: cs432cims
+2025-04-14 17:24:13,069 - WARNING -  * Debugger is active!
+2025-04-14 17:24:13,075 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 17:24:14,753 - INFO - 127.0.0.1 - - [14/Apr/2025 17:24:14] "GET / HTTP/1.1" 200 -
+2025-04-14 18:10:23,250 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\Login.py', reloading
+2025-04-14 18:10:23,251 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\UpdateImage.py', reloading
+2025-04-14 18:10:23,760 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 18:10:27,731 - INFO - package: mysql.connector.plugins
+2025-04-14 18:10:27,731 - INFO - plugin_name: caching_sha2_password
+2025-04-14 18:10:27,731 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 18:10:27,751 - INFO - Connected to database: cs432cims
+2025-04-14 18:10:27,863 - WARNING -  * Debugger is active!
+2025-04-14 18:10:27,869 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 18:10:29,704 - INFO - 127.0.0.1 - - [14/Apr/2025 18:10:29] "GET / HTTP/1.1" 200 -
+2025-04-14 18:14:23,258 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\AddUser.py', reloading
+2025-04-14 18:14:23,301 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 18:14:23,872 - INFO - package: mysql.connector.plugins
+2025-04-14 18:14:23,872 - INFO - plugin_name: caching_sha2_password
+2025-04-14 18:14:23,873 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 18:14:23,892 - INFO - Connected to database: cs432cims
+2025-04-14 18:14:23,904 - WARNING -  * Debugger is active!
+2025-04-14 18:14:23,910 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 18:14:26,599 - INFO - 127.0.0.1 - - [14/Apr/2025 18:14:26] "GET / HTTP/1.1" 200 -
+2025-04-14 19:10:23,470 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\Login.py', reloading
+2025-04-14 19:10:23,470 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\UpdateImage.py', reloading
+2025-04-14 19:10:23,848 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 19:10:24,324 - INFO - package: mysql.connector.plugins
+2025-04-14 19:10:24,325 - INFO - plugin_name: caching_sha2_password
+2025-04-14 19:10:24,325 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 19:10:24,345 - INFO - Connected to database: cs432cims
+2025-04-14 19:10:24,357 - WARNING -  * Debugger is active!
+2025-04-14 19:10:24,363 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 19:14:23,482 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\AddUser.py', reloading
+2025-04-14 19:14:23,483 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\main.py', reloading
+2025-04-14 19:14:23,826 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 19:14:24,471 - INFO - package: mysql.connector.plugins
+2025-04-14 19:14:24,471 - INFO - plugin_name: caching_sha2_password
+2025-04-14 19:14:24,472 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 19:14:24,490 - INFO - Connected to database: cs432cims
+2025-04-14 19:14:24,502 - WARNING -  * Debugger is active!
+2025-04-14 19:14:24,508 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 19:14:24,554 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 19:14:24,829 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\netrc.py', reloading
+2025-04-14 19:14:24,830 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\shlex.py', reloading
+2025-04-14 19:14:25,607 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 19:14:26,084 - INFO - package: mysql.connector.plugins
+2025-04-14 19:14:26,085 - INFO - plugin_name: caching_sha2_password
+2025-04-14 19:14:26,085 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 19:14:26,107 - INFO - Connected to database: cs432cims
+2025-04-14 19:14:26,120 - WARNING -  * Debugger is active!
+2025-04-14 19:14:26,126 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 19:14:26,842 - INFO - 127.0.0.1 - - [14/Apr/2025 19:14:26] "GET / HTTP/1.1" 200 -
+2025-04-14 20:04:23,790 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\unicode_escape.py', reloading
+2025-04-14 20:04:24,228 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 20:04:27,189 - INFO - package: mysql.connector.plugins
+2025-04-14 20:04:27,189 - INFO - plugin_name: caching_sha2_password
+2025-04-14 20:04:27,189 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 20:04:27,208 - INFO - Connected to database: cs432cims
+2025-04-14 20:04:27,298 - WARNING -  * Debugger is active!
+2025-04-14 20:04:27,305 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 20:04:29,153 - INFO -  * Detected change in 'C:\\Users\\chand\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\urllib3\\util\\connection.py', reloading
+2025-04-14 20:04:29,164 - INFO -  * Detected change in 'C:\\Users\\chand\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\requests\\api.py', reloading
+2025-04-14 20:04:29,176 - INFO -  * Detected change in 'C:\\Users\\chand\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\requests\\sessions.py', reloading
+2025-04-14 20:04:29,189 - INFO -  * Detected change in 'C:\\Users\\chand\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\requests\\adapters.py', reloading
+2025-04-14 20:04:29,201 - INFO -  * Detected change in 'C:\\Users\\chand\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\urllib3\\connectionpool.py', reloading
+2025-04-14 20:04:29,214 - INFO -  * Detected change in 'C:\\Users\\chand\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\urllib3\\connection.py', reloading
+2025-04-14 20:04:29,467 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 20:04:35,007 - INFO - package: mysql.connector.plugins
+2025-04-14 20:04:35,008 - INFO - plugin_name: caching_sha2_password
+2025-04-14 20:04:35,008 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 20:04:35,076 - INFO - Connected to database: cs432cims
+2025-04-14 20:04:35,117 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-14 20:04:35,117 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-14 20:04:35,125 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 20:04:35,649 - INFO - package: mysql.connector.plugins
+2025-04-14 20:04:35,650 - INFO - plugin_name: caching_sha2_password
+2025-04-14 20:04:35,650 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 20:04:35,668 - INFO - Connected to database: cs432cims
+2025-04-14 20:04:35,681 - WARNING -  * Debugger is active!
+2025-04-14 20:04:35,687 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 20:04:35,720 - INFO - 127.0.0.1 - - [14/Apr/2025 20:04:35] "GET / HTTP/1.1" 200 -
+2025-04-14 20:04:38,240 - INFO - 127.0.0.1 - - [14/Apr/2025 20:04:38] "GET / HTTP/1.1" 200 -
+2025-04-14 20:04:54,700 - INFO - 127.0.0.1 - - [14/Apr/2025 20:04:54] "[31m[1mPOST /api/auth/login HTTP/1.1[0m" 401 -
+2025-04-14 20:04:56,752 - INFO - 127.0.0.1 - - [14/Apr/2025 20:04:56] "[31m[1mPOST /api/admin/add-user HTTP/1.1[0m" 401 -
+2025-04-14 20:05:12,770 - INFO - 127.0.0.1 - - [14/Apr/2025 20:05:12] "[33mPOST /api/auth/login HTTP/1.1[0m" 404 -
+2025-04-14 20:05:23,079 - INFO -  * Detected change in 'C:\\Users\\chand\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\flask\\globals.py', reloading
+2025-04-14 20:05:23,089 - INFO -  * Detected change in 'C:\\Users\\chand\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\flask\\wrappers.py', reloading
+2025-04-14 20:05:23,099 - INFO -  * Detected change in 'C:\\Users\\chand\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\werkzeug\\wrappers\\__init__.py', reloading
+2025-04-14 20:05:23,111 - INFO -  * Detected change in 'C:\\Users\\chand\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\werkzeug\\wrappers\\request.py', reloading
+2025-04-14 20:05:23,129 - INFO -  * Detected change in 'C:\\Users\\chand\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\werkzeug\\sansio\\request.py', reloading
+2025-04-14 20:05:23,151 - INFO -  * Detected change in 'C:\\Users\\chand\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\werkzeug\\utils.py', reloading
+2025-04-14 20:05:23,205 - INFO -  * Detected change in 'C:\\Users\\chand\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\werkzeug\\datastructures\\__init__.py', reloading
+2025-04-14 20:05:23,648 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 20:05:24,173 - INFO - package: mysql.connector.plugins
+2025-04-14 20:05:24,173 - INFO - plugin_name: caching_sha2_password
+2025-04-14 20:05:24,175 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 20:05:24,192 - INFO - Connected to database: cs432cims
+2025-04-14 20:05:24,203 - WARNING -  * Debugger is active!
+2025-04-14 20:05:24,209 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 20:05:26,383 - INFO - 127.0.0.1 - - [14/Apr/2025 20:05:26] "GET / HTTP/1.1" 200 -
+2025-04-14 20:05:29,829 - INFO -  * Detected change in 'C:\\Users\\chand\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\flask\\helpers.py', reloading
+2025-04-14 20:05:30,051 - INFO -  * Detected change in 'C:\\Users\\chand\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\werkzeug\\wrappers\\response.py', reloading
+2025-04-14 20:05:30,072 - INFO -  * Detected change in 'C:\\Users\\chand\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\werkzeug\\sansio\\response.py', reloading
+2025-04-14 20:05:30,395 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 20:05:30,917 - INFO - package: mysql.connector.plugins
+2025-04-14 20:05:30,917 - INFO - plugin_name: caching_sha2_password
+2025-04-14 20:05:30,917 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 20:05:30,936 - INFO - Connected to database: cs432cims
+2025-04-14 20:05:30,947 - WARNING -  * Debugger is active!
+2025-04-14 20:05:30,953 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 20:05:32,947 - INFO - 127.0.0.1 - - [14/Apr/2025 20:05:32] "GET / HTTP/1.1" 200 -
+2025-04-14 20:05:34,129 - INFO -  * Detected change in 'C:\\Users\\chand\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\werkzeug\\datastructures\\structures.py', reloading
+2025-04-14 20:05:35,138 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 20:05:35,705 - INFO - package: mysql.connector.plugins
+2025-04-14 20:05:35,706 - INFO - plugin_name: caching_sha2_password
+2025-04-14 20:05:35,706 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 20:05:35,724 - INFO - Connected to database: cs432cims
+2025-04-14 20:05:35,736 - WARNING -  * Debugger is active!
+2025-04-14 20:05:35,742 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 20:05:37,515 - INFO - 127.0.0.1 - - [14/Apr/2025 20:05:37] "GET / HTTP/1.1" 200 -
+2025-04-14 20:06:19,027 - INFO - 127.0.0.1 - - [14/Apr/2025 20:06:19] "[31m[1mPOST /api/auth/login HTTP/1.1[0m" 401 -
+2025-04-14 20:06:21,078 - INFO - 127.0.0.1 - - [14/Apr/2025 20:06:21] "[31m[1mPOST /api/admin/add-user HTTP/1.1[0m" 401 -
+2025-04-14 20:07:26,486 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 20:07:26,497 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 20:07:26,887 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 20:07:27,509 - INFO - package: mysql.connector.plugins
+2025-04-14 20:07:27,509 - INFO - plugin_name: caching_sha2_password
+2025-04-14 20:07:27,509 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 20:07:27,526 - INFO - Connected to database: cs432cims
+2025-04-14 20:07:27,541 - WARNING -  * Debugger is active!
+2025-04-14 20:07:27,546 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 20:07:29,719 - INFO - 127.0.0.1 - - [14/Apr/2025 20:07:29] "GET / HTTP/1.1" 200 -
+2025-04-14 20:07:41,294 - INFO - 127.0.0.1 - - [14/Apr/2025 20:07:41] "[31m[1mPOST /api/auth/login HTTP/1.1[0m" 401 -
+2025-04-14 20:07:55,931 - INFO - 127.0.0.1 - - [14/Apr/2025 20:07:55] "[31m[1mPOST /api/auth/login HTTP/1.1[0m" 401 -
+2025-04-14 20:07:56,188 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\app.py', reloading
+2025-04-14 20:07:56,188 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\app.py', reloading
+2025-04-14 20:07:56,189 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\app.py', reloading
+2025-04-14 20:07:57,205 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 20:07:57,761 - INFO - package: mysql.connector.plugins
+2025-04-14 20:07:57,761 - INFO - plugin_name: caching_sha2_password
+2025-04-14 20:07:57,761 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 20:07:57,788 - INFO - Connected to database: cs432cims
+2025-04-14 20:07:57,800 - WARNING -  * Debugger is active!
+2025-04-14 20:07:57,806 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 20:08:13,423 - INFO - 127.0.0.1 - - [14/Apr/2025 20:08:13] "[33mPOST /api/auth/login HTTP/1.1[0m" 404 -
+2025-04-14 20:08:26,833 - INFO - 127.0.0.1 - - [14/Apr/2025 20:08:26] "[31m[1mPOST /api/auth/login HTTP/1.1[0m" 401 -
+2025-04-14 20:08:34,017 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 20:08:34,020 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 20:08:34,021 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 20:08:34,591 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 20:08:35,231 - INFO - package: mysql.connector.plugins
+2025-04-14 20:08:35,231 - INFO - plugin_name: caching_sha2_password
+2025-04-14 20:08:35,231 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 20:08:35,254 - INFO - Connected to database: cs432cims
+2025-04-14 20:08:35,265 - WARNING -  * Debugger is active!
+2025-04-14 20:08:35,271 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 20:08:37,287 - INFO - 127.0.0.1 - - [14/Apr/2025 20:08:37] "GET / HTTP/1.1" 200 -
+2025-04-14 20:08:51,360 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 20:08:51,360 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 20:08:51,360 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 20:08:51,685 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 20:08:52,294 - INFO - package: mysql.connector.plugins
+2025-04-14 20:08:52,294 - INFO - plugin_name: caching_sha2_password
+2025-04-14 20:08:52,294 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 20:08:52,313 - INFO - Connected to database: cs432cims
+2025-04-14 20:08:52,325 - WARNING -  * Debugger is active!
+2025-04-14 20:08:52,331 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 20:08:54,110 - INFO - 127.0.0.1 - - [14/Apr/2025 20:08:54] "GET / HTTP/1.1" 200 -
+2025-04-14 20:09:18,938 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\app.py', reloading
+2025-04-14 20:09:18,948 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\app.py', reloading
+2025-04-14 20:09:18,952 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\app.py', reloading
+2025-04-14 20:09:19,923 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 20:09:20,425 - INFO - package: mysql.connector.plugins
+2025-04-14 20:09:20,425 - INFO - plugin_name: caching_sha2_password
+2025-04-14 20:09:20,425 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 20:09:20,444 - INFO - Connected to database: cs432cims
+2025-04-14 20:09:20,454 - WARNING -  * Debugger is active!
+2025-04-14 20:09:20,460 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 20:09:30,715 - INFO - package: mysql.connector.plugins
+2025-04-14 20:09:30,715 - INFO - plugin_name: caching_sha2_password
+2025-04-14 20:09:30,715 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 20:09:30,735 - INFO - Connected to database: cs432cims
+2025-04-14 20:09:30,757 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-14 20:09:30,757 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-14 20:09:30,764 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 20:09:31,272 - INFO - package: mysql.connector.plugins
+2025-04-14 20:09:31,273 - INFO - plugin_name: caching_sha2_password
+2025-04-14 20:09:31,273 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 20:09:31,288 - INFO - Connected to database: cs432cims
+2025-04-14 20:09:31,300 - WARNING -  * Debugger is active!
+2025-04-14 20:09:31,306 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 20:10:23,709 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\Login.py', reloading
+2025-04-14 20:10:23,709 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\Login.py', reloading
+2025-04-14 20:10:23,710 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\UpdateImage.py', reloading
+2025-04-14 20:10:23,710 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\UpdateImage.py', reloading
+2025-04-14 20:10:24,345 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 20:10:24,700 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 20:10:24,871 - INFO - package: mysql.connector.plugins
+2025-04-14 20:10:24,871 - INFO - plugin_name: caching_sha2_password
+2025-04-14 20:10:24,871 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 20:10:24,891 - INFO - Connected to database: cs432cims
+2025-04-14 20:10:24,902 - WARNING -  * Debugger is active!
+2025-04-14 20:10:24,908 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 20:10:25,198 - INFO - package: mysql.connector.plugins
+2025-04-14 20:10:25,198 - INFO - plugin_name: caching_sha2_password
+2025-04-14 20:10:25,198 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 20:10:25,218 - INFO - Connected to database: cs432cims
+2025-04-14 20:10:25,229 - WARNING -  * Debugger is active!
+2025-04-14 20:10:25,234 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 20:11:07,421 - INFO - 127.0.0.1 - - [14/Apr/2025 20:11:07] "POST /api/auth/login HTTP/1.1" 200 -
+2025-04-14 20:11:09,473 - INFO - 127.0.0.1 - - [14/Apr/2025 20:11:09] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 20:11:44,009 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 20:11:44,009 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 20:11:44,009 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 20:11:44,009 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 20:11:44,009 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 20:11:44,009 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 20:11:44,426 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 20:11:44,779 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 20:11:45,048 - INFO - package: mysql.connector.plugins
+2025-04-14 20:11:45,048 - INFO - plugin_name: caching_sha2_password
+2025-04-14 20:11:45,048 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 20:11:45,078 - INFO - Connected to database: cs432cims
+2025-04-14 20:11:45,090 - WARNING -  * Debugger is active!
+2025-04-14 20:11:45,096 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 20:11:45,336 - INFO - package: mysql.connector.plugins
+2025-04-14 20:11:45,337 - INFO - plugin_name: caching_sha2_password
+2025-04-14 20:11:45,337 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 20:11:45,357 - INFO - Connected to database: cs432cims
+2025-04-14 20:11:45,370 - WARNING -  * Debugger is active!
+2025-04-14 20:11:45,376 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 20:11:47,149 - INFO - 127.0.0.1 - - [14/Apr/2025 20:11:47] "GET / HTTP/1.1" 200 -
+2025-04-14 20:11:49,235 - INFO - 127.0.0.1 - - [14/Apr/2025 20:11:49] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 20:12:08,143 - INFO - User Vraj added with ID 2122
+2025-04-14 20:12:08,143 - INFO - CIMS DATABASE CHANGE: INSERT | Table: members | Record: 2122 | Added new member: Vraj, Email: vrajshah2811@gmail.com
+2025-04-14 20:12:08,197 - INFO - User Vraj added to login table with ID 2122
+2025-04-14 20:12:08,198 - INFO - CIMS DATABASE CHANGE: INSERT | Table: members | Record: 2122 | Added new member: Vraj, Email: vrajshah2811@gmail.com
+2025-04-14 20:12:08,198 - WARNING - Attempted database change without session token: CIMS DATABASE CHANGE: INSERT | Table: members | Record: 2122 | Added new member: Vraj, Email: vrajshah2811@gmail.com
+2025-04-14 20:12:08,199 - INFO - 127.0.0.1 - - [14/Apr/2025 20:12:08] "POST /api/admin/add-user HTTP/1.1" 200 -
+2025-04-14 20:12:10,629 - INFO - 127.0.0.1 - - [14/Apr/2025 20:12:10] "GET /api/admin/students HTTP/1.1" 200 -
+2025-04-14 20:12:37,437 - INFO - 127.0.0.1 - - [14/Apr/2025 20:12:37] "GET /api/admin/students HTTP/1.1" 200 -
+2025-04-14 20:13:28,070 - INFO - 127.0.0.1 - - [14/Apr/2025 20:13:28] "GET /api/admin/students HTTP/1.1" 200 -
+2025-04-14 20:13:47,076 - INFO - 127.0.0.1 - - [14/Apr/2025 20:13:47] "GET /api/admin/students HTTP/1.1" 200 -
+2025-04-14 20:13:54,598 - INFO - 127.0.0.1 - - [14/Apr/2025 20:13:54] "[33mPOST /api/auth/logout HTTP/1.1[0m" 404 -
+2025-04-14 20:14:05,868 - INFO - 127.0.0.1 - - [14/Apr/2025 20:14:05] "POST /api/auth/login HTTP/1.1" 200 -
+2025-04-14 20:14:08,240 - INFO - 127.0.0.1 - - [14/Apr/2025 20:14:08] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 20:14:23,732 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\AddUser.py', reloading
+2025-04-14 20:14:23,733 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\AddUser.py', reloading
+2025-04-14 20:14:23,734 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\main.py', reloading
+2025-04-14 20:14:24,068 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 20:14:24,099 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\__init__.py', reloading
+2025-04-14 20:14:24,101 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\aliases.py', reloading
+2025-04-14 20:14:24,102 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\utf_8.py', reloading
+2025-04-14 20:14:24,103 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp1252.py', reloading
+2025-04-14 20:14:24,107 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\types.py', reloading
+2025-04-14 20:14:24,108 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\__init__.py', reloading
+2025-04-14 20:14:24,109 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\warnings.py', reloading
+2025-04-14 20:14:24,110 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\_abc.py', reloading
+2025-04-14 20:14:24,111 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\contextlib.py', reloading
+2025-04-14 20:14:24,112 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\collections\\__init__.py', reloading
+2025-04-14 20:14:24,114 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\keyword.py', reloading
+2025-04-14 20:14:24,114 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\operator.py', reloading
+2025-04-14 20:14:24,115 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\reprlib.py', reloading
+2025-04-14 20:14:24,116 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\functools.py', reloading
+2025-04-14 20:14:24,123 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\site-packages\\_distutils_hack\\__init__.py', reloading
+2025-04-14 20:14:24,134 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\__future__.py', reloading
+2025-04-14 20:14:24,135 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\typing.py', reloading
+2025-04-14 20:14:24,136 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\collections\\abc.py', reloading
+2025-04-14 20:14:24,137 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\re\\__init__.py', reloading
+2025-04-14 20:14:24,137 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\enum.py', reloading
+2025-04-14 20:14:24,139 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\re\\_compiler.py', reloading
+2025-04-14 20:14:24,140 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\re\\_parser.py', reloading
+2025-04-14 20:14:24,141 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\re\\_constants.py', reloading
+2025-04-14 20:14:24,141 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\re\\_casefix.py', reloading
+2025-04-14 20:14:24,143 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\copyreg.py', reloading
+2025-04-14 20:14:24,146 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\json\\__init__.py', reloading
+2025-04-14 20:14:24,147 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\json\\decoder.py', reloading
+2025-04-14 20:14:24,147 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\json\\scanner.py', reloading
+2025-04-14 20:14:24,148 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\json\\encoder.py', reloading
+2025-04-14 20:14:24,149 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\contextvars.py', reloading
+2025-04-14 20:14:24,152 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\selectors.py', reloading
+2025-04-14 20:14:24,155 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\socket.py', reloading
+2025-04-14 20:14:24,158 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\socketserver.py', reloading
+2025-04-14 20:14:24,159 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\threading.py', reloading
+2025-04-14 20:14:24,161 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\_weakrefset.py', reloading
+2025-04-14 20:14:24,162 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\datetime.py', reloading
+2025-04-14 20:14:24,164 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\http\\__init__.py', reloading
+2025-04-14 20:14:24,165 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\http\\server.py', reloading
+2025-04-14 20:14:24,166 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\copy.py', reloading
+2025-04-14 20:14:24,166 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\weakref.py', reloading
+2025-04-14 20:14:24,168 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\email\\__init__.py', reloading
+2025-04-14 20:14:24,169 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\email\\utils.py', reloading
+2025-04-14 20:14:24,170 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\random.py', reloading
+2025-04-14 20:14:24,171 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\bisect.py', reloading
+2025-04-14 20:14:24,173 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\urllib\\parse.py', reloading
+2025-04-14 20:14:24,174 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\ipaddress.py', reloading
+2025-04-14 20:14:24,177 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\email\\_parseaddr.py', reloading
+2025-04-14 20:14:24,178 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\calendar.py', reloading
+2025-04-14 20:14:24,179 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\locale.py', reloading
+2025-04-14 20:14:24,182 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\email\\charset.py', reloading
+2025-04-14 20:14:24,183 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\email\\base64mime.py', reloading
+2025-04-14 20:14:24,183 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\base64.py', reloading
+2025-04-14 20:14:24,184 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\struct.py', reloading
+2025-04-14 20:14:24,186 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\email\\quoprimime.py', reloading
+2025-04-14 20:14:24,187 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\string.py', reloading
+2025-04-14 20:14:24,188 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\email\\errors.py', reloading
+2025-04-14 20:14:24,189 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\email\\encoders.py', reloading
+2025-04-14 20:14:24,190 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\quopri.py', reloading
+2025-04-14 20:14:24,191 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\html\\__init__.py', reloading
+2025-04-14 20:14:24,191 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\html\\entities.py', reloading
+2025-04-14 20:14:24,194 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\http\\client.py', reloading
+2025-04-14 20:14:24,195 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\email\\parser.py', reloading
+2025-04-14 20:14:24,195 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\email\\feedparser.py', reloading
+2025-04-14 20:14:24,196 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\email\\_policybase.py', reloading
+2025-04-14 20:14:24,197 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\email\\header.py', reloading
+2025-04-14 20:14:24,198 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\email\\message.py', reloading
+2025-04-14 20:14:24,199 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\email\\_encoded_words.py', reloading
+2025-04-14 20:14:24,200 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\email\\iterators.py', reloading
+2025-04-14 20:14:24,202 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\ssl.py', reloading
+2025-04-14 20:14:24,207 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\mimetypes.py', reloading
+2025-04-14 20:14:24,208 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\shutil.py', reloading
+2025-04-14 20:14:24,209 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\fnmatch.py', reloading
+2025-04-14 20:14:24,211 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\bz2.py', reloading
+2025-04-14 20:14:24,212 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\_compression.py', reloading
+2025-04-14 20:14:24,214 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\lzma.py', reloading
+2025-04-14 20:14:24,217 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\logging\\__init__.py', reloading
+2025-04-14 20:14:24,218 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\traceback.py', reloading
+2025-04-14 20:14:24,219 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\linecache.py', reloading
+2025-04-14 20:14:24,219 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\tokenize.py', reloading
+2025-04-14 20:14:24,221 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\token.py', reloading
+2025-04-14 20:14:24,222 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\textwrap.py', reloading
+2025-04-14 20:14:24,233 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\hashlib.py', reloading
+2025-04-14 20:14:24,235 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\urllib\\request.py', reloading
+2025-04-14 20:14:24,236 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\tempfile.py', reloading
+2025-04-14 20:14:24,237 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\urllib\\error.py', reloading
+2025-04-14 20:14:24,238 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\urllib\\response.py', reloading
+2025-04-14 20:14:24,239 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\nturl2path.py', reloading
+2025-04-14 20:14:24,255 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\ctypes\\__init__.py', reloading
+2025-04-14 20:14:24,258 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\ctypes\\_endian.py', reloading
+2025-04-14 20:14:24,259 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\ctypes\\wintypes.py', reloading
+2025-04-14 20:14:24,263 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\dataclasses.py', reloading
+2025-04-14 20:14:24,263 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\inspect.py', reloading
+2025-04-14 20:14:24,265 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\ast.py', reloading
+2025-04-14 20:14:24,267 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\dis.py', reloading
+2025-04-14 20:14:24,268 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\opcode.py', reloading
+2025-04-14 20:14:24,274 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\pkgutil.py', reloading
+2025-04-14 20:14:24,277 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\hmac.py', reloading
+2025-04-14 20:14:24,278 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\secrets.py', reloading
+2025-04-14 20:14:24,287 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\decimal.py', reloading
+2025-04-14 20:14:24,288 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\numbers.py', reloading
+2025-04-14 20:14:24,289 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\uuid.py', reloading
+2025-04-14 20:14:24,295 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\gettext.py', reloading
+2025-04-14 20:14:24,309 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\difflib.py', reloading
+2025-04-14 20:14:24,311 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\heapq.py', reloading
+2025-04-14 20:14:24,314 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\pprint.py', reloading
+2025-04-14 20:14:24,320 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\metadata\\__init__.py', reloading
+2025-04-14 20:14:24,320 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\csv.py', reloading
+2025-04-14 20:14:24,323 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\pathlib.py', reloading
+2025-04-14 20:14:24,324 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\zipfile.py', reloading
+2025-04-14 20:14:24,326 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\metadata\\_adapters.py', reloading
+2025-04-14 20:14:24,326 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\metadata\\_text.py', reloading
+2025-04-14 20:14:24,328 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\metadata\\_functools.py', reloading
+2025-04-14 20:14:24,329 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\metadata\\_meta.py', reloading
+2025-04-14 20:14:24,330 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\metadata\\_collections.py', reloading
+2025-04-14 20:14:24,330 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\metadata\\_itertools.py', reloading
+2025-04-14 20:14:24,331 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\abc.py', reloading
+2025-04-14 20:14:24,332 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\resources\\__init__.py', reloading
+2025-04-14 20:14:24,333 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\resources\\_common.py', reloading
+2025-04-14 20:14:24,334 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\resources\\abc.py', reloading
+2025-04-14 20:14:24,334 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\resources\\_adapters.py', reloading
+2025-04-14 20:14:24,410 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 20:14:24,660 - INFO - package: mysql.connector.plugins
+2025-04-14 20:14:24,660 - INFO - plugin_name: caching_sha2_password
+2025-04-14 20:14:24,660 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 20:14:24,678 - INFO - Connected to database: cs432cims
+2025-04-14 20:14:24,698 - WARNING -  * Debugger is active!
+2025-04-14 20:14:24,708 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 20:14:25,010 - INFO - package: mysql.connector.plugins
+2025-04-14 20:14:25,011 - INFO - plugin_name: caching_sha2_password
+2025-04-14 20:14:25,011 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 20:14:25,029 - INFO - Connected to database: cs432cims
+2025-04-14 20:14:25,043 - WARNING -  * Debugger is active!
+2025-04-14 20:14:25,054 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 20:14:25,063 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\netrc.py', reloading
+2025-04-14 20:14:25,063 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\shlex.py', reloading
+2025-04-14 20:14:25,826 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 20:14:26,313 - INFO - package: mysql.connector.plugins
+2025-04-14 20:14:26,315 - INFO - plugin_name: caching_sha2_password
+2025-04-14 20:14:26,315 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 20:14:26,332 - INFO - Connected to database: cs432cims
+2025-04-14 20:14:26,342 - WARNING -  * Debugger is active!
+2025-04-14 20:14:26,349 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 20:14:27,083 - INFO - 127.0.0.1 - - [14/Apr/2025 20:14:27] "GET / HTTP/1.1" 200 -
+2025-04-14 20:14:29,187 - INFO - 127.0.0.1 - - [14/Apr/2025 20:14:29] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 20:14:31,276 - INFO - 127.0.0.1 - - [14/Apr/2025 20:14:31] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 20:14:33,611 - INFO - 127.0.0.1 - - [14/Apr/2025 20:14:33] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 20:14:35,668 - INFO - 127.0.0.1 - - [14/Apr/2025 20:14:35] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 20:14:39,933 - INFO - 127.0.0.1 - - [14/Apr/2025 20:14:39] "[33mPOST /api/auth/logout HTTP/1.1[0m" 404 -
+2025-04-14 20:14:54,764 - INFO - 127.0.0.1 - - [14/Apr/2025 20:14:54] "[33mPOST /api/auth/login HTTP/1.1[0m" 404 -
+2025-04-14 20:15:10,437 - INFO - 127.0.0.1 - - [14/Apr/2025 20:15:10] "POST /api/auth/login HTTP/1.1" 200 -
+2025-04-14 20:15:12,797 - INFO - 127.0.0.1 - - [14/Apr/2025 20:15:12] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 20:15:27,503 - INFO - 127.0.0.1 - - [14/Apr/2025 20:15:27] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 20:15:29,547 - INFO - 127.0.0.1 - - [14/Apr/2025 20:15:29] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 20:15:33,946 - INFO - 127.0.0.1 - - [14/Apr/2025 20:15:33] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 20:16:07,778 - INFO - 127.0.0.1 - - [14/Apr/2025 20:16:07] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 20:16:08,942 - INFO - 127.0.0.1 - - [14/Apr/2025 20:16:08] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 20:16:10,997 - INFO - 127.0.0.1 - - [14/Apr/2025 20:16:10] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 20:16:16,609 - INFO - 127.0.0.1 - - [14/Apr/2025 20:16:16] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 20:16:18,975 - INFO - 127.0.0.1 - - [14/Apr/2025 20:16:18] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 20:16:19,926 - INFO - 127.0.0.1 - - [14/Apr/2025 20:16:19] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 20:16:22,290 - INFO - 127.0.0.1 - - [14/Apr/2025 20:16:22] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -

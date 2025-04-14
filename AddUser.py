@@ -21,7 +21,7 @@ class AddUser:
         self.create_login()
 
     def response(self):
-        return jsonify(self.message),self.status    
+        return jsonify(self.message),self.status
 
     def check_keys(self):
         keys = ['username','password','role', 'email', 'session_id', 'DoB']
@@ -46,7 +46,7 @@ class AddUser:
                 self.member_id = name[0][1]  # Assuming the first column is the ID
                 return
             else:
-                cursor.execute("INSERT INTO members (UserName, emailID, DoB) VALUES (%s, %s, %s);", 
+                cursor.execute("INSERT INTO members (UserName, emailID, DoB) VALUES (%s, %s, %s);",
                             (self.username, self.email, self.DoB))
                 self.conn.commit()
                 # Get the ID of the newly inserted member
@@ -55,7 +55,7 @@ class AddUser:
                 if result:
                     self.member_id = result[0]
                     self.logging.info(f"User {self.username} added with ID {self.member_id}")
-                    
+
                     # Log to server if token is valid
                     self.logging.info(f"CIMS DATABASE CHANGE: INSERT | Table: members | Record: {self.member_id} | Added new member: {self.username}, Email: {self.email}")
                 else:
@@ -81,30 +81,30 @@ class AddUser:
     def create_login(self):
         if not self.success or not self.member_id:
             return
-            
+
         cursor = self.conn.cursor()
         try:
             # Check if login entry already exists
             cursor.execute("SELECT MemberID FROM Login WHERE MemberID = %s", (str(self.member_id),))
             login_exists = cursor.fetchone()
-            
+
             if login_exists:
                 # Update existing login entry
                 cursor.execute(
-                    'UPDATE Login SET Password = %s, Role = %s WHERE MemberID = %s', 
-                    (hashlib.md5(self.data.get('password', self.username).encode()).hexdigest(), 
-                     self.data['role'], 
+                    'UPDATE Login SET Password = %s, Role = %s WHERE MemberID = %s',
+                    (hashlib.md5(self.data.get('password', self.username).encode()).hexdigest(),
+                     self.data['role'],
                      str(self.member_id))
                 )
             else:
                 # Create new login entry
                 cursor.execute(
-                    'INSERT INTO Login (MemberID, Password, Role) VALUES (%s, %s, %s)', 
-                    (str(self.member_id), 
-                     hashlib.md5(self.data.get('password', '').encode()).hexdigest(), 
+                    'INSERT INTO Login (MemberID, Password, Role) VALUES (%s, %s, %s)',
+                    (str(self.member_id),
+                     hashlib.md5(self.data.get('password', '').encode()).hexdigest(),
                      self.data['role'])
                 )
-            
+
             self.conn.commit()
             self.logging.info(f"User {self.username} added to login table with ID {self.member_id}")
             self.message = {'message': 'User added successfully with default login credentials'}

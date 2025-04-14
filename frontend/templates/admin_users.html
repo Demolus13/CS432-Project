@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}Manage Users - CS432 Project{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card border-danger">
+            <div class="card-header bg-danger text-white d-flex justify-content-between align-items-center">
+                <h4 class="mb-0"><i class="bi bi-people-fill"></i> User Management</h4>
+                <a href="{{ url_for('admin_add_user') }}" class="btn btn-light">
+                    <i class="bi bi-person-plus-fill"></i> Add New User
+                </a>
+            </div>
+            <div class="card-body">
+                {% if students %}
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover" id="usersTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Contact</th>
+                                <th>Age</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for student in students %}
+                            <tr>
+                                <td>{{ student.Student_ID }}</td>
+                                <td>{{ student.Name }}</td>
+                                <td>{{ student.Email }}</td>
+                                <td>{{ student.Contact_Number }}</td>
+                                <td>{{ student.Age }}</td>
+                                <td>
+                                    <div class="btn-group btn-group-sm" role="group">
+                                        <a href="#" class="btn btn-outline-primary" title="View Profile">
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-outline-danger" title="Delete User" 
+                                           onclick="return confirm('Are you sure you want to delete this user? This action cannot be undone.')">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <div class="alert alert-info">
+                    <i class="bi bi-info-circle-fill"></i> No users found.
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(document).ready(function() {
+        $('#usersTable').DataTable({
+            "order": [[0, "asc"]],
+            "pageLength": 10
+        });
+    });
+</script>
+{% endblock %}
