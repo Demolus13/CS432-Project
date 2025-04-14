@@ -253,6 +253,7 @@ def dashboard():
 def profile():
     token = get_session_token()
     user_id = session.get('user_id')
+    user_role = session.get('role', 'student')  # Default to student if role not found
 
     if not token:
         flash('Your session has expired. Please login again.', 'warning')
@@ -297,10 +298,10 @@ def profile():
         )
         print(f"Database check response: {db_check_response.status_code}")
 
-        # Get user profile data
-        print(f"Fetching profile for user ID: {user_id}")
+        # Get user profile data based on role
+        print(f"Fetching profile for {user_role} with ID: {user_id}")
         response = requests.get(
-            f"{Config.API_BASE_URL}/api/student/{user_id}",
+            f"{Config.API_BASE_URL}/api/user-profile/{user_role}/{user_id}",
             headers={'Authorization': f'Bearer {token}'}
         )
 
@@ -311,7 +312,7 @@ def profile():
         elif response.status_code == 401:
             flash('Your session has expired. Please login again.', 'warning')
             return redirect(url_for('logout'))
-        else:
+        elif response.status_code == 404 and user_role == 'student':
             # Student doesn't exist, we need to create a student record first
             print(f"Student with ID {user_id} doesn't exist, creating student record")
 
@@ -335,7 +336,7 @@ def profile():
                 print("Student record created successfully")
                 # Now try to get the profile again
                 response = requests.get(
-                    f"{Config.API_BASE_URL}/api/student/{user_id}",
+                    f"{Config.API_BASE_URL}/api/user-profile/student/{user_id}",
                     headers={'Authorization': f'Bearer {token}'}
                 )
 
@@ -345,6 +346,18 @@ def profile():
                     return render_template('profile.html', profile=profile_data, username=session.get('username', ''))
 
             # If we get here, something went wrong
+            try:
+                error_data = response.json()
+                error_msg = error_data.get('error', 'Unknown error')
+                print(f"Error data: {error_data}")
+            except Exception as e:
+                error_msg = f"Server error (Status code: {response.status_code})"
+                print(f"Error parsing response: {str(e)}")
+
+            flash(f'Error loading profile: {error_msg}', 'danger')
+            return redirect(url_for('dashboard'))
+        else:
+            # Handle other errors
             try:
                 error_data = response.json()
                 error_msg = error_data.get('error', 'Unknown error')
@@ -370,17 +383,17 @@ def admin_users():
         flash('Your session has expired. Please login again.', 'warning')
         return redirect(url_for('logout'))
 
-    # Get all students
+    # Get all users (students, technicians, and administrators)
     try:
-        print("Fetching all students for admin view")
+        print("Fetching all users for admin view")
         response = requests.get(
-            f"{Config.API_BASE_URL}/api/admin/students",
+            f"{Config.API_BASE_URL}/api/admin/all-users",
             headers={'Authorization': f'Bearer {token}'}
         )
 
         if response.status_code == 200:
-            students_data = response.json()
-            print(f"Retrieved {len(students_data) if students_data else 0} students")
+            users_data = response.json()
+            print(f"Retrieved {len(users_data) if users_data else 0} users")
         elif response.status_code == 401:
             flash('Your session has expired. Please login again.', 'warning')
             return redirect(url_for('logout'))
@@ -393,19 +406,19 @@ def admin_users():
                 error_msg = f"Server error (Status code: {response.status_code})"
                 print(f"Error parsing response: {str(e)}")
 
-            flash(f'Error loading students: {error_msg}', 'danger')
-            students_data = []
+            flash(f'Error loading users: {error_msg}', 'danger')
+            users_data = []
     except requests.exceptions.RequestException as e:
         print(f"Request exception: {str(e)}")
         flash(f'Error connecting to the server: {str(e)}', 'danger')
-        students_data = []
+        users_data = []
 
-    return render_template('admin_users.html', students=students_data)
+    return render_template('admin_users.html', users=users_data)
 
-@app.route('/admin/delete-user/<int:user_id>', methods=['POST'])
+@app.route('/admin/delete-user/<string:role>/<int:user_id>', methods=['POST'])
 @login_required
 @admin_required
-def admin_delete_user(user_id):
+def admin_delete_user(role, user_id):
     token = get_session_token()
 
     if not token:
@@ -413,9 +426,9 @@ def admin_delete_user(user_id):
         return redirect(url_for('logout'))
 
     try:
-        print(f"Deleting user with ID: {user_id}")
+        print(f"Deleting {role} with ID: {user_id}")
         response = requests.delete(
-            f"{Config.API_BASE_URL}/api/admin/members/{user_id}",
+            f"{Config.API_BASE_URL}/api/admin/g6-user/{role}/{user_id}",
             headers={'Authorization': f'Bearer {token}'}
         )
 
@@ -451,6 +464,18 @@ def admin_add_user():
         email = request.form['email']
         role = request.form['role']
         dob = request.form['dob']
+        contact_number = request.form.get('contact_number', 'N/A')  # Get contact number, default to N/A if not provided
+
+        # Get student ID if provided and role is student
+        student_id = None
+        print(f"Form data: {request.form}")
+        print(f"Role selected: {role}")
+
+        if role == 'student' and request.form.get('student_id'):
+            student_id = request.form.get('student_id')
+            print(f"Student ID provided: {student_id}")
+        else:
+            print(f"No student ID provided or role is not student. Form has student_id: {'student_id' in request.form}")
 
         token = get_session_token()
         user_id = session.get('user_id')
@@ -473,16 +498,24 @@ def admin_add_user():
         try:
             # Make a direct request to the backend
             print(f"Adding new user with role: {role}")
+            # Prepare request data
+            request_data = {
+                "username": username,
+                "password": password,
+                "role": role,
+                "email": email,
+                "DoB": dob,
+                "contact_number": contact_number,
+                "session_id": user_id or ''
+            }
+
+            # Add student_id if provided and role is student
+            if role == 'student' and student_id:
+                request_data["student_id"] = student_id
+
             response = requests.post(
                 f"{Config.API_BASE_URL}/api/admin/add-user",
-                json={
-                    "username": username,
-                    "password": password,
-                    "role": role,
-                    "email": email,
-                    "DoB": dob,
-                    "session_id": user_id or ''
-                },
+                json=request_data,
                 headers={'Authorization': f'Bearer {token}'}
             )
 

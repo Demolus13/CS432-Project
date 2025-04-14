@@ -332,12 +332,15 @@ def api_add_user():
 @role_required(['admin'])
 def api_delete_member(member_id):
     try:
+        # Connect to CIMS database
         conn = get_db_connection()
         cursor = conn.cursor()
 
+        # Check if the member is associated with any group
         cursor.execute("SELECT GroupID FROM MemberGroupMapping WHERE MemberID = %s", (member_id,))
         group_mappings = cursor.fetchall()
 
+        # Get member details
         cursor.execute("SELECT UserName, emailID FROM members WHERE ID = %s", (member_id,))
         member = cursor.fetchone()
         if not member:
@@ -346,12 +349,18 @@ def api_delete_member(member_id):
         member_name = member[0]
         member_email = member[1]
 
+        # Get user role from Login table
+        cursor.execute("SELECT Role FROM Login WHERE MemberID = %s", (str(member_id),))
+        role_result = cursor.fetchone()
+        user_role = role_result[0] if role_result else None
+
         if not group_mappings:
+            # Delete from Login and members tables in CIMS database
             cursor.execute("DELETE FROM Login WHERE MemberID = %s", (str(member_id),))
             cursor.execute("DELETE FROM members WHERE ID = %s", (member_id,))
             conn.commit()
 
-            # Using the correct function name
+            # Log the change in CIMS database
             token = request.cookies.get('session_token')
             log_cims_database_change(
                 token,
@@ -362,12 +371,17 @@ def api_delete_member(member_id):
                 app.config,
                 get_db_connection
             )
+
+            # Delete from G6 database based on role
+            delete_from_g6_database(member_email, user_role)
+
             return jsonify({"message": f"Member {member_id} deleted successfully"}), 200
         else:
+            # Only remove group mappings
             cursor.execute("DELETE FROM MemberGroupMapping WHERE MemberID = %s", (member_id,))
             conn.commit()
 
-            # Using the correct function name
+            # Log the change in CIMS database
             token = request.cookies.get('session_token')
             log_cims_database_change(
                 token,
@@ -383,12 +397,72 @@ def api_delete_member(member_id):
     except Exception as e:
         if 'conn' in locals():
             conn.rollback()
+        logging.error(f"Error deleting member: {str(e)}")
         return jsonify({"error": str(e)}), 500
     finally:
         if 'cursor' in locals():
             cursor.close()
         if 'conn' in locals():
             conn.close()
+
+# Helper function to delete user from G6 database
+def delete_from_g6_database(email, role):
+    """Delete user from the appropriate table in G6 database based on email and role"""
+    try:
+        # Connect to G6 database
+        g6_conn = get_db_connection(use_cism=False)
+        g6_cursor = g6_conn.cursor()
+
+        deleted = False
+
+        # If role is provided, try to delete from the corresponding table
+        if role:
+            if role == 'admin':
+                g6_cursor.execute("DELETE FROM administrators WHERE Email = %s", (email,))
+                deleted = g6_cursor.rowcount > 0
+                logging.info(f"Deleted admin with email {email} from G6 database")
+            elif role == 'student':
+                g6_cursor.execute("DELETE FROM students WHERE Email = %s", (email,))
+                deleted = g6_cursor.rowcount > 0
+                logging.info(f"Deleted student with email {email} from G6 database")
+            elif role == 'technician':
+                g6_cursor.execute("DELETE FROM technicians WHERE Email = %s", (email,))
+                deleted = g6_cursor.rowcount > 0
+                logging.info(f"Deleted technician with email {email} from G6 database")
+
+        # If role is not provided or deletion was not successful, try all tables
+        if not deleted:
+            # Try to delete from administrators table
+            g6_cursor.execute("DELETE FROM administrators WHERE Email = %s", (email,))
+            if g6_cursor.rowcount > 0:
+                logging.info(f"Deleted admin with email {email} from G6 database")
+                deleted = True
+
+            # Try to delete from students table
+            g6_cursor.execute("DELETE FROM students WHERE Email = %s", (email,))
+            if g6_cursor.rowcount > 0:
+                logging.info(f"Deleted student with email {email} from G6 database")
+                deleted = True
+
+            # Try to delete from technicians table
+            g6_cursor.execute("DELETE FROM technicians WHERE Email = %s", (email,))
+            if g6_cursor.rowcount > 0:
+                logging.info(f"Deleted technician with email {email} from G6 database")
+                deleted = True
+
+        g6_conn.commit()
+        return deleted
+
+    except Exception as e:
+        logging.error(f"Error deleting user from G6 database: {str(e)}")
+        if 'g6_conn' in locals():
+            g6_conn.rollback()
+        return False
+    finally:
+        if 'g6_cursor' in locals():
+            g6_cursor.close()
+        if 'g6_conn' in locals():
+            g6_conn.close()
 
 # ----------------------- DATABASE & IMAGE -----------------------
 
@@ -1078,6 +1152,145 @@ def api_admin_dashboard():
 
 # ----------------------- STUDENT AND TECHNICIAN MANAGEMENT -----------------------
 
+@app.route('/api/admin/all-users', methods=['GET'])
+@role_required(['admin'])
+def api_get_all_users():
+    try:
+        conn = get_db_connection(use_cism=False)
+        cursor = conn.cursor(dictionary=True)
+
+        # Get all students
+        cursor.execute("SELECT Student_ID as ID, Name, Email, Contact_Number, 'student' as Role FROM students ORDER BY Name")
+        students = cursor.fetchall()
+
+        # Get all technicians
+        cursor.execute("SELECT Technician_ID as ID, Name, Email, Contact_Number, 'technician' as Role FROM technicians ORDER BY Name")
+        technicians = cursor.fetchall()
+
+        # Get all administrators
+        cursor.execute("SELECT Admin_ID as ID, Name, Email, 'admin' as Role FROM administrators ORDER BY Name")
+        admins = cursor.fetchall()
+
+        # Combine all users
+        all_users = students + technicians + admins
+
+        return jsonify(all_users), 200
+
+    except Exception as e:
+        logging.error(f"Error retrieving all users: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+    finally:
+        cursor.close()
+        conn.close()
+
+@app.route('/api/admin/g6-user/<string:role>/<int:user_id>', methods=['DELETE'])
+@role_required(['admin'])
+def api_delete_g6_user(role, user_id):
+    """Delete a user from the G6 database based on role and ID"""
+    try:
+        conn = get_db_connection(use_cism=False)
+        cursor = conn.cursor()
+
+        # Get user details before deletion for logging
+        if role == 'student':
+            cursor.execute("SELECT Name, Email FROM students WHERE Student_ID = %s", (user_id,))
+            id_field = "Student_ID"
+            table = "students"
+        elif role == 'technician':
+            cursor.execute("SELECT Name, Email FROM technicians WHERE Technician_ID = %s", (user_id,))
+            id_field = "Technician_ID"
+            table = "technicians"
+        elif role == 'admin':
+            cursor.execute("SELECT Name, Email FROM administrators WHERE Admin_ID = %s", (user_id,))
+            id_field = "Admin_ID"
+            table = "administrators"
+        else:
+            return jsonify({"error": "Invalid role specified"}), 400
+
+        user = cursor.fetchone()
+        if not user:
+            return jsonify({"error": f"{role.capitalize()} with ID {user_id} not found"}), 404
+
+        user_name, user_email = user[0], user[1]
+
+        # Delete the user from the appropriate table
+        cursor.execute(f"DELETE FROM {table} WHERE {id_field} = %s", (user_id,))
+        conn.commit()
+
+        # Check if user exists in CIMS database and delete if found
+        cims_conn = get_db_connection(use_cism=True)
+        cims_cursor = cims_conn.cursor()
+
+        # Find member by email
+        cims_cursor.execute("SELECT ID, UserName FROM members WHERE emailID = %s", (user_email,))
+        member = cims_cursor.fetchone()
+
+        if member:
+            member_id, member_name = member[0], member[1]
+
+            # Check if member is associated with any group
+            cims_cursor.execute("SELECT GroupID FROM MemberGroupMapping WHERE MemberID = %s", (member_id,))
+            group_mappings = cims_cursor.fetchall()
+
+            if not group_mappings:
+                # Delete from Login and members tables
+                cims_cursor.execute("DELETE FROM Login WHERE MemberID = %s", (str(member_id),))
+                cims_cursor.execute("DELETE FROM members WHERE ID = %s", (member_id,))
+                cims_conn.commit()
+
+                # Log the change
+                token = request.cookies.get('session_token')
+                log_cims_database_change(
+                    token,
+                    "DELETE",
+                    "members",
+                    member_id,
+                    f"Deleted member: {member_name}, Email: {user_email}",
+                    app.config,
+                    get_db_connection
+                )
+
+                logging.info(f"Deleted user {user_name} (ID: {user_id}) from {table} and corresponding member from CIMS database")
+            else:
+                # Only remove group mappings
+                cims_cursor.execute("DELETE FROM MemberGroupMapping WHERE MemberID = %s", (member_id,))
+                cims_conn.commit()
+
+                # Log the change
+                token = request.cookies.get('session_token')
+                log_cims_database_change(
+                    token,
+                    "DELETE",
+                    "MemberGroupMapping",
+                    member_id,
+                    f"Removed group mappings for member: {member_name}",
+                    app.config,
+                    get_db_connection
+                )
+
+                logging.info(f"Deleted user {user_name} (ID: {user_id}) from {table} and removed group mappings for corresponding member")
+        else:
+            logging.info(f"Deleted user {user_name} (ID: {user_id}) from {table} (no corresponding member found in CIMS database)")
+
+        return jsonify({"message": f"{role.capitalize()} with ID {user_id} deleted successfully"}), 200
+
+    except Exception as e:
+        if 'conn' in locals():
+            conn.rollback()
+        if 'cims_conn' in locals():
+            cims_conn.rollback()
+        logging.error(f"Error deleting {role} with ID {user_id}: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+    finally:
+        if 'cursor' in locals():
+            cursor.close()
+        if 'conn' in locals():
+            conn.close()
+        if 'cims_cursor' in locals():
+            cims_cursor.close()
+        if 'cims_conn' in locals():
+            cims_conn.close()
+
 @app.route('/api/admin/students', methods=['GET'])
 @role_required(['admin'])
 def api_get_students():
@@ -1357,93 +1570,150 @@ def api_view_security_logs():
         logging.error(f"Error retrieving security logs: {str(e)}")
         return jsonify({"error": str(e)}), 500
 
-# ----------------------- STUDENT PROFILE -----------------------
+# ----------------------- USER PROFILES -----------------------
 
-@app.route('/api/student/<int:student_id>', methods=['GET'])
-def api_get_student_details(student_id):
+@app.route('/api/user-profile/<string:role>/<int:user_id>', methods=['GET'])
+def api_get_user_profile(role, user_id):
+    """Get user profile data from G6 database based on role and ID"""
     try:
-        # Get student details and maintenance requests from project database
-        conn_project = get_db_connection(use_cism=False)
-        cursor_project = conn_project.cursor(dictionary=True)
+        conn = get_db_connection(use_cism=False)
+        cursor = conn.cursor(dictionary=True)
 
-        # Check if students table exists, create if not
-        cursor_project.execute("""
-            SELECT COUNT(*)
-            FROM information_schema.tables
-            WHERE table_schema = DATABASE()
-            AND table_name = 'students'
-        """)
-
-        if cursor_project.fetchone()['COUNT(*)'] == 0:
-            # Create students table
-            cursor_project.execute("""
-                CREATE TABLE students (
-                    Student_ID INT AUTO_INCREMENT PRIMARY KEY,
-                    Name VARCHAR(100) NOT NULL,
-                    Email VARCHAR(100) UNIQUE NOT NULL,
-                    Contact_Number VARCHAR(20),
-                    Age INT
-                )
+        # Get user details based on role
+        if role == 'student':
+            # Check if students table exists, create if not
+            cursor.execute("""
+                SELECT COUNT(*)
+                FROM information_schema.tables
+                WHERE table_schema = DATABASE()
+                AND table_name = 'students'
             """)
-            logging.info("Created students table")
-            conn_project.commit()
-            return jsonify({"error": "Student not found"}), 404
 
-        cursor_project.execute("SELECT * FROM students WHERE Student_ID = %s", (student_id,))
-        student = cursor_project.fetchone()
-        if not student:
-            return jsonify({"error": "Student not found"}), 404
+            if cursor.fetchone()['COUNT(*)'] == 0:
+                # Create students table
+                cursor.execute("""
+                    CREATE TABLE students (
+                        Student_ID INT AUTO_INCREMENT PRIMARY KEY,
+                        Name VARCHAR(100) NOT NULL,
+                        Email VARCHAR(100) UNIQUE NOT NULL,
+                        Contact_Number VARCHAR(20),
+                        Age INT
+                    )
+                """)
+                logging.info("Created students table")
+                conn.commit()
+                return jsonify({"error": "Student not found"}), 404
 
-        # Check if maintenance_requests table exists
-        cursor_project.execute("""
-            SELECT COUNT(*)
-            FROM information_schema.tables
-            WHERE table_schema = DATABASE()
-            AND table_name = 'maintenance_requests'
-        """)
+            cursor.execute("SELECT * FROM students WHERE Student_ID = %s", (user_id,))
+            user_data = cursor.fetchone()
+            if not user_data:
+                return jsonify({"error": "Student not found"}), 404
 
-        if cursor_project.fetchone()['COUNT(*)'] > 0:
-            # Only get maintenance requests if the table exists
-            cursor_project.execute("""
-                SELECT * FROM maintenance_requests
-                WHERE Student_ID = %s
-                ORDER BY Submission_Date DESC
-            """, (student_id,))
-            requests_data = cursor_project.fetchall()
-            student['maintenance_requests'] = requests_data
+            # Add role to user data
+            user_data['role'] = 'student'
+
+            # Check if maintenance_requests table exists
+            cursor.execute("""
+                SELECT COUNT(*)
+                FROM information_schema.tables
+                WHERE table_schema = DATABASE()
+                AND table_name = 'maintenance_requests'
+            """)
+
+            if cursor.fetchone()['COUNT(*)'] > 0:
+                # Get maintenance requests for this student
+                cursor.execute("""
+                    SELECT * FROM maintenance_requests
+                    WHERE Student_ID = %s
+                    ORDER BY Submission_Date DESC
+                """, (user_id,))
+                maintenance_requests = cursor.fetchall()
+                user_data['maintenance_requests'] = maintenance_requests
+            else:
+                user_data['maintenance_requests'] = []
+
+            # Try to get notifications
+            try:
+                cursor.execute("""
+                    SELECT * FROM notifications
+                    WHERE Student_ID = %s
+                    ORDER BY Sent_At DESC
+                """, (user_id,))
+                notifications = cursor.fetchall()
+                user_data['notifications'] = notifications
+            except Exception as e:
+                logging.warning(f"Could not get notifications from G6 database: {str(e)}")
+                user_data['notifications'] = []
+
+            # Try to get notifications from CIMS database as fallback
+            if not user_data['notifications']:
+                try:
+                    conn_cims = get_db_connection(use_cism=True)
+                    cursor_cims = conn_cims.cursor(dictionary=True)
+                    cursor_cims.execute("""
+                        SELECT * FROM G6_notifications
+                        WHERE Student_ID = %s
+                        ORDER BY Sent_At DESC
+                    """, (user_id,))
+                    notifications = cursor_cims.fetchall()
+                    user_data['notifications'] = notifications
+                    cursor_cims.close()
+                    conn_cims.close()
+                except Exception as e:
+                    logging.warning(f"Could not get notifications from CIMS database: {str(e)}")
+
+        elif role == 'technician':
+            cursor.execute("SELECT * FROM technicians WHERE Technician_ID = %s", (user_id,))
+            user_data = cursor.fetchone()
+            if not user_data:
+                return jsonify({"error": "Technician not found"}), 404
+
+            # Add role to user data
+            user_data['role'] = 'technician'
+
+            # Get assigned maintenance requests
+            cursor.execute("""
+                SELECT r.*, s.Name as StudentName
+                FROM maintenance_requests r
+                JOIN students s ON r.Student_ID = s.Student_ID
+                JOIN technician_assignments ta ON r.Request_ID = ta.Request_ID
+                WHERE ta.Technician_ID = %s
+                ORDER BY r.Submission_Date DESC
+            """, (user_id,))
+            assigned_requests = cursor.fetchall()
+            user_data['assigned_requests'] = assigned_requests
+
+        elif role == 'admin':
+            cursor.execute("SELECT * FROM administrators WHERE Admin_ID = %s", (user_id,))
+            user_data = cursor.fetchone()
+            if not user_data:
+                return jsonify({"error": "Administrator not found"}), 404
+
+            # Add role to user data
+            user_data['role'] = 'admin'
+
         else:
-            student['maintenance_requests'] = []
+            return jsonify({"error": "Invalid role specified"}), 400
 
-        cursor_project.close()
-        conn_project.close()
-
-        # Try to get notifications from CIMS database
-        try:
-            conn_cims = get_db_connection(use_cism=True)
-            cursor_cims = conn_cims.cursor(dictionary=True)
-            cursor_cims.execute("""
-                SELECT * FROM G6_notifications
-                WHERE Student_ID = %s
-                ORDER BY Sent_At DESC
-            """, (student_id,))
-            notifications = cursor_cims.fetchall()
-            student['notifications'] = notifications
-            cursor_cims.close()
-            conn_cims.close()
-        except Exception as e:
-            logging.warning(f"Could not get notifications: {str(e)}")
-            student['notifications'] = []
-
-        return jsonify(student), 200
+        return jsonify(user_data), 200
 
     except Exception as e:
-        logging.error(f"Error retrieving student details: {str(e)}\n{traceback.format_exc()}")
+        logging.error(f"Error retrieving {role} profile: {str(e)}")
         return jsonify({"error": str(e)}), 500
     finally:
+        if 'cursor' in locals():
+            cursor.close()
+        if 'conn' in locals():
+            conn.close()
         if 'cursor_cims' in locals():
             cursor_cims.close()
         if 'conn_cims' in locals():
             conn_cims.close()
+
+@app.route('/api/student/<int:student_id>', methods=['GET'])
+def api_get_student_details(student_id):
+    """Legacy endpoint for backward compatibility"""
+    return api_get_user_profile('student', student_id)
 
 # ----------------------- APPLICATION STARTUP -----------------------
 

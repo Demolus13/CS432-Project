@@ -15,12 +15,12 @@
                         <label for="username" class="form-label">Username</label>
                         <input type="text" class="form-control" id="username" name="username" required>
                     </div>
-                    
+
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
                         <input type="email" class="form-control" id="email" name="email" required>
                     </div>
-                    
+
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="password" class="form-label">Password</label>
@@ -31,15 +31,30 @@
                             <select class="form-select" id="role" name="role" required>
                                 <option value="member">Member</option>
                                 <option value="admin">Admin</option>
+                                <option value="student">Student</option>
+                                <option value="technician">Technician</option>
                             </select>
                         </div>
                     </div>
-                    
-                    <div class="mb-3">
-                        <label for="dob" class="form-label">Date of Birth</label>
-                        <input type="date" class="form-control" id="dob" name="dob" required>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="dob" class="form-label">Date of Birth</label>
+                            <input type="date" class="form-control" id="dob" name="dob" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="contact_number" class="form-label">Contact Number</label>
+                            <input type="tel" class="form-control" id="contact_number" name="contact_number" placeholder="e.g., 1234567890">
+                        </div>
                     </div>
-                    
+
+                    <!-- Student ID field - only visible when role is student -->
+                    <div class="mb-3" id="student_id_container" style="display: none;">
+                        <label for="student_id" class="form-label"><strong>Student ID</strong> <span class="text-muted">(Only for Student role)</span></label>
+                        <input type="number" class="form-control" id="student_id" name="student_id" placeholder="Enter student ID">
+                        <div class="form-text text-info"><i class="bi bi-info-circle"></i> Leave blank for auto-generated ID</div>
+                    </div>
+
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                         <a href="{{ url_for('admin_users') }}" class="btn btn-secondary">Cancel</a>
                         <button type="submit" class="btn btn-danger">Add User</button>
@@ -49,4 +64,27 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(document).ready(function() {
+        // Function to toggle student ID field visibility
+        function toggleStudentIdField() {
+            if ($('#role').val() === 'student') {
+                $('#student_id_container').show();
+            } else {
+                $('#student_id_container').hide();
+            }
+        }
+
+        // Add event listener to role select
+        $('#role').on('change', toggleStudentIdField);
+
+        // Call the function initially to set the correct state
+        toggleStudentIdField();
+
+        console.log('Student ID toggle script loaded');
+    });
+</script>
 {% endblock %}

@@ -4,6 +4,7 @@ import mysql.connector
 import psycopg2
 import time
 from main import log_cims_database_change
+from app import get_db_connection
 
 class AddUser:
     def __init__(self, request, logging, conn):
@@ -30,6 +31,10 @@ class AddUser:
                 self.success = False
                 self.message = {'error', f'Bad request: {key} not found'}, 400
                 return
+
+        # Contact number is optional, set default if not provided
+        if 'contact_number' not in self.data:
+            self.data['contact_number'] = 'N/A'
 
     def add_user(self):
         if not self.success:
@@ -107,6 +112,10 @@ class AddUser:
 
             self.conn.commit()
             self.logging.info(f"User {self.username} added to login table with ID {self.member_id}")
+
+            # Add user to the appropriate table in G6 database based on role
+            self.add_user_to_g6_database()
+
             self.message = {'message': 'User added successfully with default login credentials'}
             self.status = 200
         except Exception as e:
@@ -115,6 +124,73 @@ class AddUser:
             self.logging.error(f"Error adding user to login table: {e}")
         finally:
             cursor.close()
+
+    def add_user_to_g6_database(self):
+        """Add user to the appropriate table in G6 database based on role"""
+        if not self.success or not self.member_id:
+            return
+
+        role = self.data['role']
+
+        try:
+            # Connect to G6 database
+            g6_conn = get_db_connection(use_cism=False)
+            g6_cursor = g6_conn.cursor()
+
+            # Add user to the appropriate table based on role
+            if role == 'admin':
+                # Check if admin already exists with this email
+                g6_cursor.execute("SELECT * FROM administrators WHERE Email = %s", (self.email,))
+                if not g6_cursor.fetchone():
+                    # Add to administrators table
+                    g6_cursor.execute(
+                        "INSERT INTO administrators (Name, Email, Password_Hash) VALUES (%s, %s, %s)",
+                        (self.username, self.email, hashlib.md5(self.data.get('password', '').encode()).hexdigest())
+                    )
+                    self.logging.info(f"User {self.username} added to administrators table in G6 database")
+
+            elif role == 'student':
+                # Check if student already exists with this email
+                g6_cursor.execute("SELECT * FROM students WHERE Email = %s", (self.email,))
+                if not g6_cursor.fetchone():
+                    # Check if student_id is provided
+                    if 'student_id' in self.data and self.data['student_id']:
+                        # Add to students table with specified ID
+                        g6_cursor.execute(
+                            "INSERT INTO students (Student_ID, Name, Email, Contact_Number, Age) VALUES (%s, %s, %s, %s, %s)",
+                            (self.data['student_id'], self.username, self.email, self.data.get('contact_number', 'N/A'), 20)
+                        )
+                        self.logging.info(f"User {self.username} added to students table in G6 database with ID {self.data['student_id']}")
+                    else:
+                        # Add to students table with auto-generated ID
+                        g6_cursor.execute(
+                            "INSERT INTO students (Name, Email, Contact_Number, Age) VALUES (%s, %s, %s, %s)",
+                            (self.username, self.email, self.data.get('contact_number', 'N/A'), 20)  # Use provided contact number
+                        )
+                        self.logging.info(f"User {self.username} added to students table in G6 database with auto-generated ID")
+
+            elif role == 'technician':
+                # Check if technician already exists with this email
+                g6_cursor.execute("SELECT * FROM technicians WHERE Email = %s", (self.email,))
+                if not g6_cursor.fetchone():
+                    # Add to technicians table
+                    g6_cursor.execute(
+                        "INSERT INTO technicians (Name, Email, Contact_Number, Specialization) VALUES (%s, %s, %s, %s)",
+                        (self.username, self.email, self.data.get('contact_number', 'N/A'), "General")  # Use provided contact number
+                    )
+                    self.logging.info(f"User {self.username} added to technicians table in G6 database")
+
+            g6_conn.commit()
+
+        except Exception as e:
+            self.logging.error(f"Error adding user to G6 database: {e}")
+            # Don't set self.success to False here as we don't want to fail the entire operation
+            # if adding to G6 database fails
+        finally:
+            if 'g6_cursor' in locals():
+                g6_cursor.close()
+            if 'g6_conn' in locals():
+                g6_conn.close()
 
     def __del__(self):
         try:
