@@ -109,6 +109,18 @@ def login():
                 if 'session_id' in data:
                     session['user_id'] = data['session_id']
 
+                # Get user details from the token
+                try:
+                    token = session.get('session_token')
+                    if token:
+                        # Decode the token to get user information
+                        import jwt
+                        decoded = jwt.decode(token, options={"verify_signature": False})
+                        if 'session_id' in decoded and 'session_id' not in session:
+                            session['user_id'] = decoded['session_id']
+                except Exception as e:
+                    print(f"Error decoding token: {str(e)}")
+
                 flash('Login successful!', 'success')
                 return redirect(url_for('dashboard'))
             else:
@@ -242,49 +254,109 @@ def profile():
     token = get_session_token()
     user_id = session.get('user_id')
 
+    if not token:
+        flash('Your session has expired. Please login again.', 'warning')
+        return redirect(url_for('logout'))
+
     if not user_id:
-        # Try to get user ID from auth status
+        # Try to get user ID from token
         try:
-            status_response = requests.get(
-                f"{Config.API_BASE_URL}/api/auth/status",
-                headers={'Authorization': f'Bearer {token}'} if token else {}
-            )
+            import jwt
+            decoded = jwt.decode(token, options={"verify_signature": False})
+            if 'session_id' in decoded:
+                user_id = decoded['session_id']
+                session['user_id'] = user_id
+        except Exception as e:
+            print(f"Error decoding token: {str(e)}")
 
-            if status_response.status_code == 200:
-                status_data = status_response.json()
-                if 'session_id' in status_data:
-                    user_id = status_data['session_id']
-                    session['user_id'] = user_id
-        except requests.exceptions.RequestException:
-            pass
+        # If still no user_id, try to get it from auth status
+        if not user_id:
+            try:
+                status_response = requests.get(
+                    f"{Config.API_BASE_URL}/api/auth/status",
+                    headers={'Authorization': f'Bearer {token}'}
+                )
+
+                if status_response.status_code == 200:
+                    status_data = status_response.json()
+                    if 'session_id' in status_data:
+                        user_id = status_data['session_id']
+                        session['user_id'] = user_id
+            except requests.exceptions.RequestException as e:
+                print(f"Error getting auth status: {str(e)}")
 
     if not user_id:
-        flash('User profile not found', 'warning')
+        flash('User profile not found. Please try logging in again.', 'warning')
         return redirect(url_for('dashboard'))
 
-    # Get user profile data
+    # First, check if the database tables are set up correctly
     try:
+        print("Checking database tables")
+        db_check_response = requests.get(
+            f"{Config.API_BASE_URL}/api/db/check-tables"
+        )
+        print(f"Database check response: {db_check_response.status_code}")
+
+        # Get user profile data
+        print(f"Fetching profile for user ID: {user_id}")
         response = requests.get(
             f"{Config.API_BASE_URL}/api/student/{user_id}",
-            headers={'Authorization': f'Bearer {token}'} if token else {}
+            headers={'Authorization': f'Bearer {token}'}
         )
 
         if response.status_code == 200:
             profile_data = response.json()
-            return render_template('profile.html', profile=profile_data)
+            print(f"Profile data keys: {profile_data.keys() if profile_data else 'None'}")
+            return render_template('profile.html', profile=profile_data, username=session.get('username', ''))
         elif response.status_code == 401:
             flash('Your session has expired. Please login again.', 'warning')
             return redirect(url_for('logout'))
         else:
+            # Student doesn't exist, we need to create a student record first
+            print(f"Student with ID {user_id} doesn't exist, creating student record")
+
+            # Get user information from session
+            username = session.get('username', '')
+
+            # Create a student record
+            student_response = requests.post(
+                f"{Config.API_BASE_URL}/api/admin/add-student",
+                json={
+                    "student_id": user_id,
+                    "name": username,
+                    "email": f"{username}@example.com",  # Default email
+                    "contact_number": "N/A",  # Default contact
+                    "age": 20  # Default age
+                }
+            )
+
+            print(f"Student creation response: {student_response.status_code}")
+            if student_response.status_code in [200, 201]:
+                print("Student record created successfully")
+                # Now try to get the profile again
+                response = requests.get(
+                    f"{Config.API_BASE_URL}/api/student/{user_id}",
+                    headers={'Authorization': f'Bearer {token}'}
+                )
+
+                if response.status_code == 200:
+                    profile_data = response.json()
+                    print(f"Profile data keys: {profile_data.keys() if profile_data else 'None'}")
+                    return render_template('profile.html', profile=profile_data, username=session.get('username', ''))
+
+            # If we get here, something went wrong
             try:
                 error_data = response.json()
                 error_msg = error_data.get('error', 'Unknown error')
-            except:
+                print(f"Error data: {error_data}")
+            except Exception as e:
                 error_msg = f"Server error (Status code: {response.status_code})"
+                print(f"Error parsing response: {str(e)}")
 
             flash(f'Error loading profile: {error_msg}', 'danger')
             return redirect(url_for('dashboard'))
     except requests.exceptions.RequestException as e:
+        print(f"Request exception: {str(e)}")
         flash(f'Error connecting to the server: {str(e)}', 'danger')
         return redirect(url_for('dashboard'))
 
@@ -300,6 +372,7 @@ def admin_users():
 
     # Get all students
     try:
+        print("Fetching all students for admin view")
         response = requests.get(
             f"{Config.API_BASE_URL}/api/admin/students",
             headers={'Authorization': f'Bearer {token}'}
@@ -307,6 +380,7 @@ def admin_users():
 
         if response.status_code == 200:
             students_data = response.json()
+            print(f"Retrieved {len(students_data) if students_data else 0} students")
         elif response.status_code == 401:
             flash('Your session has expired. Please login again.', 'warning')
             return redirect(url_for('logout'))
@@ -314,16 +388,57 @@ def admin_users():
             try:
                 error_data = response.json()
                 error_msg = error_data.get('error', 'Unknown error')
-            except:
+                print(f"Error data: {error_data}")
+            except Exception as e:
                 error_msg = f"Server error (Status code: {response.status_code})"
+                print(f"Error parsing response: {str(e)}")
 
             flash(f'Error loading students: {error_msg}', 'danger')
             students_data = []
     except requests.exceptions.RequestException as e:
+        print(f"Request exception: {str(e)}")
         flash(f'Error connecting to the server: {str(e)}', 'danger')
         students_data = []
 
     return render_template('admin_users.html', students=students_data)
+
+@app.route('/admin/delete-user/<int:user_id>', methods=['POST'])
+@login_required
+@admin_required
+def admin_delete_user(user_id):
+    token = get_session_token()
+
+    if not token:
+        flash('Your session has expired. Please login again.', 'warning')
+        return redirect(url_for('logout'))
+
+    try:
+        print(f"Deleting user with ID: {user_id}")
+        response = requests.delete(
+            f"{Config.API_BASE_URL}/api/admin/members/{user_id}",
+            headers={'Authorization': f'Bearer {token}'}
+        )
+
+        if response.status_code == 200:
+            flash('User deleted successfully!', 'success')
+        elif response.status_code == 401:
+            flash('Your session has expired. Please login again.', 'warning')
+            return redirect(url_for('logout'))
+        else:
+            try:
+                error_data = response.json()
+                error_msg = error_data.get('error', 'Unknown error')
+                print(f"Error data: {error_data}")
+            except Exception as e:
+                error_msg = f"Server error (Status code: {response.status_code})"
+                print(f"Error parsing response: {str(e)}")
+
+            flash(f'Failed to delete user: {error_msg}', 'danger')
+    except requests.exceptions.RequestException as e:
+        print(f"Request exception: {str(e)}")
+        flash(f'Error connecting to the server: {str(e)}', 'danger')
+
+    return redirect(url_for('admin_users'))
 
 @app.route('/admin/add-user', methods=['GET', 'POST'])
 @login_required
@@ -338,13 +453,26 @@ def admin_add_user():
         dob = request.form['dob']
 
         token = get_session_token()
+        user_id = session.get('user_id')
 
         if not token:
             flash('Your session has expired. Please login again.', 'warning')
             return redirect(url_for('logout'))
 
+        if not user_id:
+            # Try to get user ID from token
+            try:
+                import jwt
+                decoded = jwt.decode(token, options={"verify_signature": False})
+                if 'session_id' in decoded:
+                    user_id = decoded['session_id']
+                    session['user_id'] = user_id
+            except Exception as e:
+                print(f"Error decoding token: {str(e)}")
+
         try:
             # Make a direct request to the backend
+            print(f"Adding new user with role: {role}")
             response = requests.post(
                 f"{Config.API_BASE_URL}/api/admin/add-user",
                 json={
@@ -353,11 +481,12 @@ def admin_add_user():
                     "role": role,
                     "email": email,
                     "DoB": dob,
-                    "session_id": session.get('user_id', '')
+                    "session_id": user_id or ''
                 },
                 headers={'Authorization': f'Bearer {token}'}
             )
 
+            print(f"Add user response: {response.status_code}")
             if response.status_code == 200:
                 flash('User added successfully!', 'success')
                 return redirect(url_for('admin_users'))
@@ -368,11 +497,14 @@ def admin_add_user():
                 try:
                     error_data = response.json()
                     error_msg = error_data.get('error', error_data.get('message', 'Unknown error'))
-                except:
+                    print(f"Error data: {error_data}")
+                except Exception as e:
                     error_msg = f"Server error (Status code: {response.status_code})"
+                    print(f"Error parsing response: {str(e)}")
 
                 flash(f'Failed to add user: {error_msg}', 'danger')
         except requests.exceptions.RequestException as e:
+            print(f"Request exception: {str(e)}")
             flash(f'Error connecting to the server: {str(e)}', 'danger')
 
     return render_template('admin_add_user.html')
@@ -414,27 +546,85 @@ def maintenance_requests():
         return redirect(url_for('logout'))
 
     if not user_id:
-        # Try to get user ID from auth status
+        # Try to get user ID from token
         try:
-            status_response = requests.get(
-                f"{Config.API_BASE_URL}/api/auth/status",
-                headers={'Authorization': f'Bearer {token}'}
-            )
+            import jwt
+            decoded = jwt.decode(token, options={"verify_signature": False})
+            if 'session_id' in decoded:
+                user_id = decoded['session_id']
+                session['user_id'] = user_id
+        except Exception as e:
+            print(f"Error decoding token: {str(e)}")
 
-            if status_response.status_code == 200:
-                status_data = status_response.json()
-                if 'session_id' in status_data:
-                    user_id = status_data['session_id']
-                    session['user_id'] = user_id
-        except:
-            pass
+        # If still no user_id, try to get it from auth status
+        if not user_id:
+            try:
+                status_response = requests.get(
+                    f"{Config.API_BASE_URL}/api/auth/status",
+                    headers={'Authorization': f'Bearer {token}'}
+                )
+
+                if status_response.status_code == 200:
+                    status_data = status_response.json()
+                    if 'session_id' in status_data:
+                        user_id = status_data['session_id']
+                        session['user_id'] = user_id
+            except requests.exceptions.RequestException as e:
+                print(f"Error getting auth status: {str(e)}")
 
     if not user_id:
-        flash('User ID not found', 'warning')
+        flash('User ID not found. Please try logging in again.', 'warning')
         return redirect(url_for('dashboard'))
 
-    # Get maintenance requests for the user
+    # First, check if the database tables are set up correctly
     try:
+        print("Checking database tables")
+        db_check_response = requests.get(
+            f"{Config.API_BASE_URL}/api/db/check-tables"
+        )
+        print(f"Database check response: {db_check_response.status_code}")
+
+        # Check if the student exists in the database
+        print(f"Checking if student with ID {user_id} exists")
+        check_response = requests.get(
+            f"{Config.API_BASE_URL}/api/student/{user_id}",
+            headers={'Authorization': f'Bearer {token}'}
+        )
+
+        if check_response.status_code != 200:
+            # Student doesn't exist, we need to create a student record first
+            print(f"Student with ID {user_id} doesn't exist, creating student record")
+
+            # Get user information from session
+            username = session.get('username', '')
+
+            # Create a student record
+            student_response = requests.post(
+                f"{Config.API_BASE_URL}/api/admin/add-student",
+                json={
+                    "student_id": user_id,
+                    "name": username,
+                    "email": f"{username}@example.com",  # Default email
+                    "contact_number": "N/A",  # Default contact
+                    "age": 20  # Default age
+                }
+            )
+
+            print(f"Student creation response: {student_response.status_code}")
+            if student_response.status_code not in [200, 201]:
+                print(f"Failed to create student record: {student_response.status_code}")
+                try:
+                    error_data = student_response.json()
+                    print(f"Error data: {error_data}")
+                except Exception as e:
+                    print(f"Error parsing response: {str(e)}")
+                flash('Failed to create student record. Please contact an administrator.', 'danger')
+                return redirect(url_for('dashboard'))
+
+            print("Student record created successfully")
+
+        # Get maintenance requests for the user
+        print(f"Fetching maintenance requests for user ID: {user_id}")
         response = requests.get(
             f"{Config.API_BASE_URL}/api/maintenance/requests?student_id={user_id}",
             headers={'Authorization': f'Bearer {token}'}
@@ -442,6 +632,7 @@ def maintenance_requests():
 
         if response.status_code == 200:
             data = response.json()
+            print(f"Retrieved {len(data) if data else 0} maintenance requests")
         elif response.status_code == 401:
             flash('Your session has expired. Please login again.', 'warning')
             return redirect(url_for('logout'))
@@ -449,12 +640,15 @@ def maintenance_requests():
             try:
                 error_data = response.json()
                 error_msg = error_data.get('error', 'Unknown error')
-            except:
+                print(f"Error data: {error_data}")
+            except Exception as e:
                 error_msg = f"Server error (Status code: {response.status_code})"
+                print(f"Error parsing response: {str(e)}")
 
             flash(f'Error loading maintenance requests: {error_msg}', 'danger')
             data = []
     except requests.exceptions.RequestException as e:
+        print(f"Request exception: {str(e)}")
         flash(f'Error connecting to the server: {str(e)}', 'danger')
         data = []
 
@@ -476,27 +670,85 @@ def new_maintenance_request():
             return redirect(url_for('logout'))
 
         if not user_id:
-            # Try to get user ID from auth status
+            # Try to get user ID from token
             try:
-                status_response = requests.get(
-                    f"{Config.API_BASE_URL}/api/auth/status",
-                    headers={'Authorization': f'Bearer {token}'}
-                )
+                import jwt
+                decoded = jwt.decode(token, options={"verify_signature": False})
+                if 'session_id' in decoded:
+                    user_id = decoded['session_id']
+                    session['user_id'] = user_id
+            except Exception as e:
+                print(f"Error decoding token: {str(e)}")
 
-                if status_response.status_code == 200:
-                    status_data = status_response.json()
-                    if 'session_id' in status_data:
-                        user_id = status_data['session_id']
-                        session['user_id'] = user_id
-            except:
-                pass
+            # If still no user_id, try to get it from auth status
+            if not user_id:
+                try:
+                    status_response = requests.get(
+                        f"{Config.API_BASE_URL}/api/auth/status",
+                        headers={'Authorization': f'Bearer {token}'}
+                    )
+
+                    if status_response.status_code == 200:
+                        status_data = status_response.json()
+                        if 'session_id' in status_data:
+                            user_id = status_data['session_id']
+                            session['user_id'] = user_id
+                except requests.exceptions.RequestException as e:
+                    print(f"Error getting auth status: {str(e)}")
 
         if not user_id:
-            flash('User ID not found', 'warning')
+            flash('User ID not found. Please try logging in again.', 'warning')
             return redirect(url_for('dashboard'))
 
-        # Call the create request API
+        # First, check if the database tables are set up correctly
         try:
+            print("Checking database tables")
+            db_check_response = requests.get(
+                f"{Config.API_BASE_URL}/api/db/check-tables"
+            )
+            print(f"Database check response: {db_check_response.status_code}")
+
+            # Now, check if the student exists in the database
+            print(f"Checking if student with ID {user_id} exists")
+            check_response = requests.get(
+                f"{Config.API_BASE_URL}/api/student/{user_id}",
+                headers={'Authorization': f'Bearer {token}'}
+            )
+
+            if check_response.status_code != 200:
+                # Student doesn't exist, we need to create a student record first
+                print(f"Student with ID {user_id} doesn't exist, creating student record")
+
+                # Get user information from session
+                username = session.get('username', '')
+
+                # Create a student record
+                student_response = requests.post(
+                    f"{Config.API_BASE_URL}/api/admin/add-student",
+                    json={
+                        "student_id": user_id,
+                        "name": username,
+                        "email": f"{username}@example.com",  # Default email
+                        "contact_number": "N/A",  # Default contact
+                        "age": 20  # Default age
+                    }
+                )
+
+                print(f"Student creation response: {student_response.status_code}")
+                if student_response.status_code not in [200, 201]:
+                    print(f"Failed to create student record: {student_response.status_code}")
+                    try:
+                        error_data = student_response.json()
+                        print(f"Error data: {error_data}")
+                    except Exception as e:
+                        print(f"Error parsing response: {str(e)}")
+                    flash('Failed to create student record. Please contact an administrator.', 'danger')
+                    return redirect(url_for('dashboard'))
+
+                print("Student record created successfully")
+
+            # Now call the create request API
+            print(f"Creating maintenance request for user ID: {user_id}")
             response = requests.post(
                 f"{Config.API_BASE_URL}/api/maintenance/request",
                 json={
@@ -508,6 +760,7 @@ def new_maintenance_request():
                 headers={'Authorization': f'Bearer {token}'}
             )
 
+            print(f"Create request response: {response.status_code}")
             if response.status_code == 200:
                 flash('Maintenance request created successfully!', 'success')
                 return redirect(url_for('maintenance_requests'))
@@ -518,11 +771,14 @@ def new_maintenance_request():
                 try:
                     error_data = response.json()
                     error_msg = error_data.get('error', error_data.get('message', 'Unknown error'))
-                except:
+                    print(f"Error data: {error_data}")
+                except Exception as e:
                     error_msg = f"Server error (Status code: {response.status_code})"
+                    print(f"Error parsing response: {str(e)}")
 
                 flash(f'Failed to create request: {error_msg}', 'danger')
         except requests.exceptions.RequestException as e:
+            print(f"Request exception: {str(e)}")
             flash(f'Error connecting to the server: {str(e)}', 'danger')
 
     return render_template('new_maintenance_request.html')

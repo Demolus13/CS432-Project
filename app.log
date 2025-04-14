@@ -2434,3 +2434,314 @@
 2025-04-14 20:16:18,975 - INFO - 127.0.0.1 - - [14/Apr/2025 20:16:18] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
 2025-04-14 20:16:19,926 - INFO - 127.0.0.1 - - [14/Apr/2025 20:16:19] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
 2025-04-14 20:16:22,290 - INFO - 127.0.0.1 - - [14/Apr/2025 20:16:22] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 21:28:32,731 - INFO - package: mysql.connector.plugins
+2025-04-14 21:28:32,732 - INFO - plugin_name: caching_sha2_password
+2025-04-14 21:28:32,732 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 21:28:32,750 - INFO - Connected to database: cs432cims
+2025-04-14 21:28:32,772 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-14 21:28:32,772 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-14 21:28:32,779 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 21:28:33,270 - INFO - package: mysql.connector.plugins
+2025-04-14 21:28:33,271 - INFO - plugin_name: caching_sha2_password
+2025-04-14 21:28:33,271 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 21:28:33,292 - INFO - Connected to database: cs432cims
+2025-04-14 21:28:33,305 - WARNING -  * Debugger is active!
+2025-04-14 21:28:33,314 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 21:28:42,568 - INFO - 127.0.0.1 - - [14/Apr/2025 21:28:42] "GET / HTTP/1.1" 200 -
+2025-04-14 21:28:44,999 - INFO - 127.0.0.1 - - [14/Apr/2025 21:28:44] "GET / HTTP/1.1" 200 -
+2025-04-14 21:28:47,177 - INFO - 127.0.0.1 - - [14/Apr/2025 21:28:47] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 21:28:47,182 - INFO -  * Detected change in 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\unicode_escape.py', reloading
+2025-04-14 21:28:47,669 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 21:28:48,235 - INFO - package: mysql.connector.plugins
+2025-04-14 21:28:48,236 - INFO - plugin_name: caching_sha2_password
+2025-04-14 21:28:48,236 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 21:28:48,253 - INFO - Connected to database: cs432cims
+2025-04-14 21:28:48,266 - WARNING -  * Debugger is active!
+2025-04-14 21:28:48,276 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 21:28:50,609 - INFO - 127.0.0.1 - - [14/Apr/2025 21:28:50] "GET / HTTP/1.1" 200 -
+2025-04-14 21:29:28,741 - INFO - 127.0.0.1 - - [14/Apr/2025 21:29:28] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 21:29:30,782 - INFO - 127.0.0.1 - - [14/Apr/2025 21:29:30] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 21:29:32,274 - INFO - 127.0.0.1 - - [14/Apr/2025 21:29:32] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 21:29:34,641 - INFO - 127.0.0.1 - - [14/Apr/2025 21:29:34] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 21:30:21,377 - INFO - 127.0.0.1 - - [14/Apr/2025 21:30:21] "[31m[1mGET /api/admin/students HTTP/1.1[0m" 401 -
+2025-04-14 21:30:23,429 - INFO - 127.0.0.1 - - [14/Apr/2025 21:30:23] "[33mPOST /api/auth/logout HTTP/1.1[0m" 404 -
+2025-04-14 21:30:37,351 - INFO - 127.0.0.1 - - [14/Apr/2025 21:30:37] "POST /api/auth/login HTTP/1.1" 200 -
+2025-04-14 21:30:39,707 - INFO - 127.0.0.1 - - [14/Apr/2025 21:30:39] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 21:30:47,240 - INFO - 127.0.0.1 - - [14/Apr/2025 21:30:47] "GET /api/admin/students HTTP/1.1" 200 -
+2025-04-14 21:31:46,111 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 21:31:46,112 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 21:31:46,451 - INFO -  * Detected change in 'C:\\Users\\chand\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\jwt\\__init__.py', reloading
+2025-04-14 21:31:46,485 - INFO -  * Detected change in 'C:\\Users\\chand\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\jwt\\api_jwt.py', reloading
+2025-04-14 21:31:46,519 - INFO -  * Detected change in 'C:\\Users\\chand\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\jwt\\algorithms.py', reloading
+2025-04-14 21:31:46,589 - INFO -  * Detected change in 'C:\\Users\\chand\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\cryptography\\hazmat\\primitives\\asymmetric\\rsa.py', reloading
+2025-04-14 21:31:46,793 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 21:31:47,407 - INFO - package: mysql.connector.plugins
+2025-04-14 21:31:47,408 - INFO - plugin_name: caching_sha2_password
+2025-04-14 21:31:47,408 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 21:31:47,424 - INFO - Connected to database: cs432cims
+2025-04-14 21:31:47,436 - WARNING -  * Debugger is active!
+2025-04-14 21:31:47,443 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 21:31:49,041 - INFO - 127.0.0.1 - - [14/Apr/2025 21:31:49] "GET / HTTP/1.1" 200 -
+2025-04-14 21:32:09,570 - INFO - 127.0.0.1 - - [14/Apr/2025 21:32:09] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 21:32:11,833 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 21:32:11,834 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 21:32:11,834 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 21:32:12,099 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 21:32:13,013 - INFO - package: mysql.connector.plugins
+2025-04-14 21:32:13,013 - INFO - plugin_name: caching_sha2_password
+2025-04-14 21:32:13,014 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 21:32:13,031 - INFO - Connected to database: cs432cims
+2025-04-14 21:32:13,043 - WARNING -  * Debugger is active!
+2025-04-14 21:32:13,049 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 21:32:15,195 - INFO - 127.0.0.1 - - [14/Apr/2025 21:32:15] "GET / HTTP/1.1" 200 -
+2025-04-14 21:32:21,009 - INFO - 127.0.0.1 - - [14/Apr/2025 21:32:21] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-14 21:32:23,268 - INFO - 127.0.0.1 - - [14/Apr/2025 21:32:23] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-14 21:32:25,306 - INFO - 127.0.0.1 - - [14/Apr/2025 21:32:25] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 21:32:48,046 - INFO - 127.0.0.1 - - [14/Apr/2025 21:32:48] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-14 21:32:50,090 - INFO - 127.0.0.1 - - [14/Apr/2025 21:32:50] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 21:33:24,666 - INFO - 127.0.0.1 - - [14/Apr/2025 21:33:24] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-14 21:33:27,077 - INFO - 127.0.0.1 - - [14/Apr/2025 21:33:27] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-14 21:33:27,093 - INFO - 127.0.0.1 - - [14/Apr/2025 21:33:27] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-14 21:33:28,164 - INFO - 127.0.0.1 - - [14/Apr/2025 21:33:28] "GET /api/maintenance/requests?student_id=455 HTTP/1.1" 200 -
+2025-04-14 21:33:29,121 - INFO - 127.0.0.1 - - [14/Apr/2025 21:33:29] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 21:33:29,378 - INFO - 127.0.0.1 - - [14/Apr/2025 21:33:29] "GET /api/admin/students HTTP/1.1" 200 -
+2025-04-14 21:33:31,564 - INFO - 127.0.0.1 - - [14/Apr/2025 21:33:31] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-14 21:33:33,615 - INFO - 127.0.0.1 - - [14/Apr/2025 21:33:33] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 21:33:40,251 - INFO - 127.0.0.1 - - [14/Apr/2025 21:33:40] "GET /api/maintenance/requests?student_id=455 HTTP/1.1" 200 -
+2025-04-14 21:33:44,315 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 21:33:44,315 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 21:33:44,995 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 21:33:45,574 - INFO - package: mysql.connector.plugins
+2025-04-14 21:33:45,575 - INFO - plugin_name: caching_sha2_password
+2025-04-14 21:33:45,575 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 21:33:45,605 - INFO - Connected to database: cs432cims
+2025-04-14 21:33:45,616 - WARNING -  * Debugger is active!
+2025-04-14 21:33:45,622 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 21:33:47,388 - INFO - 127.0.0.1 - - [14/Apr/2025 21:33:47] "GET / HTTP/1.1" 200 -
+2025-04-14 21:33:51,757 - INFO - 127.0.0.1 - - [14/Apr/2025 21:33:51] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-14 21:33:53,800 - INFO - 127.0.0.1 - - [14/Apr/2025 21:33:53] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 21:34:13,645 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 21:34:13,645 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 21:34:13,645 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 21:34:14,318 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 21:34:14,889 - INFO - package: mysql.connector.plugins
+2025-04-14 21:34:14,890 - INFO - plugin_name: caching_sha2_password
+2025-04-14 21:34:14,890 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 21:34:14,908 - INFO - Connected to database: cs432cims
+2025-04-14 21:34:14,919 - WARNING -  * Debugger is active!
+2025-04-14 21:34:14,925 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 21:34:16,522 - INFO - 127.0.0.1 - - [14/Apr/2025 21:34:16] "GET / HTTP/1.1" 200 -
+2025-04-14 21:34:29,674 - INFO - 127.0.0.1 - - [14/Apr/2025 21:34:29] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-14 21:34:30,426 - INFO - 127.0.0.1 - - [14/Apr/2025 21:34:30] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-14 21:34:31,712 - INFO - 127.0.0.1 - - [14/Apr/2025 21:34:31] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 21:34:33,425 - INFO - 127.0.0.1 - - [14/Apr/2025 21:34:33] "GET /api/maintenance/requests?student_id=455 HTTP/1.1" 200 -
+2025-04-14 21:34:34,164 - INFO - 127.0.0.1 - - [14/Apr/2025 21:34:34] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-14 21:34:35,358 - INFO - 127.0.0.1 - - [14/Apr/2025 21:34:35] "GET /api/admin/students HTTP/1.1" 200 -
+2025-04-14 21:34:36,199 - INFO - 127.0.0.1 - - [14/Apr/2025 21:34:36] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 21:34:38,847 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 21:34:38,848 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 21:34:39,508 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 21:34:40,047 - INFO - package: mysql.connector.plugins
+2025-04-14 21:34:40,047 - INFO - plugin_name: caching_sha2_password
+2025-04-14 21:34:40,047 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 21:34:40,068 - INFO - Connected to database: cs432cims
+2025-04-14 21:34:40,080 - WARNING -  * Debugger is active!
+2025-04-14 21:34:40,086 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 21:34:41,547 - INFO - 127.0.0.1 - - [14/Apr/2025 21:34:41] "GET / HTTP/1.1" 200 -
+2025-04-14 21:35:04,761 - INFO - 127.0.0.1 - - [14/Apr/2025 21:35:04] "GET /api/maintenance/requests?student_id=455 HTTP/1.1" 200 -
+2025-04-14 21:35:08,290 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 21:35:08,292 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 21:35:08,292 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 21:35:08,756 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 21:35:09,399 - INFO - package: mysql.connector.plugins
+2025-04-14 21:35:09,399 - INFO - plugin_name: caching_sha2_password
+2025-04-14 21:35:09,400 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 21:35:09,417 - INFO - Connected to database: cs432cims
+2025-04-14 21:35:09,429 - WARNING -  * Debugger is active!
+2025-04-14 21:35:09,435 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 21:35:11,570 - INFO - 127.0.0.1 - - [14/Apr/2025 21:35:11] "GET / HTTP/1.1" 200 -
+2025-04-14 21:35:32,968 - ERROR - Error creating maintenance request: 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`cs432g6`.`maintenance_requests`, CONSTRAINT `maintenance_requests_ibfk_1` FOREIGN KEY (`Student_ID`) REFERENCES `students` (`Student_ID`) ON DELETE CASCADE)
+2025-04-14 21:35:32,987 - INFO - 127.0.0.1 - - [14/Apr/2025 21:35:32] "[35m[1mPOST /api/maintenance/request HTTP/1.1[0m" 500 -
+2025-04-14 21:35:51,771 - INFO - 127.0.0.1 - - [14/Apr/2025 21:35:51] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-14 21:35:53,819 - INFO - 127.0.0.1 - - [14/Apr/2025 21:35:53] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 21:36:03,931 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 21:36:03,932 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 21:36:03,932 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 21:36:04,662 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 21:36:05,265 - INFO - package: mysql.connector.plugins
+2025-04-14 21:36:05,266 - INFO - plugin_name: caching_sha2_password
+2025-04-14 21:36:05,266 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 21:36:05,300 - INFO - Connected to database: cs432cims
+2025-04-14 21:36:05,316 - WARNING -  * Debugger is active!
+2025-04-14 21:36:05,323 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 21:36:07,075 - INFO - 127.0.0.1 - - [14/Apr/2025 21:36:07] "GET / HTTP/1.1" 200 -
+2025-04-14 21:36:09,275 - INFO - 127.0.0.1 - - [14/Apr/2025 21:36:09] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-14 21:36:11,390 - INFO - 127.0.0.1 - - [14/Apr/2025 21:36:11] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-14 21:36:13,448 - INFO - 127.0.0.1 - - [14/Apr/2025 21:36:13] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 21:36:16,466 - INFO -  * Detected change in 'C:\\Users\\chand\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\mysql\\connector\\__init__.py', reloading
+2025-04-14 21:36:16,698 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 21:36:17,809 - INFO - package: mysql.connector.plugins
+2025-04-14 21:36:17,809 - INFO - plugin_name: caching_sha2_password
+2025-04-14 21:36:17,809 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 21:36:17,827 - INFO - Connected to database: cs432cims
+2025-04-14 21:36:17,847 - WARNING -  * Debugger is active!
+2025-04-14 21:36:17,856 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 21:36:20,059 - INFO - 127.0.0.1 - - [14/Apr/2025 21:36:20] "GET / HTTP/1.1" 200 -
+2025-04-14 21:36:23,667 - INFO - 127.0.0.1 - - [14/Apr/2025 21:36:23] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-14 21:36:25,780 - INFO - 127.0.0.1 - - [14/Apr/2025 21:36:25] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-14 21:36:27,792 - INFO - 127.0.0.1 - - [14/Apr/2025 21:36:27] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 21:37:21,410 - INFO - 127.0.0.1 - - [14/Apr/2025 21:37:21] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-14 21:37:23,843 - INFO - 127.0.0.1 - - [14/Apr/2025 21:37:23] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-14 21:37:25,885 - INFO - 127.0.0.1 - - [14/Apr/2025 21:37:25] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 21:37:27,810 - INFO - 127.0.0.1 - - [14/Apr/2025 21:37:27] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-14 21:37:29,874 - INFO - 127.0.0.1 - - [14/Apr/2025 21:37:29] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-14 21:37:31,664 - INFO - 127.0.0.1 - - [14/Apr/2025 21:37:31] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-14 21:37:34,108 - INFO - 127.0.0.1 - - [14/Apr/2025 21:37:34] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-14 21:37:36,173 - INFO - 127.0.0.1 - - [14/Apr/2025 21:37:36] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 21:37:36,542 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 21:37:36,543 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 21:37:37,492 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 21:37:37,971 - INFO - package: mysql.connector.plugins
+2025-04-14 21:37:37,971 - INFO - plugin_name: caching_sha2_password
+2025-04-14 21:37:37,971 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 21:37:37,990 - INFO - Connected to database: cs432cims
+2025-04-14 21:37:38,003 - WARNING -  * Debugger is active!
+2025-04-14 21:37:38,009 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 21:37:39,732 - INFO - 127.0.0.1 - - [14/Apr/2025 21:37:39] "GET / HTTP/1.1" 200 -
+2025-04-14 21:37:44,014 - INFO - 127.0.0.1 - - [14/Apr/2025 21:37:44] "[33mPOST /api/auth/logout HTTP/1.1[0m" 404 -
+2025-04-14 21:37:52,558 - INFO - 127.0.0.1 - - [14/Apr/2025 21:37:52] "[31m[1mPOST /api/auth/login HTTP/1.1[0m" 401 -
+2025-04-14 21:38:02,846 - INFO - 127.0.0.1 - - [14/Apr/2025 21:38:02] "[33mPOST /api/auth/login HTTP/1.1[0m" 404 -
+2025-04-14 21:38:11,235 - INFO - 127.0.0.1 - - [14/Apr/2025 21:38:11] "[31m[1mPOST /api/auth/login HTTP/1.1[0m" 401 -
+2025-04-14 21:38:26,010 - INFO - 127.0.0.1 - - [14/Apr/2025 21:38:26] "POST /api/auth/login HTTP/1.1" 200 -
+2025-04-14 21:38:28,576 - INFO - 127.0.0.1 - - [14/Apr/2025 21:38:28] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-14 21:38:30,615 - INFO - 127.0.0.1 - - [14/Apr/2025 21:38:30] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 21:38:39,643 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\app.py', reloading
+2025-04-14 21:38:39,643 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\app.py', reloading
+2025-04-14 21:38:39,643 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\app.py', reloading
+2025-04-14 21:38:40,292 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 21:38:40,811 - INFO - package: mysql.connector.plugins
+2025-04-14 21:38:40,811 - INFO - plugin_name: caching_sha2_password
+2025-04-14 21:38:40,811 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 21:38:40,830 - INFO - Connected to database: cs432cims
+2025-04-14 21:38:40,843 - WARNING -  * Debugger is active!
+2025-04-14 21:38:40,850 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 21:38:49,942 - INFO - User Vraj added to login table with ID 2122
+2025-04-14 21:38:49,942 - INFO - CIMS DATABASE CHANGE: INSERT | Table: members | Record: 2122 | Added new member: Vraj, Email: vrajshah2811@gmail.com
+2025-04-14 21:38:49,942 - WARNING - Attempted database change without session token: CIMS DATABASE CHANGE: INSERT | Table: members | Record: 2122 | Added new member: Vraj, Email: vrajshah2811@gmail.com
+2025-04-14 21:38:49,944 - INFO - 127.0.0.1 - - [14/Apr/2025 21:38:49] "POST /api/admin/add-user HTTP/1.1" 200 -
+2025-04-14 21:38:52,350 - INFO - 127.0.0.1 - - [14/Apr/2025 21:38:52] "GET /api/admin/students HTTP/1.1" 200 -
+2025-04-14 21:38:59,882 - INFO - 127.0.0.1 - - [14/Apr/2025 21:38:59] "[33mPOST /api/auth/logout HTTP/1.1[0m" 404 -
+2025-04-14 21:39:06,377 - INFO - 127.0.0.1 - - [14/Apr/2025 21:39:06] "POST /api/auth/login HTTP/1.1" 200 -
+2025-04-14 21:39:08,752 - WARNING - Access denied: User Vraj with role member attempted to access /api/student/2122
+2025-04-14 21:39:08,753 - INFO - 127.0.0.1 - - [14/Apr/2025 21:39:08] "[31m[1mGET /api/student/2122 HTTP/1.1[0m" 403 -
+2025-04-14 21:39:10,789 - INFO - 127.0.0.1 - - [14/Apr/2025 21:39:10] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 21:39:15,435 - WARNING - Access denied: User Vraj with role member attempted to access /api/student/2122
+2025-04-14 21:39:15,435 - INFO - 127.0.0.1 - - [14/Apr/2025 21:39:15] "[31m[1mGET /api/student/2122 HTTP/1.1[0m" 403 -
+2025-04-14 21:39:17,476 - WARNING - Access denied: User Vraj with role member attempted to access /api/student/2122
+2025-04-14 21:39:17,476 - INFO - 127.0.0.1 - - [14/Apr/2025 21:39:17] "[31m[1mGET /api/student/2122 HTTP/1.1[0m" 403 -
+2025-04-14 21:39:18,181 - WARNING - Access denied: User Vraj with role member attempted to access /api/student/2122
+2025-04-14 21:39:18,182 - INFO - 127.0.0.1 - - [14/Apr/2025 21:39:18] "[31m[1mGET /api/student/2122 HTTP/1.1[0m" 403 -
+2025-04-14 21:39:19,520 - INFO - 127.0.0.1 - - [14/Apr/2025 21:39:19] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 21:39:42,814 - WARNING - Access denied: User Vraj with role member attempted to access /api/maintenance/requests
+2025-04-14 21:39:42,814 - INFO - 127.0.0.1 - - [14/Apr/2025 21:39:42] "[31m[1mGET /api/maintenance/requests?student_id=2122 HTTP/1.1[0m" 403 -
+2025-04-14 21:40:00,450 - WARNING - Access denied: User Vraj with role member attempted to access /api/student/2122
+2025-04-14 21:40:00,450 - INFO - 127.0.0.1 - - [14/Apr/2025 21:40:00] "[31m[1mGET /api/student/2122 HTTP/1.1[0m" 403 -
+2025-04-14 21:40:02,479 - WARNING - Access denied: User Vraj with role member attempted to access /api/admin/add-student
+2025-04-14 21:40:02,479 - INFO - 127.0.0.1 - - [14/Apr/2025 21:40:02] "[31m[1mPOST /api/admin/add-student HTTP/1.1[0m" 403 -
+2025-04-14 21:40:04,834 - WARNING - Access denied: User Vraj with role member attempted to access /api/student/2122
+2025-04-14 21:40:04,835 - INFO - 127.0.0.1 - - [14/Apr/2025 21:40:04] "[31m[1mGET /api/student/2122 HTTP/1.1[0m" 403 -
+2025-04-14 21:40:06,888 - INFO - 127.0.0.1 - - [14/Apr/2025 21:40:06] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 21:41:29,024 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\app.py', reloading
+2025-04-14 21:41:29,035 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\app.py', reloading
+2025-04-14 21:41:29,036 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\app.py', reloading
+2025-04-14 21:41:30,079 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 21:41:30,593 - INFO - package: mysql.connector.plugins
+2025-04-14 21:41:30,593 - INFO - plugin_name: caching_sha2_password
+2025-04-14 21:41:30,593 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 21:41:30,612 - INFO - Connected to database: cs432cims
+2025-04-14 21:41:30,623 - WARNING -  * Debugger is active!
+2025-04-14 21:41:30,630 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 21:42:00,605 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 21:42:00,613 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 21:42:00,614 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 21:42:01,286 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 21:42:01,812 - INFO - package: mysql.connector.plugins
+2025-04-14 21:42:01,812 - INFO - plugin_name: caching_sha2_password
+2025-04-14 21:42:01,812 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 21:42:01,830 - INFO - Connected to database: cs432cims
+2025-04-14 21:42:01,842 - WARNING -  * Debugger is active!
+2025-04-14 21:42:01,848 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 21:42:03,675 - INFO - 127.0.0.1 - - [14/Apr/2025 21:42:03] "GET / HTTP/1.1" 200 -
+2025-04-14 21:42:24,043 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 21:42:24,043 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 21:42:24,414 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 21:42:25,034 - INFO - package: mysql.connector.plugins
+2025-04-14 21:42:25,035 - INFO - plugin_name: caching_sha2_password
+2025-04-14 21:42:25,035 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 21:42:25,053 - INFO - Connected to database: cs432cims
+2025-04-14 21:42:25,067 - WARNING -  * Debugger is active!
+2025-04-14 21:42:25,076 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 21:42:26,753 - INFO - 127.0.0.1 - - [14/Apr/2025 21:42:26] "GET / HTTP/1.1" 200 -
+2025-04-14 21:42:47,759 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 21:42:47,759 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 21:42:47,759 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\frontend\\app.py', reloading
+2025-04-14 21:42:48,574 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 21:42:49,080 - INFO - package: mysql.connector.plugins
+2025-04-14 21:42:49,080 - INFO - plugin_name: caching_sha2_password
+2025-04-14 21:42:49,080 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 21:42:49,098 - INFO - Connected to database: cs432cims
+2025-04-14 21:42:49,109 - WARNING -  * Debugger is active!
+2025-04-14 21:42:49,115 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 21:42:50,657 - INFO - 127.0.0.1 - - [14/Apr/2025 21:42:50] "GET / HTTP/1.1" 200 -
+2025-04-14 21:43:36,442 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\app.py', reloading
+2025-04-14 21:43:36,444 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\app.py', reloading
+2025-04-14 21:43:37,155 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 21:43:37,705 - INFO - package: mysql.connector.plugins
+2025-04-14 21:43:37,706 - INFO - plugin_name: caching_sha2_password
+2025-04-14 21:43:37,706 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 21:43:37,747 - INFO - Connected to database: cs432cims
+2025-04-14 21:43:37,761 - WARNING -  * Debugger is active!
+2025-04-14 21:43:37,767 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 21:44:03,252 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\app.py', reloading
+2025-04-14 21:44:03,252 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\app.py', reloading
+2025-04-14 21:44:03,253 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\app.py', reloading
+2025-04-14 21:44:03,351 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 21:44:04,118 - INFO - package: mysql.connector.plugins
+2025-04-14 21:44:04,119 - INFO - plugin_name: caching_sha2_password
+2025-04-14 21:44:04,119 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 21:44:04,137 - INFO - Connected to database: cs432cims
+2025-04-14 21:44:04,149 - WARNING -  * Debugger is active!
+2025-04-14 21:44:04,156 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 21:44:43,687 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\app.py', reloading
+2025-04-14 21:44:43,688 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\app.py', reloading
+2025-04-14 21:44:44,086 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 21:44:45,488 - INFO - package: mysql.connector.plugins
+2025-04-14 21:44:45,488 - INFO - plugin_name: caching_sha2_password
+2025-04-14 21:44:45,488 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 21:44:45,510 - INFO - Connected to database: cs432cims
+2025-04-14 21:44:45,521 - WARNING -  * Debugger is active!
+2025-04-14 21:44:45,528 - INFO -  * Debugger PIN: 143-164-693
+2025-04-14 21:44:59,197 - INFO - 127.0.0.1 - - [14/Apr/2025 21:44:59] "[33mGET /api/student/2122 HTTP/1.1[0m" 404 -
+2025-04-14 21:45:00,685 - INFO - 127.0.0.1 - - [14/Apr/2025 21:45:00] "GET /api/db/check-tables HTTP/1.1" 200 -
+2025-04-14 21:45:01,239 - INFO - 127.0.0.1 - - [14/Apr/2025 21:45:01] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-14 21:45:02,801 - INFO - 127.0.0.1 - - [14/Apr/2025 21:45:02] "[33mGET /api/student/2122 HTTP/1.1[0m" 404 -
+2025-04-14 21:45:04,962 - INFO - 127.0.0.1 - - [14/Apr/2025 21:45:04] "[35m[1mPOST /api/admin/add-student HTTP/1.1[0m" 201 -
+2025-04-14 21:45:07,198 - INFO - 127.0.0.1 - - [14/Apr/2025 21:45:07] "GET /api/student/2122 HTTP/1.1" 200 -
+2025-04-14 21:45:24,574 - INFO - 127.0.0.1 - - [14/Apr/2025 21:45:24] "GET /api/db/check-tables HTTP/1.1" 200 -
+2025-04-14 21:45:26,816 - INFO - 127.0.0.1 - - [14/Apr/2025 21:45:26] "GET /api/student/2122 HTTP/1.1" 200 -
+2025-04-14 21:45:28,926 - INFO - 127.0.0.1 - - [14/Apr/2025 21:45:28] "GET /api/maintenance/requests?student_id=2122 HTTP/1.1" 200 -
+2025-04-14 21:45:58,039 - INFO - 127.0.0.1 - - [14/Apr/2025 21:45:58] "GET /api/db/check-tables HTTP/1.1" 200 -
+2025-04-14 21:46:00,317 - INFO - 127.0.0.1 - - [14/Apr/2025 21:46:00] "GET /api/student/2122 HTTP/1.1" 200 -
+2025-04-14 21:46:02,592 - ERROR - Error creating maintenance request: 1364 (HY000): Field 'Notification_ID' doesn't have a default value
+2025-04-14 21:46:02,600 - INFO - 127.0.0.1 - - [14/Apr/2025 21:46:02] "[35m[1mPOST /api/maintenance/request HTTP/1.1[0m" 500 -
+2025-04-14 21:46:29,633 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\app.py', reloading
+2025-04-14 21:46:29,634 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\app.py', reloading
+2025-04-14 21:46:29,634 - INFO -  * Detected change in 'D:\\Random Code\\CS432\\CS432-Project\\app.py', reloading
+2025-04-14 21:46:29,751 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-14 21:46:30,461 - INFO - package: mysql.connector.plugins
+2025-04-14 21:46:30,461 - INFO - plugin_name: caching_sha2_password
+2025-04-14 21:46:30,461 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2025-04-14 21:46:30,480 - INFO - Connected to database: cs432cims
+2025-04-14 21:46:30,492 - WARNING -  * Debugger is active!
+2025-04-14 21:46:30,498 - INFO -  * Debugger PIN: 143-164-693
