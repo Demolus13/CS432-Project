@@ -3154,3 +3154,198 @@
 2025-04-15 01:35:52,533 - INFO - 127.0.0.1 - - [15/Apr/2025 01:35:52] "GET /api/student/2157 HTTP/1.1" 200 -
 2025-04-15 01:35:55,332 - INFO - 127.0.0.1 - - [15/Apr/2025 01:35:55] "GET /api/student/2157 HTTP/1.1" 200 -
 2025-04-15 01:35:57,139 - INFO - 127.0.0.1 - - [15/Apr/2025 01:35:57] "[33mPOST /api/auth/logout HTTP/1.1[0m" 404 -
+2025-04-15 08:16:04,077 - ERROR - DB connection failed on startup: 2003 (HY000): Can't connect to MySQL server on '10.0.116.125:3306' (101)
+2025-04-15 08:16:04,090 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-15 08:16:04,090 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-15 08:16:04,091 - INFO -  * Restarting with stat
+2025-04-15 08:16:04,442 - ERROR - DB connection failed on startup: 2003 (HY000): Can't connect to MySQL server on '10.0.116.125:3306' (101)
+2025-04-15 08:16:04,453 - WARNING -  * Debugger is active!
+2025-04-15 08:16:04,454 - INFO -  * Debugger PIN: 883-239-652
+2025-04-15 08:16:05,781 - INFO - 127.0.0.1 - - [15/Apr/2025 08:16:05] "GET / HTTP/1.1" 200 -
+2025-04-15 08:16:06,054 - INFO - 127.0.0.1 - - [15/Apr/2025 08:16:06] "GET / HTTP/1.1" 200 -
+2025-04-15 08:17:48,578 - INFO - Connected to database: cs432cims
+2025-04-15 08:17:48,591 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-15 08:17:48,591 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-15 08:17:48,591 - INFO -  * Restarting with stat
+2025-04-15 08:17:48,929 - INFO - Connected to database: cs432cims
+2025-04-15 08:17:48,941 - WARNING -  * Debugger is active!
+2025-04-15 08:17:48,941 - INFO -  * Debugger PIN: 114-929-566
+2025-04-15 08:17:59,622 - INFO - 127.0.0.1 - - [15/Apr/2025 08:17:59] "POST /api/auth/login HTTP/1.1" 200 -
+2025-04-15 08:17:59,680 - INFO - 127.0.0.1 - - [15/Apr/2025 08:17:59] "[33mGET /api/student/2157 HTTP/1.1[0m" 404 -
+2025-04-15 08:17:59,685 - INFO - 127.0.0.1 - - [15/Apr/2025 08:17:59] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-15 08:19:59,288 - INFO - 127.0.0.1 - - [15/Apr/2025 08:19:59] "[33mGET /api/student/2157 HTTP/1.1[0m" 404 -
+2025-04-15 08:19:59,291 - INFO - 127.0.0.1 - - [15/Apr/2025 08:19:59] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-15 08:20:03,659 - INFO - 127.0.0.1 - - [15/Apr/2025 08:20:03] "GET /api/db/check-tables HTTP/1.1" 200 -
+2025-04-15 08:20:03,719 - INFO - 127.0.0.1 - - [15/Apr/2025 08:20:03] "[33mGET /api/user-profile/student/2157 HTTP/1.1[0m" 404 -
+2025-04-15 08:20:03,808 - INFO - 127.0.0.1 - - [15/Apr/2025 08:20:03] "[35m[1mPOST /api/admin/add-student HTTP/1.1[0m" 201 -
+2025-04-15 08:20:03,945 - INFO - 127.0.0.1 - - [15/Apr/2025 08:20:03] "GET /api/user-profile/student/2157 HTTP/1.1" 200 -
+2025-04-15 08:21:20,569 - INFO - 127.0.0.1 - - [15/Apr/2025 08:21:20] "GET /api/db/check-tables HTTP/1.1" 200 -
+2025-04-15 08:21:20,620 - INFO - 127.0.0.1 - - [15/Apr/2025 08:21:20] "[33mGET /api/user-profile/student/2157 HTTP/1.1[0m" 404 -
+2025-04-15 08:21:20,708 - INFO - 127.0.0.1 - - [15/Apr/2025 08:21:20] "[35m[1mPOST /api/admin/add-student HTTP/1.1[0m" 201 -
+2025-04-15 08:21:20,806 - INFO - 127.0.0.1 - - [15/Apr/2025 08:21:20] "GET /api/user-profile/student/2157 HTTP/1.1" 200 -
+2025-04-15 08:21:29,534 - INFO - 127.0.0.1 - - [15/Apr/2025 08:21:29] "GET / HTTP/1.1" 200 -
+2025-04-15 08:21:30,018 - INFO -  * Detected change in '/home/vraj/Desktop/Courses/Databases/CS432-Project/frontend/app.py', reloading
+2025-04-15 08:21:30,084 - INFO -  * Restarting with stat
+2025-04-15 08:21:30,416 - INFO - Connected to database: cs432cims
+2025-04-15 08:21:30,424 - WARNING -  * Debugger is active!
+2025-04-15 08:21:30,425 - INFO -  * Debugger PIN: 114-929-566
+2025-04-15 08:21:44,502 - INFO -  * Detected change in '/home/vraj/Desktop/Courses/Databases/CS432-Project/frontend/app.py', reloading
+2025-04-15 08:21:44,574 - INFO -  * Restarting with stat
+2025-04-15 08:21:45,002 - INFO - Connected to database: cs432cims
+2025-04-15 08:21:45,013 - WARNING -  * Debugger is active!
+2025-04-15 08:21:45,013 - INFO -  * Debugger PIN: 114-929-566
+2025-04-15 08:21:45,022 - INFO - 127.0.0.1 - - [15/Apr/2025 08:21:45] "GET / HTTP/1.1" 200 -
+2025-04-15 08:22:08,146 - INFO -  * Detected change in '/home/vraj/Desktop/Courses/Databases/CS432-Project/frontend/app.py', reloading
+2025-04-15 08:22:08,237 - INFO -  * Restarting with stat
+2025-04-15 08:22:08,591 - INFO - Connected to database: cs432cims
+2025-04-15 08:22:08,602 - WARNING -  * Debugger is active!
+2025-04-15 08:22:08,603 - INFO -  * Debugger PIN: 114-929-566
+2025-04-15 08:22:08,610 - INFO - 127.0.0.1 - - [15/Apr/2025 08:22:08] "GET / HTTP/1.1" 200 -
+2025-04-15 08:22:14,770 - INFO - 127.0.0.1 - - [15/Apr/2025 08:22:14] "GET /api/db/check-tables HTTP/1.1" 200 -
+2025-04-15 08:22:14,823 - INFO - 127.0.0.1 - - [15/Apr/2025 08:22:14] "[33mGET /api/user-profile/student/2157 HTTP/1.1[0m" 404 -
+2025-04-15 08:22:14,905 - INFO - 127.0.0.1 - - [15/Apr/2025 08:22:14] "[35m[1mPOST /api/admin/add-student HTTP/1.1[0m" 201 -
+2025-04-15 08:22:15,011 - INFO - 127.0.0.1 - - [15/Apr/2025 08:22:15] "GET /api/user-profile/student/2157 HTTP/1.1" 200 -
+2025-04-15 08:22:59,851 - INFO -  * Detected change in '/home/vraj/Desktop/Courses/Databases/CS432-Project/app.py', reloading
+2025-04-15 08:22:59,919 - INFO -  * Restarting with stat
+2025-04-15 08:23:00,259 - INFO - Connected to database: cs432cims
+2025-04-15 08:23:00,269 - WARNING -  * Debugger is active!
+2025-04-15 08:23:00,269 - INFO -  * Debugger PIN: 114-929-566
+2025-04-15 08:23:18,116 - INFO - 127.0.0.1 - - [15/Apr/2025 08:23:18] "GET /api/db/check-tables HTTP/1.1" 200 -
+2025-04-15 08:23:18,172 - INFO - 127.0.0.1 - - [15/Apr/2025 08:23:18] "[33mGET /api/user-profile/student/2157 HTTP/1.1[0m" 404 -
+2025-04-15 08:23:18,259 - INFO - 127.0.0.1 - - [15/Apr/2025 08:23:18] "[35m[1mPOST /api/admin/add-student HTTP/1.1[0m" 201 -
+2025-04-15 08:23:18,361 - INFO - 127.0.0.1 - - [15/Apr/2025 08:23:18] "GET /api/user-profile/student/2157 HTTP/1.1" 200 -
+2025-04-15 08:24:53,839 - INFO -  * Detected change in '/home/vraj/Desktop/Courses/Databases/CS432-Project/app.py', reloading
+2025-04-15 08:24:53,909 - INFO -  * Restarting with stat
+2025-04-15 08:24:54,275 - INFO - Connected to database: cs432cims
+2025-04-15 08:24:54,283 - WARNING -  * Debugger is active!
+2025-04-15 08:24:54,283 - INFO -  * Debugger PIN: 114-929-566
+2025-04-15 08:26:23,723 - INFO -  * Detected change in '/home/vraj/Desktop/Courses/Databases/CS432-Project/app.py', reloading
+2025-04-15 08:26:23,792 - INFO -  * Restarting with stat
+2025-04-15 08:26:24,175 - INFO - Connected to database: cs432cims
+2025-04-15 08:26:24,183 - WARNING -  * Debugger is active!
+2025-04-15 08:26:24,184 - INFO -  * Debugger PIN: 114-929-566
+2025-04-15 08:26:33,236 - INFO -  * Detected change in '/home/vraj/Desktop/Courses/Databases/CS432-Project/app.py', reloading
+2025-04-15 08:26:33,304 - INFO -  * Restarting with stat
+2025-04-15 08:26:33,680 - INFO - Connected to database: cs432cims
+2025-04-15 08:26:33,691 - WARNING -  * Debugger is active!
+2025-04-15 08:26:33,691 - INFO -  * Debugger PIN: 114-929-566
+2025-04-15 08:26:40,109 - INFO - 127.0.0.1 - - [15/Apr/2025 08:26:40] "GET /api/db/check-tables HTTP/1.1" 200 -
+2025-04-15 08:26:40,190 - INFO - 127.0.0.1 - - [15/Apr/2025 08:26:40] "[33mGET /api/user-profile/student/2157 HTTP/1.1[0m" 404 -
+2025-04-15 08:26:40,280 - INFO - 127.0.0.1 - - [15/Apr/2025 08:26:40] "[35m[1mPOST /api/admin/add-student HTTP/1.1[0m" 201 -
+2025-04-15 08:26:40,380 - INFO - 127.0.0.1 - - [15/Apr/2025 08:26:40] "GET /api/user-profile/student/2157 HTTP/1.1" 200 -
+2025-04-15 08:26:46,759 - INFO -  * Detected change in '/home/vraj/Desktop/Courses/Databases/CS432-Project/frontend/app.py', reloading
+2025-04-15 08:26:46,877 - INFO -  * Restarting with stat
+2025-04-15 08:26:47,218 - INFO - Connected to database: cs432cims
+2025-04-15 08:26:47,228 - WARNING -  * Debugger is active!
+2025-04-15 08:26:47,228 - INFO -  * Debugger PIN: 114-929-566
+2025-04-15 08:26:47,235 - INFO - 127.0.0.1 - - [15/Apr/2025 08:26:47] "GET / HTTP/1.1" 200 -
+2025-04-15 08:26:57,539 - INFO - 127.0.0.1 - - [15/Apr/2025 08:26:57] "GET /api/db/check-tables HTTP/1.1" 200 -
+2025-04-15 08:26:57,656 - INFO - 127.0.0.1 - - [15/Apr/2025 08:26:57] "GET /api/user-profile/student/Vraj%20Shah HTTP/1.1" 200 -
+2025-04-15 08:27:02,313 - INFO -  * Detected change in '/home/vraj/Desktop/Courses/Databases/CS432-Project/frontend/app.py', reloading
+2025-04-15 08:27:02,398 - INFO -  * Restarting with stat
+2025-04-15 08:27:02,782 - INFO - Connected to database: cs432cims
+2025-04-15 08:27:02,792 - WARNING -  * Debugger is active!
+2025-04-15 08:27:02,792 - INFO -  * Debugger PIN: 114-929-566
+2025-04-15 08:27:02,800 - INFO - 127.0.0.1 - - [15/Apr/2025 08:27:02] "GET / HTTP/1.1" 200 -
+2025-04-15 08:27:05,216 - INFO - 127.0.0.1 - - [15/Apr/2025 08:27:05] "GET /api/db/check-tables HTTP/1.1" 200 -
+2025-04-15 08:27:05,389 - INFO - 127.0.0.1 - - [15/Apr/2025 08:27:05] "GET /api/user-profile/student/Vraj%20Shah HTTP/1.1" 200 -
+2025-04-15 08:27:10,945 - INFO - 127.0.0.1 - - [15/Apr/2025 08:27:10] "[33mPOST /api/auth/logout HTTP/1.1[0m" 404 -
+2025-04-15 08:27:18,627 - INFO - 127.0.0.1 - - [15/Apr/2025 08:27:18] "POST /api/auth/login HTTP/1.1" 200 -
+2025-04-15 08:27:18,751 - INFO - 127.0.0.1 - - [15/Apr/2025 08:27:18] "GET /api/student/455 HTTP/1.1" 200 -
+2025-04-15 08:27:23,912 - INFO -  * Detected change in '/home/vraj/Desktop/Courses/Databases/CS432-Project/frontend/app.py', reloading
+2025-04-15 08:27:24,066 - INFO -  * Restarting with stat
+2025-04-15 08:27:24,442 - INFO - Connected to database: cs432cims
+2025-04-15 08:27:24,453 - WARNING -  * Debugger is active!
+2025-04-15 08:27:24,453 - INFO -  * Debugger PIN: 114-929-566
+2025-04-15 08:27:24,462 - INFO - 127.0.0.1 - - [15/Apr/2025 08:27:24] "GET / HTTP/1.1" 200 -
+2025-04-15 08:27:38,546 - INFO -  * Detected change in '/home/vraj/Desktop/Courses/Databases/CS432-Project/frontend/app.py', reloading
+2025-04-15 08:27:38,641 - INFO -  * Restarting with stat
+2025-04-15 08:27:38,988 - INFO - Connected to database: cs432cims
+2025-04-15 08:27:39,002 - WARNING -  * Debugger is active!
+2025-04-15 08:27:39,002 - INFO -  * Debugger PIN: 114-929-566
+2025-04-15 08:27:39,011 - INFO - 127.0.0.1 - - [15/Apr/2025 08:27:39] "GET / HTTP/1.1" 200 -
+2025-04-15 08:29:35,898 - INFO - 127.0.0.1 - - [15/Apr/2025 08:29:35] "GET /api/student/455 HTTP/1.1" 200 -
+2025-04-15 08:29:46,824 - INFO - 127.0.0.1 - - [15/Apr/2025 08:29:46] "GET /api/admin/all-users HTTP/1.1" 200 -
+2025-04-15 08:29:56,031 - INFO - 127.0.0.1 - - [15/Apr/2025 08:29:56] "GET /api/student/455 HTTP/1.1" 200 -
+2025-04-15 08:29:57,888 - INFO - 127.0.0.1 - - [15/Apr/2025 08:29:57] "GET /api/db/check-tables HTTP/1.1" 200 -
+2025-04-15 08:29:57,937 - INFO - 127.0.0.1 - - [15/Apr/2025 08:29:57] "[33mGET /api/user-profile/admin/testuser123 HTTP/1.1[0m" 404 -
+2025-04-15 08:29:57,941 - INFO - 127.0.0.1 - - [15/Apr/2025 08:29:57] "[33mPOST /api/admin/add-admin HTTP/1.1[0m" 404 -
+2025-04-15 08:29:58,043 - INFO - 127.0.0.1 - - [15/Apr/2025 08:29:58] "GET /api/student/455 HTTP/1.1" 200 -
+2025-04-15 08:30:06,838 - INFO - 127.0.0.1 - - [15/Apr/2025 08:30:06] "GET /api/db/check-tables HTTP/1.1" 200 -
+2025-04-15 08:30:06,885 - INFO - 127.0.0.1 - - [15/Apr/2025 08:30:06] "[33mGET /api/user-profile/admin/testuser123 HTTP/1.1[0m" 404 -
+2025-04-15 08:30:06,889 - INFO - 127.0.0.1 - - [15/Apr/2025 08:30:06] "[33mPOST /api/admin/add-admin HTTP/1.1[0m" 404 -
+2025-04-15 08:30:06,998 - INFO - 127.0.0.1 - - [15/Apr/2025 08:30:06] "GET /api/student/455 HTTP/1.1" 200 -
+2025-04-15 08:30:08,813 - INFO - 127.0.0.1 - - [15/Apr/2025 08:30:08] "GET /api/student/455 HTTP/1.1" 200 -
+2025-04-15 08:30:15,836 - INFO - 127.0.0.1 - - [15/Apr/2025 08:30:15] "GET /api/admin/all-users HTTP/1.1" 200 -
+2025-04-15 08:30:34,799 - INFO - 127.0.0.1 - - [15/Apr/2025 08:30:34] "GET /api/admin/all-users HTTP/1.1" 200 -
+2025-04-15 08:30:37,793 - INFO - 127.0.0.1 - - [15/Apr/2025 08:30:37] "GET /api/db/check-tables HTTP/1.1" 200 -
+2025-04-15 08:30:37,848 - INFO - 127.0.0.1 - - [15/Apr/2025 08:30:37] "[33mGET /api/user-profile/admin/testuser123 HTTP/1.1[0m" 404 -
+2025-04-15 08:30:37,853 - INFO - 127.0.0.1 - - [15/Apr/2025 08:30:37] "[33mPOST /api/admin/add-admin HTTP/1.1[0m" 404 -
+2025-04-15 08:30:37,909 - INFO - 127.0.0.1 - - [15/Apr/2025 08:30:37] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-15 08:30:37,913 - INFO - 127.0.0.1 - - [15/Apr/2025 08:30:37] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-15 08:31:58,644 - INFO - 127.0.0.1 - - [15/Apr/2025 08:31:58] "GET /api/admin/all-users HTTP/1.1" 200 -
+2025-04-15 08:32:32,447 - INFO - User testuser123 added to login table with ID 455
+2025-04-15 08:32:32,493 - INFO - User testuser123 added to administrators table in G6 database
+2025-04-15 08:32:32,532 - INFO - CIMS DATABASE CHANGE: INSERT | Table: members | Record: 455 | Added new member: testuser123, Email: testuser123@gmail.com
+2025-04-15 08:32:32,532 - WARNING - Attempted database change without session token: CIMS DATABASE CHANGE: INSERT | Table: members | Record: 455 | Added new member: testuser123, Email: testuser123@gmail.com
+2025-04-15 08:32:32,533 - INFO - 127.0.0.1 - - [15/Apr/2025 08:32:32] "POST /api/admin/add-user HTTP/1.1" 200 -
+2025-04-15 08:32:32,622 - INFO - 127.0.0.1 - - [15/Apr/2025 08:32:32] "GET /api/admin/all-users HTTP/1.1" 200 -
+2025-04-15 08:32:35,575 - INFO - 127.0.0.1 - - [15/Apr/2025 08:32:35] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-15 08:32:35,578 - INFO - 127.0.0.1 - - [15/Apr/2025 08:32:35] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-15 08:32:37,030 - INFO - 127.0.0.1 - - [15/Apr/2025 08:32:37] "[33mPOST /api/auth/logout HTTP/1.1[0m" 404 -
+2025-04-15 08:32:43,415 - INFO - 127.0.0.1 - - [15/Apr/2025 08:32:43] "POST /api/auth/login HTTP/1.1" 200 -
+2025-04-15 08:32:43,482 - INFO - 127.0.0.1 - - [15/Apr/2025 08:32:43] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-15 08:32:43,486 - INFO - 127.0.0.1 - - [15/Apr/2025 08:32:43] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-15 08:32:45,700 - INFO - 127.0.0.1 - - [15/Apr/2025 08:32:45] "GET /api/admin/all-users HTTP/1.1" 200 -
+2025-04-15 08:33:01,871 - INFO - 127.0.0.1 - - [15/Apr/2025 08:33:01] "GET /api/db/check-tables HTTP/1.1" 200 -
+2025-04-15 08:33:01,913 - INFO - 127.0.0.1 - - [15/Apr/2025 08:33:01] "GET /api/user-profile/admin/testuser123 HTTP/1.1" 200 -
+2025-04-15 08:33:26,990 - INFO - 127.0.0.1 - - [15/Apr/2025 08:33:26] "GET /api/db/check-tables HTTP/1.1" 200 -
+2025-04-15 08:33:27,033 - INFO - 127.0.0.1 - - [15/Apr/2025 08:33:27] "GET /api/user-profile/admin/testuser123 HTTP/1.1" 200 -
+2025-04-15 08:33:29,666 - INFO - 127.0.0.1 - - [15/Apr/2025 08:33:29] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-15 08:33:29,670 - INFO - 127.0.0.1 - - [15/Apr/2025 08:33:29] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-15 08:34:09,104 - INFO - 127.0.0.1 - - [15/Apr/2025 08:34:09] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-15 08:34:09,109 - INFO - 127.0.0.1 - - [15/Apr/2025 08:34:09] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-15 08:34:11,556 - INFO - 127.0.0.1 - - [15/Apr/2025 08:34:11] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-15 08:34:11,560 - INFO - 127.0.0.1 - - [15/Apr/2025 08:34:11] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-15 08:34:12,906 - INFO - 127.0.0.1 - - [15/Apr/2025 08:34:12] "GET /api/db/check-tables HTTP/1.1" 200 -
+2025-04-15 08:34:12,952 - INFO - 127.0.0.1 - - [15/Apr/2025 08:34:12] "GET /api/user-profile/admin/testuser123 HTTP/1.1" 200 -
+2025-04-15 08:34:15,476 - INFO - 127.0.0.1 - - [15/Apr/2025 08:34:15] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-15 08:34:15,479 - INFO - 127.0.0.1 - - [15/Apr/2025 08:34:15] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-15 08:34:16,660 - INFO - 127.0.0.1 - - [15/Apr/2025 08:34:16] "[33mPOST /api/auth/logout HTTP/1.1[0m" 404 -
+2025-04-15 08:36:03,808 - INFO - 127.0.0.1 - - [15/Apr/2025 08:36:03] "POST /api/auth/login HTTP/1.1" 200 -
+2025-04-15 08:36:03,872 - INFO - 127.0.0.1 - - [15/Apr/2025 08:36:03] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-15 08:36:03,878 - INFO - 127.0.0.1 - - [15/Apr/2025 08:36:03] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-15 08:36:06,481 - INFO - 127.0.0.1 - - [15/Apr/2025 08:36:06] "GET /api/admin/all-users HTTP/1.1" 200 -
+2025-04-15 08:36:34,603 - INFO - 127.0.0.1 - - [15/Apr/2025 08:36:34] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-15 08:36:34,607 - INFO - 127.0.0.1 - - [15/Apr/2025 08:36:34] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-15 08:36:36,795 - INFO - 127.0.0.1 - - [15/Apr/2025 08:36:36] "[33mPOST /api/auth/logout HTTP/1.1[0m" 404 -
+2025-04-15 08:36:55,117 - INFO - 127.0.0.1 - - [15/Apr/2025 08:36:55] "POST /api/auth/login HTTP/1.1" 200 -
+2025-04-15 08:36:55,172 - INFO - 127.0.0.1 - - [15/Apr/2025 08:36:55] "[33mGET /api/student/2157 HTTP/1.1[0m" 404 -
+2025-04-15 08:36:55,177 - INFO - 127.0.0.1 - - [15/Apr/2025 08:36:55] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-15 08:36:57,320 - INFO - 127.0.0.1 - - [15/Apr/2025 08:36:57] "[33mGET /api/student/2157 HTTP/1.1[0m" 404 -
+2025-04-15 08:36:57,324 - INFO - 127.0.0.1 - - [15/Apr/2025 08:36:57] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-15 08:37:07,898 - INFO - 127.0.0.1 - - [15/Apr/2025 08:37:07] "GET /api/db/check-tables HTTP/1.1" 200 -
+2025-04-15 08:37:08,004 - INFO - 127.0.0.1 - - [15/Apr/2025 08:37:08] "GET /api/user-profile/student/Vraj%20Shah HTTP/1.1" 200 -
+2025-04-15 08:37:16,687 - INFO - 127.0.0.1 - - [15/Apr/2025 08:37:16] "[33mPOST /api/auth/logout HTTP/1.1[0m" 404 -
+2025-04-15 08:37:24,651 - INFO - 127.0.0.1 - - [15/Apr/2025 08:37:24] "[31m[1mPOST /api/auth/login HTTP/1.1[0m" 401 -
+2025-04-15 08:37:30,824 - INFO - 127.0.0.1 - - [15/Apr/2025 08:37:30] "POST /api/auth/login HTTP/1.1" 200 -
+2025-04-15 08:37:30,882 - INFO - 127.0.0.1 - - [15/Apr/2025 08:37:30] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-15 08:37:30,886 - INFO - 127.0.0.1 - - [15/Apr/2025 08:37:30] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-15 08:37:33,402 - INFO - 127.0.0.1 - - [15/Apr/2025 08:37:33] "GET /api/admin/all-users HTTP/1.1" 200 -
+2025-04-15 08:38:00,413 - INFO - 127.0.0.1 - - [15/Apr/2025 08:38:00] "GET /api/db/check-tables HTTP/1.1" 200 -
+2025-04-15 08:38:00,460 - INFO - 127.0.0.1 - - [15/Apr/2025 08:38:00] "GET /api/user-profile/admin/testuser123 HTTP/1.1" 200 -
+2025-04-15 08:38:06,822 - INFO - 127.0.0.1 - - [15/Apr/2025 08:38:06] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-15 08:38:06,827 - INFO - 127.0.0.1 - - [15/Apr/2025 08:38:06] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-15 08:38:08,935 - INFO - 127.0.0.1 - - [15/Apr/2025 08:38:08] "GET /api/admin/all-users HTTP/1.1" 200 -
+2025-04-15 08:38:08,979 - INFO - 127.0.0.1 - - [15/Apr/2025 08:38:08] "GET /api/admin/all-users HTTP/1.1" 200 -
+2025-04-15 08:38:14,427 - INFO - 127.0.0.1 - - [15/Apr/2025 08:38:14] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-15 08:38:14,431 - INFO - 127.0.0.1 - - [15/Apr/2025 08:38:14] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-15 08:38:28,905 - INFO - 127.0.0.1 - - [15/Apr/2025 08:38:28] "GET /api/db/check-tables HTTP/1.1" 200 -
+2025-04-15 08:38:28,956 - INFO - 127.0.0.1 - - [15/Apr/2025 08:38:28] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-15 08:38:29,048 - INFO - 127.0.0.1 - - [15/Apr/2025 08:38:29] "[35m[1mPOST /api/admin/add-student HTTP/1.1[0m" 201 -
+2025-04-15 08:38:29,123 - INFO - 127.0.0.1 - - [15/Apr/2025 08:38:29] "GET /api/maintenance/requests?student_id=455 HTTP/1.1" 200 -
+2025-04-15 08:38:33,275 - INFO - 127.0.0.1 - - [15/Apr/2025 08:38:33] "[33mGET /api/student/455 HTTP/1.1[0m" 404 -
+2025-04-15 08:38:33,279 - INFO - 127.0.0.1 - - [15/Apr/2025 08:38:33] "[31m[1mGET /api/auth/status HTTP/1.1[0m" 401 -
+2025-04-15 08:41:02,118 - INFO - 127.0.0.1 - - [15/Apr/2025 08:41:02] "[33mPOST /api/auth/logout HTTP/1.1[0m" 404 -

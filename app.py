@@ -480,6 +480,88 @@ def api_db_connection_test():
         cursor.close()
         conn.close()
 
+@app.route('/api/db/check-tables', methods=['GET'])
+def api_db_check_tables():
+    """Check if required tables exist in G6 database and create them if not"""
+    try:
+        conn = get_db_connection(use_cism=False)
+        cursor = conn.cursor(dictionary=True)
+
+        # Check if students table exists, create if not
+        cursor.execute("""
+            SELECT COUNT(*)
+            FROM information_schema.tables
+            WHERE table_schema = DATABASE()
+            AND table_name = 'students'
+        """)
+
+        if cursor.fetchone()['COUNT(*)'] == 0:
+            # Create students table
+            cursor.execute("""
+                CREATE TABLE students (
+                    Student_ID INT AUTO_INCREMENT PRIMARY KEY,
+                    Name VARCHAR(100) NOT NULL,
+                    Email VARCHAR(100) UNIQUE NOT NULL,
+                    Contact_Number VARCHAR(20),
+                    Age INT
+                )
+            """)
+            logging.info("Created students table")
+            conn.commit()
+
+        # Check if technicians table exists, create if not
+        cursor.execute("""
+            SELECT COUNT(*)
+            FROM information_schema.tables
+            WHERE table_schema = DATABASE()
+            AND table_name = 'technicians'
+        """)
+
+        if cursor.fetchone()['COUNT(*)'] == 0:
+            # Create technicians table
+            cursor.execute("""
+                CREATE TABLE technicians (
+                    Technician_ID INT AUTO_INCREMENT PRIMARY KEY,
+                    Name VARCHAR(100) NOT NULL,
+                    Email VARCHAR(100) UNIQUE NOT NULL,
+                    Contact_Number VARCHAR(20),
+                    Specialization VARCHAR(100)
+                )
+            """)
+            logging.info("Created technicians table")
+            conn.commit()
+
+        # Check if administrators table exists, create if not
+        cursor.execute("""
+            SELECT COUNT(*)
+            FROM information_schema.tables
+            WHERE table_schema = DATABASE()
+            AND table_name = 'administrators'
+        """)
+
+        if cursor.fetchone()['COUNT(*)'] == 0:
+            # Create administrators table
+            cursor.execute("""
+                CREATE TABLE administrators (
+                    Admin_ID INT AUTO_INCREMENT PRIMARY KEY,
+                    Name VARCHAR(100) NOT NULL,
+                    Email VARCHAR(100) UNIQUE NOT NULL
+                )
+            """)
+            logging.info("Created administrators table")
+            conn.commit()
+
+        return jsonify({"message": "Database tables checked and created if needed"}), 200
+
+    except Exception as e:
+        logging.error(f"Error checking/creating database tables: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+    finally:
+        if 'cursor' in locals():
+            cursor.close()
+        if 'conn' in locals():
+            conn.close()
+
 @app.route('/api/image/update', methods=['POST'])
 def api_update_image():
     return UpdateImage.UpdateImage(request, get_db_connection(), logging).update_image()
@@ -1572,9 +1654,17 @@ def api_view_security_logs():
 
 # ----------------------- USER PROFILES -----------------------
 
-@app.route('/api/user-profile/<string:role>/<int:user_id>', methods=['GET'])
-def api_get_user_profile(role, user_id):
-    """Get user profile data from G6 database based on role and ID"""
+@app.route('/api/user-profile/<string:role>/<string:username>', methods=['GET'])
+def api_get_user_profile(role, username):
+    """Get user profile data from G6 database based on role and username"""
+    # For backward compatibility, check if username is actually a numeric ID
+    try:
+        user_id = int(username)
+        is_id = True
+    except ValueError:
+        is_id = False
+        user_id = None
+
     try:
         conn = get_db_connection(use_cism=False)
         cursor = conn.cursor(dictionary=True)
@@ -1604,7 +1694,12 @@ def api_get_user_profile(role, user_id):
                 conn.commit()
                 return jsonify({"error": "Student not found"}), 404
 
-            cursor.execute("SELECT * FROM students WHERE Student_ID = %s", (user_id,))
+            # Look up student by name or ID
+            if is_id:
+                cursor.execute("SELECT * FROM students WHERE Student_ID = %s", (user_id,))
+            else:
+                cursor.execute("SELECT * FROM students WHERE Name = %s OR Email = %s", (username, username))
+
             user_data = cursor.fetchone()
             if not user_data:
                 return jsonify({"error": "Student not found"}), 404
@@ -1626,7 +1721,7 @@ def api_get_user_profile(role, user_id):
                     SELECT * FROM maintenance_requests
                     WHERE Student_ID = %s
                     ORDER BY Submission_Date DESC
-                """, (user_id,))
+                """, (user_data['Student_ID'],))
                 maintenance_requests = cursor.fetchall()
                 user_data['maintenance_requests'] = maintenance_requests
             else:
@@ -1638,7 +1733,7 @@ def api_get_user_profile(role, user_id):
                     SELECT * FROM notifications
                     WHERE Student_ID = %s
                     ORDER BY Sent_At DESC
-                """, (user_id,))
+                """, (user_data['Student_ID'],))
                 notifications = cursor.fetchall()
                 user_data['notifications'] = notifications
             except Exception as e:
@@ -1654,7 +1749,7 @@ def api_get_user_profile(role, user_id):
                         SELECT * FROM G6_notifications
                         WHERE Student_ID = %s
                         ORDER BY Sent_At DESC
-                    """, (user_id,))
+                    """, (user_data['Student_ID'],))
                     notifications = cursor_cims.fetchall()
                     user_data['notifications'] = notifications
                     cursor_cims.close()
@@ -1663,7 +1758,12 @@ def api_get_user_profile(role, user_id):
                     logging.warning(f"Could not get notifications from CIMS database: {str(e)}")
 
         elif role == 'technician':
-            cursor.execute("SELECT * FROM technicians WHERE Technician_ID = %s", (user_id,))
+            # Look up technician by name or ID
+            if is_id:
+                cursor.execute("SELECT * FROM technicians WHERE Technician_ID = %s", (user_id,))
+            else:
+                cursor.execute("SELECT * FROM technicians WHERE Name = %s OR Email = %s", (username, username))
+
             user_data = cursor.fetchone()
             if not user_data:
                 return jsonify({"error": "Technician not found"}), 404
@@ -1672,19 +1772,28 @@ def api_get_user_profile(role, user_id):
             user_data['role'] = 'technician'
 
             # Get assigned maintenance requests
-            cursor.execute("""
-                SELECT r.*, s.Name as StudentName
-                FROM maintenance_requests r
-                JOIN students s ON r.Student_ID = s.Student_ID
-                JOIN technician_assignments ta ON r.Request_ID = ta.Request_ID
-                WHERE ta.Technician_ID = %s
-                ORDER BY r.Submission_Date DESC
-            """, (user_id,))
-            assigned_requests = cursor.fetchall()
-            user_data['assigned_requests'] = assigned_requests
+            try:
+                cursor.execute("""
+                    SELECT r.*, s.Name as StudentName
+                    FROM maintenance_requests r
+                    JOIN students s ON r.Student_ID = s.Student_ID
+                    JOIN technician_assignments ta ON r.Request_ID = ta.Request_ID
+                    WHERE ta.Technician_ID = %s
+                    ORDER BY r.Submission_Date DESC
+                """, (user_data['Technician_ID'],))
+                assigned_requests = cursor.fetchall()
+                user_data['assigned_requests'] = assigned_requests
+            except Exception as e:
+                logging.warning(f"Could not get assigned maintenance requests: {str(e)}")
+                user_data['assigned_requests'] = []
 
         elif role == 'admin':
-            cursor.execute("SELECT * FROM administrators WHERE Admin_ID = %s", (user_id,))
+            # Look up admin by name or ID
+            if is_id:
+                cursor.execute("SELECT * FROM administrators WHERE Admin_ID = %s", (user_id,))
+            else:
+                cursor.execute("SELECT * FROM administrators WHERE Name = %s OR Email = %s", (username, username))
+
             user_data = cursor.fetchone()
             if not user_data:
                 return jsonify({"error": "Administrator not found"}), 404
@@ -1713,7 +1822,7 @@ def api_get_user_profile(role, user_id):
 @app.route('/api/student/<int:student_id>', methods=['GET'])
 def api_get_student_details(student_id):
     """Legacy endpoint for backward compatibility"""
-    return api_get_user_profile('student', student_id)
+    return api_get_user_profile('student', str(student_id))
 
 # ----------------------- APPLICATION STARTUP -----------------------
 

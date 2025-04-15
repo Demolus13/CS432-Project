@@ -30,21 +30,10 @@
                             <div class="col-md-4 fw-bold">Student ID:</div>
                             <div class="col-md-8">{{ profile.Student_ID }}</div>
                         </div>
-                        {% elif profile.role == 'technician' %}
                         <div class="row mb-3">
-                            <div class="col-md-4 fw-bold">Technician ID:</div>
-                            <div class="col-md-8">{{ profile.Technician_ID }}</div>
+                            <div class="col-md-4 fw-bold">Name:</div>
+                            <div class="col-md-8">{{ profile.Name }}</div>
                         </div>
-                        <div class="row mb-3">
-                            <div class="col-md-4 fw-bold">Specialization:</div>
-                            <div class="col-md-8">{{ profile.Specialization }}</div>
-                        </div>
-                        {% elif profile.role == 'admin' %}
-                        <div class="row mb-3">
-                            <div class="col-md-4 fw-bold">Admin ID:</div>
-                            <div class="col-md-8">{{ profile.Admin_ID }}</div>
-                        </div>
-                        {% endif %}
                         <div class="row mb-3">
                             <div class="col-md-4 fw-bold">Email:</div>
                             <div class="col-md-8">{{ profile.Email }}</div>
@@ -57,6 +46,41 @@
                             <div class="col-md-4 fw-bold">Age:</div>
                             <div class="col-md-8">{{ profile.Age }}</div>
                         </div>
+                        {% elif profile.role == 'technician' %}
+                        <div class="row mb-3">
+                            <div class="col-md-4 fw-bold">Technician ID:</div>
+                            <div class="col-md-8">{{ profile.Technician_ID }}</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4 fw-bold">Name:</div>
+                            <div class="col-md-8">{{ profile.Name }}</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4 fw-bold">Email:</div>
+                            <div class="col-md-8">{{ profile.Email }}</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4 fw-bold">Contact Number:</div>
+                            <div class="col-md-8">{{ profile.Contact_Number }}</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4 fw-bold">Specialization:</div>
+                            <div class="col-md-8">{{ profile.Specialization }}</div>
+                        </div>
+                        {% elif profile.role == 'admin' %}
+                        <div class="row mb-3">
+                            <div class="col-md-4 fw-bold">Admin ID:</div>
+                            <div class="col-md-8">{{ profile.Admin_ID }}</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4 fw-bold">Name:</div>
+                            <div class="col-md-8">{{ profile.Name }}</div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4 fw-bold">Email:</div>
+                            <div class="col-md-8">{{ profile.Email }}</div>
+                        </div>
+                        {% endif %}
                     </div>
                 </div>
                 {% else %}

@@ -298,10 +298,11 @@ def profile():
         )
         print(f"Database check response: {db_check_response.status_code}")
 
-        # Get user profile data based on role
-        print(f"Fetching profile for {user_role} with ID: {user_id}")
+        # Get user profile data based on role and username
+        username = session.get('username', '')
+        print(f"Fetching profile for {user_role} with username: {username}")
         response = requests.get(
-            f"{Config.API_BASE_URL}/api/user-profile/{user_role}/{user_id}",
+            f"{Config.API_BASE_URL}/api/user-profile/{user_role}/{username}",
             headers={'Authorization': f'Bearer {token}'}
         )
 
@@ -312,31 +313,57 @@ def profile():
         elif response.status_code == 401:
             flash('Your session has expired. Please login again.', 'warning')
             return redirect(url_for('logout'))
-        elif response.status_code == 404 and user_role == 'student':
-            # Student doesn't exist, we need to create a student record first
-            print(f"Student with ID {user_id} doesn't exist, creating student record")
+        elif response.status_code == 404:
+            # User doesn't exist, we need to create a record first based on role
+            print(f"{user_role.capitalize()} with ID {user_id} doesn't exist, creating record")
 
             # Get user information from session
             username = session.get('username', '')
+            email = session.get('email', f"{username}@example.com")
 
-            # Create a student record
-            student_response = requests.post(
-                f"{Config.API_BASE_URL}/api/admin/add-student",
-                json={
-                    "student_id": user_id,
-                    "name": username,
-                    "email": f"{username}@example.com",  # Default email
-                    "contact_number": "N/A",  # Default contact
-                    "age": 20  # Default age
-                }
-            )
+            if user_role == 'student':
+                # Create a student record
+                user_response = requests.post(
+                    f"{Config.API_BASE_URL}/api/admin/add-student",
+                    json={
+                        "name": username,
+                        "email": email,
+                        "contact_number": "N/A",  # Default contact
+                        "age": 20  # Default age
+                    }
+                )
+                print(f"Student creation response: {user_response.status_code}")
 
-            print(f"Student creation response: {student_response.status_code}")
-            if student_response.status_code in [200, 201]:
-                print("Student record created successfully")
+            elif user_role == 'technician':
+                # Create a technician record
+                user_response = requests.post(
+                    f"{Config.API_BASE_URL}/api/admin/add-technician",
+                    json={
+                        "name": username,
+                        "email": email,
+                        "contact_number": "N/A",  # Default contact
+                        "specialization": "General"  # Default specialization
+                    }
+                )
+                print(f"Technician creation response: {user_response.status_code}")
+
+            elif user_role == 'admin':
+                # Create an admin record
+                user_response = requests.post(
+                    f"{Config.API_BASE_URL}/api/admin/add-admin",
+                    json={
+                        "name": username,
+                        "email": email
+                    }
+                )
+                print(f"Admin creation response: {user_response.status_code}")
+
+            if user_response.status_code in [200, 201]:
+                print(f"{user_role.capitalize()} record created successfully")
                 # Now try to get the profile again
+                username = session.get('username', '')
                 response = requests.get(
-                    f"{Config.API_BASE_URL}/api/user-profile/student/{user_id}",
+                    f"{Config.API_BASE_URL}/api/user-profile/{user_role}/{username}",
                     headers={'Authorization': f'Bearer {token}'}
                 )
 
@@ -632,12 +659,13 @@ def maintenance_requests():
             username = session.get('username', '')
 
             # Create a student record
+            # Use email from session if available
+            email = session.get('email', f"{username}@example.com")
             student_response = requests.post(
                 f"{Config.API_BASE_URL}/api/admin/add-student",
                 json={
-                    "student_id": user_id,
                     "name": username,
-                    "email": f"{username}@example.com",  # Default email
+                    "email": email,
                     "contact_number": "N/A",  # Default contact
                     "age": 20  # Default age
                 }
