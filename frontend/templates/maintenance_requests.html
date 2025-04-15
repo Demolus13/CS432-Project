@@ -8,9 +8,11 @@
         <div class="card border-success">
             <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
                 <h4 class="mb-0"><i class="bi bi-tools"></i> Maintenance Requests</h4>
+                {% if session.role == 'student' %}
                 <a href="{{ url_for('new_maintenance_request') }}" class="btn btn-light">
                     <i class="bi bi-plus-circle"></i> New Request
                 </a>
+                {% endif %}
             </div>
             <div class="card-body">
                 {% if requests %}
@@ -19,17 +21,26 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                {% if session.role in ['admin', 'technician'] %}
+                                <th>Student</th>
+                                {% endif %}
                                 <th>Description</th>
                                 <th>Location</th>
                                 <th>Priority</th>
                                 <th>Submission Date</th>
                                 <th>Status</th>
+                                {% if session.role == 'technician' %}
+                                <th>Actions</th>
+                                {% endif %}
                             </tr>
                         </thead>
                         <tbody>
                             {% for request in requests %}
                             <tr>
                                 <td>{{ request.Request_ID }}</td>
+                                {% if session.role in ['admin', 'technician'] %}
+                                <td>{{ request.StudentName }}</td>
+                                {% endif %}
                                 <td>{{ request.Issue_Description }}</td>
                                 <td>{{ request.Location }}</td>
                                 <td>
@@ -43,6 +54,28 @@
                                         {{ request.Status }}
                                     </span>
                                 </td>
+                                {% if session.role == 'technician' %}
+                                <td>
+                                    {% if request.Status in ['submitted', 'in_progress'] %}
+                                    <div class="btn-group btn-group-sm">
+                                        {% if request.Status == 'submitted' %}
+                                        <form action="{{ url_for('assign_maintenance_request', request_id=request.Request_ID) }}" method="post" style="display:inline;">
+                                            <button type="submit" class="btn btn-outline-primary">
+                                                <i class="bi bi-person-check"></i> Assign to me
+                                            </button>
+                                        </form>
+                                        {% elif request.Status == 'in_progress' %}
+                                        <form action="{{ url_for('update_maintenance_request_status', request_id=request.Request_ID) }}" method="post" style="display:inline;">
+                                            <input type="hidden" name="status" value="completed">
+                                            <button type="submit" class="btn btn-outline-success">
+                                                <i class="bi bi-check-circle"></i> Mark Completed
+                                            </button>
+                                        </form>
+                                        {% endif %}
+                                    </div>
+                                    {% endif %}
+                                </td>
+                                {% endif %}
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -51,11 +84,21 @@
                 {% else %}
                 <div class="alert alert-info">
                     <i class="bi bi-info-circle-fill"></i> No maintenance requests found.
+                    {% if session.role == 'student' %}
                     <a href="{{ url_for('new_maintenance_request') }}" class="alert-link">Create your first request</a>.
+                    {% endif %}
                 </div>
                 {% endif %}
             </div>
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(document).ready(function() {
+        // Add any future JavaScript here if needed
+    });
+</script>
 {% endblock %}

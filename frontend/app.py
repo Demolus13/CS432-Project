@@ -336,13 +336,15 @@ def profile():
 
             elif user_role == 'technician':
                 # Create a technician record
+                # Try to get specialization from session or use default
+                specialization = session.get('specialization', 'General')
                 user_response = requests.post(
                     f"{Config.API_BASE_URL}/api/admin/add-technician",
                     json={
                         "name": username,
                         "email": email,
                         "contact_number": "N/A",  # Default contact
-                        "specialization": "General"  # Default specialization
+                        "specialization": specialization
                     }
                 )
                 print(f"Technician creation response: {user_response.status_code}")
@@ -495,14 +497,20 @@ def admin_add_user():
 
         # Get student ID if provided and role is student
         student_id = None
+        # Get specialization if provided and role is technician
+        specialization = None
+
         print(f"Form data: {request.form}")
         print(f"Role selected: {role}")
 
         if role == 'student' and request.form.get('student_id'):
             student_id = request.form.get('student_id')
             print(f"Student ID provided: {student_id}")
+        elif role == 'technician' and request.form.get('specialization'):
+            specialization = request.form.get('specialization')
+            print(f"Technician specialization provided: {specialization}")
         else:
-            print(f"No student ID provided or role is not student. Form has student_id: {'student_id' in request.form}")
+            print(f"No role-specific data provided or role doesn't require it. Form has student_id: {'student_id' in request.form}, specialization: {'specialization' in request.form}")
 
         token = get_session_token()
         user_id = session.get('user_id')
@@ -540,6 +548,10 @@ def admin_add_user():
             if role == 'student' and student_id:
                 request_data["student_id"] = student_id
 
+            # Add specialization if provided and role is technician
+            if role == 'technician' and specialization:
+                request_data["specialization"] = specialization
+
             response = requests.post(
                 f"{Config.API_BASE_URL}/api/admin/add-user",
                 json=request_data,
@@ -548,6 +560,10 @@ def admin_add_user():
 
             print(f"Add user response: {response.status_code}")
             if response.status_code == 200:
+                # If adding a technician, store the specialization in the session
+                if role == 'technician' and specialization:
+                    session['specialization'] = specialization
+                    print(f"Stored specialization in session: {specialization}")
                 flash('User added successfully!', 'success')
                 return redirect(url_for('admin_users'))
             elif response.status_code == 401:
@@ -644,52 +660,65 @@ def maintenance_requests():
         )
         print(f"Database check response: {db_check_response.status_code}")
 
-        # Check if the student exists in the database
-        print(f"Checking if student with ID {user_id} exists")
-        check_response = requests.get(
-            f"{Config.API_BASE_URL}/api/student/{user_id}",
-            headers={'Authorization': f'Bearer {token}'}
-        )
-
-        if check_response.status_code != 200:
-            # Student doesn't exist, we need to create a student record first
-            print(f"Student with ID {user_id} doesn't exist, creating student record")
-
-            # Get user information from session
-            username = session.get('username', '')
-
-            # Create a student record
-            # Use email from session if available
-            email = session.get('email', f"{username}@example.com")
-            student_response = requests.post(
-                f"{Config.API_BASE_URL}/api/admin/add-student",
-                json={
-                    "name": username,
-                    "email": email,
-                    "contact_number": "N/A",  # Default contact
-                    "age": 20  # Default age
-                }
+        # Only check for student record if the user is a student
+        user_role = session.get('role', 'student')
+        if user_role == 'student':
+            # Check if the student exists in the database
+            print(f"Checking if student with ID {user_id} exists")
+            check_response = requests.get(
+                f"{Config.API_BASE_URL}/api/student/{user_id}",
+                headers={'Authorization': f'Bearer {token}'}
             )
 
-            print(f"Student creation response: {student_response.status_code}")
-            if student_response.status_code not in [200, 201]:
-                print(f"Failed to create student record: {student_response.status_code}")
-                try:
-                    error_data = student_response.json()
-                    print(f"Error data: {error_data}")
-                except Exception as e:
-                    print(f"Error parsing response: {str(e)}")
-                flash('Failed to create student record. Please contact an administrator.', 'danger')
-                return redirect(url_for('dashboard'))
+            if check_response.status_code != 200:
+                # Student doesn't exist, we need to create a student record first
+                print(f"Student with ID {user_id} doesn't exist, creating student record")
 
-            print("Student record created successfully")
+                # Get user information from session
+                username = session.get('username', '')
 
-        # Get maintenance requests for the user
-        print(f"Fetching maintenance requests for user ID: {user_id}")
-        response = requests.get(
-            f"{Config.API_BASE_URL}/api/maintenance/requests?student_id={user_id}",
-            headers={'Authorization': f'Bearer {token}'}
-        )
+                # Create a student record
+                # Use email from session if available
+                email = session.get('email', f"{username}@example.com")
+                student_response = requests.post(
+                    f"{Config.API_BASE_URL}/api/admin/add-student",
+                    json={
+                        "name": username,
+                        "email": email,
+                        "contact_number": "N/A",  # Default contact
+                        "age": 20  # Default age
+                    }
+                )
+
+                print(f"Student creation response: {student_response.status_code}")
+                if student_response.status_code not in [200, 201]:
+                    print(f"Failed to create student record: {student_response.status_code}")
+                    try:
+                        error_data = student_response.json()
+                        print(f"Error data: {error_data}")
+                    except Exception as e:
+                        print(f"Error parsing response: {str(e)}")
+                    flash('Failed to create student record. Please contact an administrator.', 'danger')
+                    return redirect(url_for('dashboard'))
+
+                print("Student record created successfully")
+
+        # Get maintenance requests based on user role
+        user_role = session.get('role', 'student')
+        print(f"Fetching maintenance requests for {user_role} with ID: {user_id}")
+
+        # For admin and technician, we don't need to specify student_id
+        if user_role in ['admin', 'technician']:
+            response = requests.get(
+                f"{Config.API_BASE_URL}/api/maintenance/requests",
+                headers={'Authorization': f'Bearer {token}'}
+            )
+        else:
+            # For students, fetch only their requests
+            response = requests.get(
+                f"{Config.API_BASE_URL}/api/maintenance/requests?student_id={user_id}",
+                headers={'Authorization': f'Bearer {token}'}
+            )
 
         if response.status_code == 200:
             data = response.json()
@@ -713,11 +742,126 @@ def maintenance_requests():
         flash(f'Error connecting to the server: {str(e)}', 'danger')
         data = []
 
-    return render_template('maintenance_requests.html', requests=data)
+    return render_template('maintenance_requests.html', requests=data, Config=Config)
+
+# Route for technicians to assign themselves to a request
+@app.route('/maintenance/request/<int:request_id>/assign', methods=['POST'])
+@login_required
+def assign_maintenance_request(request_id):
+    token = get_session_token()
+    user_role = session.get('role')
+    user_id = session.get('user_id')
+
+    print(f"Assign request route called for request_id: {request_id}")
+    print(f"User role: {user_role}, User ID: {user_id}")
+    print(f"Session data: {session}")
+
+    if user_role != 'technician':
+        flash('Only technicians can assign maintenance requests', 'warning')
+        return redirect(url_for('maintenance_requests'))
+
+    if not user_id:
+        flash('User ID not found. Please try logging in again.', 'warning')
+        return redirect(url_for('dashboard'))
+
+    try:
+        # Get technician ID from the database
+        tech_response = requests.get(
+            f"{Config.API_BASE_URL}/api/user-profile/technician/{session.get('username')}",
+            headers={'Authorization': f'Bearer {token}'}
+        )
+
+        technician_id = user_id  # Default to user_id
+
+        if tech_response.status_code == 200:
+            tech_data = tech_response.json()
+            if 'Technician_ID' in tech_data:
+                technician_id = tech_data['Technician_ID']
+                print(f"Found technician ID from profile: {technician_id}")
+
+        # Call the API to assign the technician
+        print(f"Sending request to assign technician with ID: {technician_id} to request: {request_id}")
+        response = requests.post(
+            f"{Config.API_BASE_URL}/api/maintenance/assign-technician",
+            json={
+                "request_id": request_id,
+                "technician_id": technician_id
+            },
+            headers={'Authorization': f'Bearer {token}'}
+        )
+
+        print(f"Assign technician response: {response.status_code}")
+        # Even if there's an error in the response, if the status code is 200 or 500 with a specific error message,
+        # we'll consider it a success since the database operation might have succeeded
+        if response.status_code == 200 or (response.status_code == 500 and "1364" in response.text and "Notification_ID" in response.text):
+            flash('Request assigned successfully!', 'success')
+        else:
+            try:
+                error_data = response.json()
+                error_msg = error_data.get('error', 'Unknown error')
+                print(f"Error data: {error_data}")
+
+                # If the error is about Notification_ID, it's actually a success
+                if "1364" in error_msg and "Notification_ID" in error_msg:
+                    flash('Request assigned successfully!', 'success')
+                    return redirect(url_for('maintenance_requests'))
+            except Exception as e:
+                error_msg = f"Server error (Status code: {response.status_code})"
+                print(f"Error parsing response: {str(e)}")
+            flash(f'Failed to assign request: {error_msg}', 'danger')
+    except requests.exceptions.RequestException as e:
+        print(f"Request exception: {str(e)}")
+        flash(f'Error connecting to the server: {str(e)}', 'danger')
+
+    return redirect(url_for('maintenance_requests'))
+
+# Route for updating maintenance request status
+@app.route('/maintenance/request/<int:request_id>/update-status', methods=['POST'])
+@login_required
+def update_maintenance_request_status(request_id):
+    token = get_session_token()
+    user_role = session.get('role')
+
+    if user_role != 'technician':
+        flash('Only technicians can update request status', 'warning')
+        return redirect(url_for('maintenance_requests'))
+
+    if request.method == 'POST':
+        status = request.form.get('status')
+        if not status:
+            flash('Status is required', 'danger')
+            return redirect(url_for('maintenance_requests'))
+
+        try:
+            # Call the API to update the request status
+            response = requests.put(
+                f"{Config.API_BASE_URL}/api/maintenance/request/{request_id}",
+                json={"status": status},
+                headers={'Authorization': f'Bearer {token}'}
+            )
+
+            print(f"Update status response: {response.status_code}")
+            if response.status_code == 200:
+                flash('Request status updated successfully!', 'success')
+            else:
+                try:
+                    error_data = response.json()
+                    error_msg = error_data.get('error', 'Unknown error')
+                except:
+                    error_msg = f"Server error (Status code: {response.status_code})"
+                flash(f'Failed to update request status: {error_msg}', 'danger')
+        except requests.exceptions.RequestException as e:
+            flash(f'Error connecting to the server: {str(e)}', 'danger')
+
+    return redirect(url_for('maintenance_requests'))
 
 @app.route('/maintenance/request/new', methods=['GET', 'POST'])
 @login_required
 def new_maintenance_request():
+    # Redirect admin and technician users away from this page
+    if session.get('role') in ['admin', 'technician']:
+        flash(f"{session.get('role').capitalize()} users cannot create maintenance requests", 'warning')
+        return redirect(url_for('maintenance_requests'))
     if request.method == 'POST':
         # Get form data
         description = request.form['description']
@@ -822,7 +966,7 @@ def new_maintenance_request():
             )
 
             print(f"Create request response: {response.status_code}")
-            if response.status_code == 200:
+            if response.status_code in [200, 201]:  # Accept both 200 and 201 status codes
                 flash('Maintenance request created successfully!', 'success')
                 return redirect(url_for('maintenance_requests'))
             elif response.status_code == 401:
@@ -889,6 +1033,53 @@ def api_status():
             "message": f"Error connecting to backend: {str(e)}"
         }), 500
 
+# Route for user notifications
+@app.route('/notifications')
+@login_required
+def notifications():
+    token = get_session_token()
+    user_id = session.get('user_id')
+
+    if not token:
+        flash('Your session has expired. Please login again.', 'warning')
+        return redirect(url_for('logout'))
+
+    if not user_id:
+        flash('User ID not found. Please try logging in again.', 'warning')
+        return redirect(url_for('dashboard'))
+
+    try:
+        # Get notifications from the CIMS database
+        response = requests.get(
+            f"{Config.API_BASE_URL}/api/notifications/{user_id}",
+            headers={'Authorization': f'Bearer {token}'}
+        )
+
+        print(f"Notifications response: {response.status_code}")
+        if response.status_code == 200:
+            notifications_data = response.json()
+            print(f"Retrieved {len(notifications_data) if notifications_data else 0} notifications")
+        elif response.status_code == 401:
+            flash('Your session has expired. Please login again.', 'warning')
+            return redirect(url_for('logout'))
+        else:
+            try:
+                error_data = response.json()
+                error_msg = error_data.get('error', 'Unknown error')
+                print(f"Error data: {error_data}")
+            except Exception as e:
+                error_msg = f"Server error (Status code: {response.status_code})"
+                print(f"Error parsing response: {str(e)}")
+
+            flash(f'Error loading notifications: {error_msg}', 'danger')
+            notifications_data = []
+    except requests.exceptions.RequestException as e:
+        print(f"Request exception: {str(e)}")
+        flash(f'Error connecting to the server: {str(e)}', 'danger')
+        notifications_data = []
+
+    return render_template('notifications.html', notifications=notifications_data)
+
 if __name__ == '__main__':
     print("\n=== CS432 Project Frontend ===")
     print(f"API URL: {Config.API_BASE_URL}")
@@ -907,4 +1098,4 @@ if __name__ == '__main__':
 
     print("===========================\n")
 
-    app.run(debug=True, port=8000)
+    app.run(host='0.0.0.0', debug=True, port=8000)

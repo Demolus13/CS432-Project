@@ -610,11 +610,25 @@ def api_get_maintenance_requests():
         if token:
             try:
                 decoded = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
+
+                # For admin users, return all requests with student names
                 if decoded["role"] == 'admin':
                     cursor.execute("""
                         SELECT r.*, s.Name as StudentName
                         FROM maintenance_requests r
                         JOIN students s ON r.Student_ID = s.Student_ID
+                        ORDER BY r.Submission_Date DESC
+                    """)
+                    requests_data = cursor.fetchall()
+                    return jsonify(requests_data), 200
+
+                # For technician users, return pending requests (submitted or in_progress)
+                elif decoded["role"] == 'technician':
+                    cursor.execute("""
+                        SELECT r.*, s.Name as StudentName
+                        FROM maintenance_requests r
+                        JOIN students s ON r.Student_ID = s.Student_ID
+                        WHERE r.Status IN ('submitted', 'in_progress')
                         ORDER BY r.Submission_Date DESC
                     """)
                     requests_data = cursor.fetchall()
@@ -907,16 +921,10 @@ def api_update_maintenance_request(request_id):
             'rejected': "Your maintenance request has been rejected."
         }
         if data['status'] in status_message:
-            conn_cims = get_db_connection(use_cism=True)
-            cursor_cims = conn_cims.cursor()
-            cursor_cims.execute("""
-                INSERT INTO G6_notifications
-                (Student_ID, Message)
-                VALUES (%s, %s)
-            """, (student_id, status_message[data['status']]))
-            conn_cims.commit()
-            cursor_cims.close()
-            conn_cims.close()
+            # Add notification using the helper function
+            notification_success = add_notification(student_id, status_message[data['status']])
+            if not notification_success:
+                logging.warning(f"Failed to add notification for student {student_id} about status update to {data['status']}")
 
         return jsonify({"message": f"Maintenance request status updated to {data['status']}"}), 200
 
@@ -924,8 +932,6 @@ def api_update_maintenance_request(request_id):
         logging.error(f"Error updating maintenance request: {str(e)}")
         if 'conn_project' in locals():
             conn_project.rollback()
-        if 'conn_cims' in locals():
-            conn_cims.rollback()
         return jsonify({"error": str(e)}), 500
     finally:
         if 'cursor_project' in locals():
@@ -936,7 +942,7 @@ def api_update_maintenance_request(request_id):
 # ----------------------- TECHNICIAN ASSIGNMENT -----------------------
 
 @app.route('/api/maintenance/assign-technician', methods=['POST'])
-@role_required(['admin'])
+@role_required(['admin', 'technician'])
 def api_assign_technician():
     try:
         data = request.json
@@ -1001,15 +1007,10 @@ def api_assign_technician():
 
         conn_project.commit()
 
-        # Use CIMS database for notifications
-        conn_cims = get_db_connection(use_cism=True)
-        cursor_cims = conn_cims.cursor()
-        cursor_cims.execute("""
-            INSERT INTO G6_notifications
-            (Student_ID, Message)
-            VALUES (%s, %s)
-        """, (student_id, "A technician has been assigned to your maintenance request."))
-        conn_cims.commit()
+        # Add notification using the helper function
+        notification_success = add_notification(student_id, "A technician has been assigned to your maintenance request.")
+        if not notification_success:
+            logging.warning(f"Failed to add notification for student {student_id} about technician assignment")
 
         return jsonify({"message": "Technician assigned successfully"}), 200
 
@@ -1017,18 +1018,12 @@ def api_assign_technician():
         logging.error(f"Error assigning technician: {str(e)}")
         if 'conn_project' in locals():
             conn_project.rollback()
-        if 'conn_cims' in locals():
-            conn_cims.rollback()
         return jsonify({"error": str(e)}), 500
     finally:
         if 'cursor_project' in locals():
             cursor_project.close()
         if 'conn_project' in locals():
             conn_project.close()
-        if 'cursor_cims' in locals():
-            cursor_cims.close()
-        if 'conn_cims' in locals():
-            conn_cims.close()
 
 # ----------------------- MAINTENANCE LOGS -----------------------
 
@@ -1146,14 +1141,63 @@ def api_submit_feedback():
 
 # ----------------------- NOTIFICATIONS -----------------------
 
-@app.route('/api/notifications/<int:student_id>', methods=['GET'])
-@role_required(['admin', 'student'])
-def api_get_notifications(student_id):
+# Helper function to add notifications safely
+def add_notification(student_id, message):
     try:
-        if (request.user['role'] == 'admin' or request.user['role'] == 'student') and 'session_id' in request.user:
-            if str(student_id) != str(request.user['session_id']):
+        conn = get_db_connection(use_cism=True)
+        cursor = conn.cursor()
+
+        # First check if the G6_notifications table exists
+        cursor.execute("""
+            SELECT COUNT(*)
+            FROM information_schema.tables
+            WHERE table_schema = DATABASE()
+            AND table_name = 'G6_notifications'
+        """)
+
+        if cursor.fetchone()[0] == 0:
+            # Create G6_notifications table with auto-increment Notification_ID
+            cursor.execute("""
+                CREATE TABLE G6_notifications (
+                    Notification_ID INT AUTO_INCREMENT PRIMARY KEY,
+                    Student_ID INT NOT NULL,
+                    Message TEXT NOT NULL,
+                    Sent_At TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            """)
+            logging.info("Created G6_notifications table")
+            conn.commit()
+
+        # Insert notification with auto-increment ID
+        cursor.execute("""
+            INSERT INTO G6_notifications
+            (Student_ID, Message)
+            VALUES (%s, %s)
+        """, (student_id, message))
+        conn.commit()
+
+        return True
+    except Exception as e:
+        logging.error(f"Error adding notification: {str(e)}")
+        if 'conn' in locals():
+            conn.rollback()
+        return False
+    finally:
+        if 'cursor' in locals():
+            cursor.close()
+        if 'conn' in locals():
+            conn.close()
+
+@app.route('/api/notifications/<int:user_id>', methods=['GET'])
+@role_required(['admin', 'student', 'technician'])
+def api_get_notifications(user_id):
+    try:
+        # Check if user is trying to access their own notifications
+        if 'session_id' in request.user and str(user_id) != str(request.user['session_id']):
+            # Admin can view anyone's notifications
+            if request.user['role'] != 'admin':
                 logging.warning(
-                    f"Unauthorized notification access attempt: User {request.user['user']} tried to access notifications for student {student_id}"
+                    f"Unauthorized notification access attempt: User {request.user['user']} with role {request.user['role']} tried to access notifications for user {user_id}"
                 )
                 return jsonify({"error": "You can only view your own notifications"}), 403
 
@@ -1164,7 +1208,7 @@ def api_get_notifications(student_id):
             SELECT * FROM G6_notifications
             WHERE Student_ID = %s
             ORDER BY Sent_At DESC
-        """, (student_id,))
+        """, (user_id,))
         notifications = cursor.fetchall()
         return jsonify(notifications), 200
 
@@ -1837,4 +1881,4 @@ if __name__ == '__main__':
     except Exception as e:
         logging.error(f"DB connection failed on startup: {e}")
 
-    app.run(debug=True)
+    app.run(host='0.0.0.0', debug=True)

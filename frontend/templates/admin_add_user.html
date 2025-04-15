@@ -55,6 +55,20 @@
                         <div class="form-text text-info"><i class="bi bi-info-circle"></i> Leave blank for auto-generated ID</div>
                     </div>
 
+                    <!-- Specialization field - only visible when role is technician -->
+                    <div class="mb-3" id="specialization_container" style="display: none;">
+                        <label for="specialization" class="form-label"><strong>Specialization</strong> <span class="text-muted">(Only for Technician role)</span></label>
+                        <select class="form-select" id="specialization" name="specialization">
+                            <option value="General">General</option>
+                            <option value="Electrical">Electrical</option>
+                            <option value="Plumbing">Plumbing</option>
+                            <option value="HVAC">HVAC</option>
+                            <option value="Carpentry">Carpentry</option>
+                            <option value="IT">IT</option>
+                            <option value="Security">Security</option>
+                        </select>
+                    </div>
+
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                         <a href="{{ url_for('admin_users') }}" class="btn btn-secondary">Cancel</a>
                         <button type="submit" class="btn btn-danger">Add User</button>
@@ -69,22 +83,32 @@
 {% block scripts %}
 <script>
     $(document).ready(function() {
-        // Function to toggle student ID field visibility
-        function toggleStudentIdField() {
-            if ($('#role').val() === 'student') {
+        // Function to toggle role-specific fields visibility
+        function toggleRoleFields() {
+            var role = $('#role').val();
+
+            // Handle student ID field
+            if (role === 'student') {
                 $('#student_id_container').show();
             } else {
                 $('#student_id_container').hide();
             }
+
+            // Handle technician specialization field
+            if (role === 'technician') {
+                $('#specialization_container').show();
+            } else {
+                $('#specialization_container').hide();
+            }
         }
 
         // Add event listener to role select
-        $('#role').on('change', toggleStudentIdField);
+        $('#role').on('change', toggleRoleFields);
 
         // Call the function initially to set the correct state
-        toggleStudentIdField();
+        toggleRoleFields();
 
-        console.log('Student ID toggle script loaded');
+        console.log('Role fields toggle script loaded');
     });
 </script>
 {% endblock %}
