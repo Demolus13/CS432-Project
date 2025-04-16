@@ -48,16 +48,3 @@ class Config:
 
 When mock API mode is enabled, the application will use in-memory data instead of making real API calls. This is useful for development and testing.
 
-### Default Mock Users
-
-The following users are available in mock mode:
-
-- **Admin User**:
-  - Username: `admin`
-  - Password: `admin123`
-  - Role: `admin`
-
-- **Regular User**:
-  - Username: `user`
-  - Password: `user123`
-  - Role: `member`

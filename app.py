@@ -734,7 +734,7 @@ def api_create_maintenance_request():
                     Location VARCHAR(100) NOT NULL,
                     Priority ENUM('Low', 'Medium', 'High') DEFAULT 'Medium',
                     Submission_Date DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    Status ENUM('submitted', 'in_progress', 'completed') DEFAULT 'submitted',
+                    Status ENUM('submitted', 'in_progress', 'completed', 'rejected') DEFAULT 'submitted',
                     FOREIGN KEY (Student_ID) REFERENCES students(Student_ID) ON DELETE CASCADE
                 )
             """)
@@ -878,6 +878,50 @@ def api_get_maintenance_request_detail(request_id):
         feedback = cursor.fetchone()
         if feedback:
             request_data['feedback'] = feedback
+
+        # Add notification if status is completed
+        if request_data['Status'] == 'completed':
+            try:
+                conn_cims = get_db_connection(use_cism=True)
+                cursor_cims = conn_cims.cursor()
+                
+                cursor_cims.execute("DESCRIBE G6_notifications")
+                columns = cursor_cims.fetchall()
+                has_auto_increment = any(col[0] == 'Notification_ID' and 'auto_increment' in col[5].lower() for col in columns)
+
+                if has_auto_increment:
+                    cursor_cims.execute("""
+                        INSERT INTO G6_notifications
+                        (Student_ID, Message)
+                        VALUES (%s, %s)
+                    """, (
+                        request_data['Student_ID'],
+                        "Your maintenance request has been completed."
+                    ))
+                else:
+                    cursor_cims.execute("SELECT MAX(Notification_ID) FROM G6_notifications")
+                    max_id = cursor_cims.fetchone()[0]
+                    new_id = 1 if max_id is None else max_id + 1
+
+                    cursor_cims.execute("""
+                        INSERT INTO G6_notifications
+                        (Notification_ID, Student_ID, Message)
+                        VALUES (%s, %s, %s)
+                    """, (
+                        new_id,
+                        request_data['Student_ID'],
+                        "Your maintenance request has been completed."
+                    ))
+
+                conn_cims.commit()
+                logging.info("Completion notification created successfully")
+            except Exception as e:
+                logging.error(f"Error creating completion notification: {str(e)}")
+            finally:
+                if 'cursor_cims' in locals():
+                    cursor_cims.close()
+                if 'conn_cims' in locals():
+                    conn_cims.close()
 
         return jsonify(request_data), 200
 
@@ -1140,18 +1184,16 @@ def api_submit_feedback():
             conn.close()
 
 # ----------------------- NOTIFICATIONS -----------------------
-
-# Helper function to add notifications safely
-def add_notification(student_id, message):
+def add_notification(student_id, message, request_id=None, technician_name=None):
     try:
         conn = get_db_connection(use_cism=True)
         cursor = conn.cursor()
 
-        # First check if the G6_notifications table exists
+        # First check if the G6_notifications table exists in cs432cims database
         cursor.execute("""
             SELECT COUNT(*)
             FROM information_schema.tables
-            WHERE table_schema = DATABASE()
+            WHERE table_schema = 'cs432cims'
             AND table_name = 'G6_notifications'
         """)
 
@@ -1165,12 +1207,16 @@ def add_notification(student_id, message):
                     Sent_At TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 )
             """)
-            logging.info("Created G6_notifications table")
+            logging.info("Created G6_notifications table in cs432cims database")
             conn.commit()
+
+        # If technician name and request ID are provided, format the specific message
+        if request_id and technician_name:
+            message = f"Your Maintenance request {request_id} is being looked by Technician {technician_name}."
 
         # Insert notification with auto-increment ID
         cursor.execute("""
-            INSERT INTO G6_notifications
+            INSERT INTO cs432cims.G6_notifications
             (Student_ID, Message)
             VALUES (%s, %s)
         """, (student_id, message))
@@ -1205,7 +1251,7 @@ def api_get_notifications(user_id):
         conn = get_db_connection(use_cism=True)
         cursor = conn.cursor(dictionary=True)
         cursor.execute("""
-            SELECT * FROM G6_notifications
+            SELECT * FROM cs432cims.G6_notifications
             WHERE Student_ID = %s
             ORDER BY Sent_At DESC
         """, (user_id,))
