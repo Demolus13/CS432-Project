@@ -632,8 +632,8 @@ class BPlusTree:
             # If the parent is now underfilled, handle it recursively
             if underflow and len(parent.keys) > 0:  # Don't handle empty root
                 self._handle_underflow(parent)
-        else:
-            # Merge with the right sibling
+        elif node_index < len(parent.children) - 1:
+            # Merge with the right sibling if it exists
             right_sibling = parent.children[node_index + 1]
             if node.is_leaf:
                 node.merge_with_sibling(right_sibling, False)
@@ -646,6 +646,14 @@ class BPlusTree:
             # If the parent is now underfilled, handle it recursively
             if underflow and len(parent.keys) > 0:  # Don't handle empty root
                 self._handle_underflow(parent)
+        else:
+            # This is the rightmost child and has no siblings to merge with
+            # In this case, we need to handle the root specially
+            if parent == self.root and len(parent.keys) == 0:
+                # If the parent is the root and has no keys left, make this node the new root
+                self.root = node
+                node.parent = None
+                self.height -= 1
 
     def update(self, key: Any, value: Any) -> bool:
         """

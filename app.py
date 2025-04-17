@@ -573,75 +573,79 @@ def run_performance_test():
 
         # Get data sizes from form or use defaults
         if request.method == 'POST':
-            data_size_1 = int(request.form.get('data_size_1', 10))
-            data_size_2 = int(request.form.get('data_size_2', 50))
-            data_size_3 = int(request.form.get('data_size_3', 100))
+            # Check if custom sizes are provided
+            if request.form.get('custom_sizes'):
+                sizes_str = request.form.get('custom_sizes')
+                try:
+                    # Parse the custom sizes
+                    sizes = [int(size.strip()) for size in sizes_str.split(',')]
+                except ValueError:
+                    # If parsing fails, use default sizes
+                    sizes = [100, 500, 1000, 5000, 10000]
+            else:
+                data_size_1 = int(request.form.get('data_size_1', 10))
+                data_size_2 = int(request.form.get('data_size_2', 50))
+                data_size_3 = int(request.form.get('data_size_3', 100))
+                sizes = sorted([data_size_1, data_size_2, data_size_3])
+
             num_samples = int(request.form.get('num_samples', 1))
             tree_order = int(request.form.get('tree_order', 4))
         else:
-            data_size_1 = 10
-            data_size_2 = 50
-            data_size_3 = 100
+            # Use the specified sizes
+            sizes = [100, 500, 1000, 5000, 10000]
             num_samples = 1
             tree_order = 4
-
-        # Sort the data sizes
-        sizes = sorted([data_size_1, data_size_2, data_size_3])
 
         # Create a performance analyzer with the specified tree order
         analyzer = PerformanceAnalyzer(b_plus_tree_order=tree_order)
 
-        # If the data sizes are small, run actual benchmarks
-        if max(sizes) <= 200 and num_samples <= 2:
-            print(f"Running benchmarks for sizes {sizes} with {num_samples} samples...")
-            try:
-                # Initialize the results dictionary
-                analyzer.results = {
-                    'insertion': {'b_plus_tree': [], 'brute_force': []},
-                    'search': {'b_plus_tree': [], 'brute_force': []},
-                    'range_query': {'b_plus_tree': [], 'brute_force': []},
-                    'deletion': {'b_plus_tree': [], 'brute_force': []},
-                    'random': {'b_plus_tree': [], 'brute_force': []},
-                    'memory': {'b_plus_tree': [], 'brute_force': []}
-                }
+        # Run actual benchmarks for all sizes
+        # We've fixed the B+ Tree implementation to handle larger sizes
+        print(f"Running benchmarks for sizes {sizes} with {num_samples} samples...")
+        try:
+            # Initialize the results dictionary
+            analyzer.results = {
+                'insertion': {'b_plus_tree': [], 'brute_force': []},
+                'search': {'b_plus_tree': [], 'brute_force': []},
+                'range_query': {'b_plus_tree': [], 'brute_force': []},
+                'deletion': {'b_plus_tree': [], 'brute_force': []},
+                'random': {'b_plus_tree': [], 'brute_force': []},
+                'memory': {'b_plus_tree': [], 'brute_force': []}
+            }
 
-                # Run the benchmarks
-                results = analyzer.run_benchmarks(sizes, num_samples=num_samples)
-                print("Benchmarks completed.")
+            # Run the benchmarks
+            results = analyzer.run_benchmarks(sizes, num_samples=num_samples)
+            print("Benchmarks completed.")
 
-                # Create plots
-                fig, axs = plt.subplots(3, 2, figsize=(15, 15))
-                axs = axs.flatten()
+            # Create plots
+            fig, axs = plt.subplots(3, 2, figsize=(15, 15))
+            axs = axs.flatten()
 
-                operations = ['insertion', 'search', 'range_query', 'deletion', 'random']
+            operations = ['insertion', 'search', 'range_query', 'deletion', 'random']
 
-                # Plot time results
-                for i, operation in enumerate(operations):
-                    axs[i].plot(sizes, results[operation]['b_plus_tree'], 'o-', label='B+ Tree')
-                    axs[i].plot(sizes, results[operation]['brute_force'], 's-', label='Brute Force')
-                    axs[i].set_xlabel('Data Size')
-                    axs[i].set_ylabel('Time (s)')
-                    axs[i].set_title(f'{operation.replace("_", " ").title()} Time')
-                    axs[i].legend()
-                    axs[i].grid(True)
+            # Plot time results
+            for i, operation in enumerate(operations):
+                axs[i].plot(sizes, results[operation]['b_plus_tree'], 'o-', label='B+ Tree')
+                axs[i].plot(sizes, results[operation]['brute_force'], 's-', label='Brute Force')
+                axs[i].set_xlabel('Data Size')
+                axs[i].set_ylabel('Time (s)')
+                axs[i].set_title(f'{operation.replace("_", " ").title()} Time')
+                axs[i].legend()
+                axs[i].grid(True)
 
-                # Plot memory usage
-                axs[5].plot(sizes, results['memory']['b_plus_tree'], 'o-', label='B+ Tree')
-                axs[5].plot(sizes, results['memory']['brute_force'], 's-', label='Brute Force')
-                axs[5].set_xlabel('Data Size')
-                axs[5].set_ylabel('Memory (MB)')
-                axs[5].set_title('Memory Usage')
-                axs[5].legend()
-                axs[5].grid(True)
-            except Exception as e:
-                import traceback
-                print(f"Error running benchmarks: {str(e)}")
-                print(f"Traceback: {traceback.format_exc()}")
-                # Fall back to simulated data
-                return run_simulated_test(sizes, tree_order)
-        else:
-            # For larger data sizes or more samples, use simulated data
-            print(f"Using simulated data for sizes {sizes}...")
+            # Plot memory usage
+            axs[5].plot(sizes, results['memory']['b_plus_tree'], 'o-', label='B+ Tree')
+            axs[5].plot(sizes, results['memory']['brute_force'], 's-', label='Brute Force')
+            axs[5].set_xlabel('Data Size')
+            axs[5].set_ylabel('Memory (MB)')
+            axs[5].set_title('Memory Usage')
+            axs[5].legend()
+            axs[5].grid(True)
+        except Exception as e:
+            import traceback
+            print(f"Error running benchmarks: {str(e)}")
+            print(f"Traceback: {traceback.format_exc()}")
+            # Fall back to simulated data
             return run_simulated_test(sizes, tree_order)
 
         plt.tight_layout()

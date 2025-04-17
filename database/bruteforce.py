@@ -20,6 +20,10 @@ class BruteForceDB:
             key: The key to insert
             value: The value associated with the key
         """
+        for k, v in self.data.items():
+            if k == key:
+                self.data[k] = value
+                return
         self.data[key] = value
     
     def find(self, key: Any) -> Optional[Any]:
@@ -32,7 +36,9 @@ class BruteForceDB:
         Returns:
             The value associated with the key, or None if not found
         """
-        return self.data.get(key)
+        for k, v in self.data.items():
+            if k == key:
+                return v
     
     def range_query(self, start_key: Any, end_key: Any) -> List[Tuple[Any, Any]]:
         """
@@ -61,9 +67,10 @@ class BruteForceDB:
         Returns:
             True if the key was found and deleted, False otherwise
         """
-        if key in self.data:
-            del self.data[key]
-            return True
+        for k, v in self.data.items():
+            if k == key:
+                del self.data[k]
+                return True
         return False
     
     def update(self, key: Any, value: Any) -> bool:

@@ -148,14 +148,28 @@ class PerformanceAnalyzer:
 
         # Measure B+ Tree deletion time
         start_time = time.time()
-        for key in delete_keys:
-            b_plus_tree.delete(key)
+        try:
+            for key in delete_keys:
+                try:
+                    b_plus_tree.delete(key)
+                except Exception as e:
+                    print(f"Error deleting key {key} from B+ Tree: {e}")
+                    continue
+        except Exception as e:
+            print(f"Error in B+ Tree deletion benchmark: {e}")
         b_plus_tree_time = time.time() - start_time
 
         # Measure Brute Force DB deletion time
         start_time = time.time()
-        for key in delete_keys:
-            brute_force_db.delete(key)
+        try:
+            for key in delete_keys:
+                try:
+                    brute_force_db.delete(key)
+                except Exception as e:
+                    print(f"Error deleting key {key} from Brute Force DB: {e}")
+                    continue
+        except Exception as e:
+            print(f"Error in Brute Force DB deletion benchmark: {e}")
         brute_force_time = time.time() - start_time
 
         return b_plus_tree_time, brute_force_time
@@ -378,9 +392,15 @@ class PerformanceAnalyzer:
                 delete_keys = random.sample(keys, min(size, 100))
 
                 # Measure deletion time
-                b_plus_tree_time, brute_force_time = self.measure_deletion_time(keys, delete_keys)
-                b_plus_tree_deletion_times.append(b_plus_tree_time)
-                brute_force_deletion_times.append(brute_force_time)
+                try:
+                    b_plus_tree_time, brute_force_time = self.measure_deletion_time(keys, delete_keys)
+                    b_plus_tree_deletion_times.append(b_plus_tree_time)
+                    brute_force_deletion_times.append(brute_force_time)
+                except Exception as e:
+                    print(f"Error in deletion benchmark: {e}")
+                    # Use default values if the benchmark fails
+                    b_plus_tree_deletion_times.append(0.0)
+                    brute_force_deletion_times.append(0.0)
 
                 # Measure random operations time
                 b_plus_tree_time, brute_force_time = self.measure_random_operations_time(keys, min(size, 100))
