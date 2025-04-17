@@ -454,43 +454,76 @@ def visualize_tree():
         import shutil
         if shutil.which('dot') is None:
             # If Graphviz is not installed, use matplotlib for visualization
+            flash('Graphviz (dot) not found in system path. Using matplotlib fallback.', 'warning')
             return visualize_tree_matplotlib()
 
         # Get the tree structure
         tree = current_table.index
 
-        # Create a visualizer
+        # Create a visualizer that uses the dot command directly
         visualizer = BPlusTreeVisualizer(tree)
 
-        # Generate a unique filename
+        # Create static directory if it doesn't exist
+        os.makedirs('static', exist_ok=True)
+
+        # Generate a unique filename in the static directory
         import time
-        filename = f'tree_{current_table.name}_{int(time.time())}'
-        filepath = filename
+        timestamp = int(time.time())
+        filename = f'tree_{current_table.name}_{timestamp}'
+        filepath = os.path.join('static', filename)
+        image_path = f'{filepath}.png'
 
-        # Visualize the tree
-        visualizer.visualize(filename=filepath, view=False)
+        # Store the relative path for the template
+        relative_image_path = f'tree_{current_table.name}_{timestamp}.png'
 
-        # Read the generated image
-        with open(f'{filepath}.png', 'rb') as f:
+        # Visualize the tree using system Graphviz
+        try:
+            visualizer.visualize(filename=filename, view=False)
+            # No success message
+        except Exception as e:
+            flash(f'Error using system Graphviz: {str(e)}. Falling back to matplotlib.', 'warning')
+            return visualize_tree_matplotlib()
+
+        # Read the generated image for base64 embedding
+        with open(image_path, 'rb') as f:
             img_data = f.read()
 
         # Convert to base64 for embedding in HTML
         img_base64 = base64.b64encode(img_data).decode('utf-8')
 
-        # Clean up the files
-        import os
-        if os.path.exists(f'{filepath}.png'):
-            os.remove(f'{filepath}.png')
-        if os.path.exists(f'{filepath}'):
-            os.remove(f'{filepath}')
-        if os.path.exists(f'{filepath}.pdf'):
-            os.remove(f'{filepath}.pdf')
+        # Count the total number of nodes in the tree
+        total_nodes = _count_nodes(tree.root)
 
-        return render_template('visualization.html', img_base64=img_base64, table_name=current_table.name)
+        # Prepare template context with tree information
+        context = {
+            'img_base64': img_base64,
+            'image_path': relative_image_path,
+            'table_name': current_table.name,
+            'primary_key': current_table.primary_key,
+            'tree_order': tree.order,
+            'tree_height': tree.height,
+            'total_nodes': total_nodes
+        }
+
+        return render_template('visualization.html', **context)
     except Exception as e:
         flash(f'Error visualizing tree with Graphviz: {str(e)}', 'error')
         # Fall back to matplotlib visualization
         return visualize_tree_matplotlib()
+
+def _count_nodes(node):
+    """Count the total number of nodes in the tree."""
+    if node is None:
+        return 0
+
+    count = 1  # Count the current node
+
+    if not node.is_leaf:
+        # Add the count of all children
+        for child in node.children:
+            count += _count_nodes(child)
+
+    return count
 
 def visualize_tree_matplotlib():
     """Visualize the B+ Tree using matplotlib as a fallback."""
@@ -513,16 +546,44 @@ def visualize_tree_matplotlib():
         ax.set_title(f'B+ Tree for {current_table.name}')
         ax.axis('off')
 
-        # Save the figure to a BytesIO object
-        buf = BytesIO()
-        plt.savefig(buf, format='png')
-        buf.seek(0)
+        # Create static directory if it doesn't exist
+        os.makedirs('static', exist_ok=True)
 
-        # Convert to base64 for embedding in HTML
-        img_base64 = base64.b64encode(buf.getvalue()).decode('utf-8')
+        # Generate a unique filename
+        import time
+        timestamp = int(time.time())
+        filename = f'static/tree_matplotlib_{current_table.name}_{timestamp}.png'
+
+        # Store the relative path for the template
+        relative_image_path = f'tree_matplotlib_{current_table.name}_{timestamp}.png'
+
+        # Save the figure to a file in the static directory
+        plt.savefig(filename, format='png', dpi=300)
         plt.close(fig)
 
-        return render_template('visualization.html', img_base64=img_base64, table_name=current_table.name)
+        # Read the image file and convert to base64
+        with open(filename, 'rb') as f:
+            img_data = f.read()
+            img_base64 = base64.b64encode(img_data).decode('utf-8')
+
+        # Count the total number of nodes in the tree
+        total_nodes = _count_nodes(tree.root)
+
+        # Prepare template context with tree information
+        context = {
+            'img_base64': img_base64,
+            'image_path': relative_image_path,
+            'table_name': current_table.name,
+            'primary_key': current_table.primary_key,
+            'tree_order': tree.order,
+            'tree_height': tree.height,
+            'total_nodes': total_nodes
+        }
+
+        # Add a flash message indicating matplotlib was used as fallback
+        flash('Using matplotlib for visualization (fallback method).', 'info')
+
+        return render_template('visualization.html', **context)
     except Exception as e:
         flash(f'Error visualizing tree with matplotlib: {str(e)}', 'error')
         return redirect(url_for('index'))

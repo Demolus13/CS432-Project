@@ -469,6 +469,14 @@ class PerformanceAnalyzer:
         plt.tight_layout()
 
         if save_path:
-            plt.savefig(save_path)
+            # Create static directory if it doesn't exist
+            os.makedirs('static', exist_ok=True)
+
+            # Ensure the save path is in the static directory
+            if not save_path.startswith('static/'):
+                save_path = os.path.join('static', save_path)
+
+            # Save the figure
+            plt.savefig(save_path, format='png', dpi=300)
 
         plt.close()
