@@ -1,0 +1,1 @@
+{"schema": {"Admin_ID": "int", "Name": "str", "Email": "str", "Password_Hash": "str"}, "primary_key": "Admin_ID"}
