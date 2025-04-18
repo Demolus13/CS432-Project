@@ -9,39 +9,57 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <style>
         :root {
-            /* Main color palette */
-            --primary-color: #4361ee;
-            /* Primary blue */
-            --primary-light: #4895ef;
-            /* Lighter blue */
-            --primary-dark: #3f37c9;
-            /* Darker blue */
-            --secondary-color: #4cc9f0;
-            /* Cyan accent */
-            --accent-color: #f72585;
-            /* Pink accent */
-            --success-color: #4ade80;
-            /* Green */
-            --warning-color: #fb8500;
-            /* Orange */
-            --danger-color: #ef476f;
-            /* Red */
-            --info-color: #4cc9f0;
-            /* Light blue */
+            /* Catppuccin Mocha color palette (Dark Mode) */
+            --rosewater: #f5e0dc;
+            --flamingo: #f2cdcd;
+            --pink: #f5c2e7;
+            --mauve: #cba6f7;
+            --red: #f38ba8;
+            --maroon: #eba0ac;
+            --peach: #fab387;
+            --yellow: #f9e2af;
+            --green: #a6e3a1;
+            --teal: #94e2d5;
+            --sky: #89dceb;
+            --sapphire: #74c7ec;
+            --blue: #89b4fa;
+            --lavender: #b4befe;
+            --text: #cdd6f4;
+            --subtext1: #bac2de;
+            --subtext0: #a6adc8;
+            --overlay2: #9399b2;
+            --overlay1: #7f849c;
+            --overlay0: #6c7086;
+            --surface2: #585b70;
+            --surface1: #45475a;
+            --surface0: #313244;
+            --base: #1e1e2e;
+            --mantle: #181825;
+            --crust: #11111b;
+
+            /* Main color palette mappings */
+            --primary-color: var(--blue);
+            --primary-light: var(--lavender);
+            --primary-dark: var(--sapphire);
+            --secondary-color: var(--sky);
+            --accent-color: var(--pink);
+            --success-color: var(--green);
+            --warning-color: var(--yellow);
+            --danger-color: var(--red);
+            --info-color: var(--teal);
 
             /* Neutral colors */
-            --bg-color: #f8f9fa;
-            /* Background light */
-            --text-color: #212529;
-            /* Text dark */
-            --text-muted: #6c757d;
-            /* Muted text */
-            --border-color: #dee2e6;
-            /* Border light */
-            --card-bg: #ffffff;
-            /* Card background */
-            --hover-bg: #e9ecef;
-            /* Hover background */
+            --bg-color: var(--base);
+            --text-color: var(--text);
+            --text-muted: var(--subtext1);
+            --border-color: var(--surface0);
+            --card-bg: var(--mantle);
+            --hover-bg: var(--surface1);
+
+            /* Override Bootstrap variables */
+            --bs-body-color: var(--text);
+            --bs-body-bg: var(--base);
+            --bs-border-color: var(--surface0);
         }
 
         body {
@@ -50,6 +68,25 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Dark mode scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--mantle);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--surface1);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--surface2);
         }
 
         .container {
@@ -63,7 +100,7 @@
         }
 
         .header h1 {
-            color: var(--primary-dark);
+            color: var(--blue);
             font-weight: 600;
         }
 
@@ -79,23 +116,37 @@
             color: var(--text-muted);
         }
 
+        /* Fix for modal dialogs */
+        .modal-content {
+            background-color: var(--mantle);
+            color: var(--text);
+        }
+
+        .modal-header {
+            border-bottom-color: var(--surface0);
+        }
+
+        .modal-footer {
+            border-top-color: var(--surface0);
+        }
+
         .card {
             margin-bottom: 20px;
             border-radius: 8px;
             border: none;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             overflow: hidden;
             background-color: var(--card-bg);
             transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .card:hover {
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         .card-header {
-            background-color: var(--primary-color);
-            color: white;
+            background-color: var(--blue);
+            color: var(--crust);
             border-bottom: none;
             padding: 12px 20px;
         }
@@ -116,12 +167,30 @@
             border: 1px solid var(--border-color);
             padding: 8px 12px;
             transition: border-color 0.2s, box-shadow 0.2s;
+            background-color: var(--surface0);
+            color: var(--text);
         }
 
         .form-control:focus,
         .form-select:focus {
-            border-color: var(--primary-light);
-            box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.25);
+            border-color: var(--lavender);
+            box-shadow: 0 0 0 0.25rem rgba(180, 190, 254, 0.25);
+            background-color: var(--surface1);
+            color: var(--text);
+        }
+
+        .form-control::placeholder {
+            color: var(--overlay1);
+        }
+
+        .form-select option {
+            background-color: var(--surface0);
+            color: var(--text);
+        }
+
+        .form-label {
+            margin-bottom: 0.5rem;
+            color: var(--text);
         }
 
         /* Buttons */
@@ -137,29 +206,33 @@
         }
 
         .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
+            background-color: var(--blue);
+            border-color: var(--blue);
+            color: var(--crust);
         }
 
         .btn-primary:hover {
-            background-color: var(--primary-dark);
-            border-color: var(--primary-dark);
+            background-color: var(--sapphire);
+            border-color: var(--sapphire);
+            color: var(--crust);
         }
 
         .btn-danger {
-            background-color: var(--danger-color);
-            border-color: var(--danger-color);
+            background-color: var(--red);
+            border-color: var(--maroon);
+            color: var(--crust);
         }
 
         .btn-info {
-            background-color: var(--info-color);
-            border-color: var(--info-color);
-            color: white;
+            background-color: var(--teal);
+            border-color: var(--teal);
+            color: var(--crust);
         }
 
         .btn-secondary {
-            background-color: var(--text-muted);
-            border-color: var(--text-muted);
+            background-color: var(--overlay1);
+            border-color: var(--overlay2);
+            color: var(--text);
         }
 
         .table-container {
@@ -173,12 +246,26 @@
             overflow: hidden;
             border-collapse: separate;
             border-spacing: 0;
+            color: var(--text);
         }
 
         .table th {
-            background-color: var(--primary-light);
-            color: white;
+            background-color: var(--surface1);
+            color: var(--lavender);
             font-weight: 600;
+        }
+
+        .table td {
+            border-color: var(--surface0);
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: var(--surface0);
+        }
+
+        .table-striped>tbody>tr:nth-of-type(odd) {
+            background-color: rgba(180, 190, 254, 0.05);
+            color: var(--text);
         }
 
         /* Alerts */
@@ -188,20 +275,24 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
         }
 
+        .btn-close {
+            filter: invert(1) grayscale(100%) brightness(200%);
+        }
+
         .alert-info {
-            background-color: rgba(76, 201, 240, 0.1);
+            background-color: rgba(148, 226, 213, 0.15);
             border-left: 4px solid var(--info-color);
             color: var(--text-color);
         }
 
         .alert-success {
-            background-color: rgba(74, 222, 128, 0.1);
+            background-color: rgba(166, 227, 161, 0.15);
             border-left: 4px solid var(--success-color);
             color: var(--text-color);
         }
 
         .alert-danger {
-            background-color: rgba(239, 71, 111, 0.1);
+            background-color: rgba(243, 139, 168, 0.15);
             border-left: 4px solid var(--danger-color);
             color: var(--text-color);
         }
@@ -222,19 +313,19 @@
         }
 
         .data-type-int {
-            background-color: var(--primary-color);
+            background-color: var(--blue);
         }
 
         .data-type-str {
-            background-color: var(--success-color);
+            background-color: var(--green);
         }
 
         .data-type-float {
-            background-color: var(--secondary-color);
+            background-color: var(--sapphire);
         }
 
         .data-type-bool {
-            background-color: var(--warning-color);
+            background-color: var(--peach);
         }
 
         /* Tabs */
@@ -251,14 +342,14 @@
         }
 
         .nav-tabs .nav-link:hover {
-            color: var(--primary-color);
+            color: var(--blue);
             border-color: transparent;
         }
 
         .nav-tabs .nav-link.active {
-            color: var(--primary-color);
+            color: var(--blue);
             border-color: transparent;
-            border-bottom: 2px solid var(--primary-color);
+            border-bottom: 2px solid var(--blue);
             background-color: transparent;
             font-weight: 600;
         }
@@ -271,20 +362,58 @@
         }
 
         .bg-primary {
-            background-color: var(--primary-color) !important;
+            background-color: var(--blue) !important;
+            color: var(--crust) !important;
         }
 
         .bg-secondary {
-            background-color: var(--text-muted) !important;
+            background-color: var(--overlay1) !important;
+            color: var(--text) !important;
         }
 
         /* Custom table styles */
         .table-primary-light {
-            background-color: rgba(67, 97, 238, 0.05);
+            background-color: rgba(180, 190, 254, 0.15);
         }
 
         .table-primary-light:hover {
-            background-color: rgba(67, 97, 238, 0.1) !important;
+            background-color: rgba(180, 190, 254, 0.25) !important;
+        }
+
+        /* Fix for code elements */
+        code {
+            color: var(--pink);
+            background-color: var(--surface0);
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+        }
+
+        /* Fix for small text */
+        small {
+            color: var(--subtext0);
+        }
+
+        /* Fix for dropdown menus */
+        .dropdown-menu {
+            background-color: var(--mantle);
+            border-color: var(--surface0);
+        }
+
+        .dropdown-item {
+            color: var(--text);
+        }
+
+        .dropdown-item:hover,
+        .dropdown-item:focus {
+            background-color: var(--surface0);
+            color: var(--text);
+        }
+
+        /* Fix for input group text */
+        .input-group-text {
+            background-color: var(--surface1);
+            color: var(--text);
+            border-color: var(--border-color);
         }
     </style>
 </head>
@@ -293,7 +422,7 @@
     <div class="container">
         <div class="header">
             <div class="d-flex align-items-center mb-2">
-                <i class="bi bi-database-fill me-3" style="font-size: 2.5rem; color: var(--primary-color);"></i>
+                <i class="bi bi-database-fill me-3" style="font-size: 2.5rem; color: var(--blue);"></i>
                 <h1 class="mb-0">B+ Tree DBMS</h1>
             </div>
             <p class="lead">A lightweight database management system with B+ Tree indexing</p>
@@ -320,42 +449,67 @@
                         <h5><i class="bi bi-hdd-rack-fill me-2"></i>Database Management</h5>
                     </div>
                     <div class="card-body">
-                        <h6>Create Database</h6>
-                        <form action="{{ url_for('create_database') }}" method="post" class="mb-3">
-                            <div class="input-group">
-                                <input type="text" name="db_name" class="form-control" placeholder="Database Name"
-                                    required>
-                                <button type="submit" class="btn btn-primary">Create</button>
-                            </div>
-                        </form>
+                        <!-- Database Operation Buttons -->
+                        <div class="d-flex justify-content-between mb-4">
+                            <button class="btn btn-primary db-op-btn" data-operation="create">
+                                <i class="bi bi-plus-circle me-2"></i>Create Database
+                            </button>
+                            <button class="btn btn-info db-op-btn" data-operation="select">
+                                <i class="bi bi-box-arrow-in-right me-2"></i>Select Database
+                            </button>
+                            <button class="btn btn-danger db-op-btn" data-operation="delete">
+                                <i class="bi bi-trash me-2"></i>Delete Database
+                            </button>
+                        </div>
 
-                        <h6>Select Database</h6>
-                        <form action="{{ url_for('select_database') }}" method="post" class="mb-3">
-                            <div class="input-group">
-                                <select name="db_name" class="form-select" required>
-                                    <option value="">Select a database</option>
-                                    {% for database in databases %}
-                                    <option value="{{ database }}" {% if db and db.name==database %}selected{% endif %}>
-                                        {{ database }}</option>
-                                    {% endfor %}
-                                </select>
-                                <button type="submit" class="btn btn-primary">Select</button>
-                            </div>
-                        </form>
+                        <!-- Create Database Form -->
+                        <div id="create-db-form" class="db-operation-form" style="display: none;">
+                            <h6>Create Database</h6>
+                            <form action="{{ url_for('create_database') }}" method="post" class="mb-3"
+                                id="createDatabaseForm">
+                                <div class="input-group">
+                                    <input type="text" name="db_name" class="form-control" placeholder="Database Name"
+                                        required>
+                                    <button type="submit" class="btn btn-primary">Create</button>
+                                </div>
+                            </form>
+                        </div>
 
-                        <h6>Delete Database</h6>
-                        <form action="{{ url_for('delete_database') }}" method="post" class="mb-3"
-                            onsubmit="return confirm('Are you sure you want to delete this database? This action cannot be undone.')">
-                            <div class="input-group">
-                                <select name="db_name" class="form-select" required>
-                                    <option value="">Select a database</option>
-                                    {% for database in databases %}
-                                    <option value="{{ database }}">{{ database }}</option>
-                                    {% endfor %}
-                                </select>
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </div>
-                        </form>
+                        <!-- Select Database Form -->
+                        <div id="select-db-form" class="db-operation-form" style="display: none;">
+                            <h6>Select Database</h6>
+                            <form action="{{ url_for('select_database') }}" method="post" class="mb-3"
+                                id="selectDatabaseForm">
+                                <div class="input-group">
+                                    <select name="db_name" class="form-select" required>
+                                        <option value="">Select a database</option>
+                                        {% for database in databases %}
+                                        <option value="{{ database }}" {% if db and db.name==database %}selected{% endif
+                                            %}>
+                                            {{ database }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <button type="submit" class="btn btn-primary">Select</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Delete Database Form -->
+                        <div id="delete-db-form" class="db-operation-form" style="display: none;">
+                            <h6>Delete Database</h6>
+                            <form action="{{ url_for('delete_database') }}" method="post" class="mb-3"
+                                onsubmit="return confirm('Are you sure you want to delete this database? This action cannot be undone.')">
+                                <div class="input-group">
+                                    <select name="db_name" class="form-select" required>
+                                        <option value="">Select a database</option>
+                                        {% for database in databases %}
+                                        <option value="{{ database }}">{{ database }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </div>
+                            </form>
+                        </div>
 
                         {% if db %}
                         <div class="alert alert-info">
@@ -371,78 +525,103 @@
                         <h5><i class="bi bi-table me-2"></i>Table Management</h5>
                     </div>
                     <div class="card-body">
-                        <h6>Create Table</h6>
-                        <form action="{{ url_for('create_table') }}" method="post" class="mb-3" id="createTableForm">
-                            <div class="mb-3">
-                                <label for="table_name" class="form-label">Table Name</label>
-                                <input type="text" name="table_name" id="table_name" class="form-control" required>
-                            </div>
+                        <!-- Table Operation Buttons -->
+                        <div class="d-flex justify-content-between mb-4">
+                            <button class="btn btn-primary table-op-btn" data-operation="create">
+                                <i class="bi bi-plus-circle me-2"></i>Create Table
+                            </button>
+                            <button class="btn btn-info table-op-btn" data-operation="select">
+                                <i class="bi bi-box-arrow-in-right me-2"></i>Select Table
+                            </button>
+                            <button class="btn btn-danger table-op-btn" data-operation="delete">
+                                <i class="bi bi-trash me-2"></i>Delete Table
+                            </button>
+                        </div>
 
-                            <div class="mb-3">
-                                <label class="form-label">Schema Fields</label>
-                                <div id="schema_fields">
-                                    <!-- Initial field row -->
-                                    <div class="row mb-2 field-row">
-                                        <div class="col-md-5">
-                                            <input type="text" name="field_name[]" class="form-control"
-                                                placeholder="Field Name" required>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <select name="field_type[]" class="form-select" required>
-                                                <option value="int">Integer</option>
-                                                <option value="str">String</option>
-                                                <option value="float">Float</option>
-                                                <option value="bool">Boolean</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <button type="button"
-                                                class="btn btn-danger btn-sm remove-field">Remove</button>
+                        <!-- Create Table Form -->
+                        <div id="create-table-form" class="table-operation-form" style="display: none;">
+                            <h6>Create Table</h6>
+                            <form action="{{ url_for('create_table') }}" method="post" class="mb-3"
+                                id="createTableForm">
+                                <div class="mb-3">
+                                    <label for="table_name" class="form-label">Table Name</label>
+                                    <input type="text" name="table_name" id="table_name" class="form-control" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Schema Fields</label>
+                                    <div id="schema_fields">
+                                        <!-- Initial field row -->
+                                        <div class="row mb-2 field-row">
+                                            <div class="col-md-5">
+                                                <input type="text" name="field_name[]" class="form-control"
+                                                    placeholder="Field Name" required>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <select name="field_type[]" class="form-select" required>
+                                                    <option value="int">Integer</option>
+                                                    <option value="str">String</option>
+                                                    <option value="float">Float</option>
+                                                    <option value="bool">Boolean</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="button"
+                                                    class="btn btn-danger btn-sm remove-field">Remove</button>
+                                            </div>
                                         </div>
                                     </div>
+                                    <button type="button" class="btn btn-sm btn-secondary mt-2" id="add_field">Add
+                                        Field</button>
                                 </div>
-                                <button type="button" class="btn btn-sm btn-secondary mt-2" id="add_field">Add
-                                    Field</button>
-                            </div>
 
-                            <div class="mb-3">
-                                <label for="primary_key" class="form-label">Primary Key</label>
-                                <select name="primary_key" id="primary_key" class="form-select" required>
-                                    <!-- Options will be added dynamically -->
-                                </select>
-                                <small class="form-text text-muted">Select one of your fields as the primary key</small>
-                            </div>
+                                <div class="mb-3">
+                                    <label for="primary_key" class="form-label">Primary Key</label>
+                                    <select name="primary_key" id="primary_key" class="form-select" required>
+                                        <!-- Options will be added dynamically -->
+                                    </select>
+                                    <small class="form-text" style="color: var(--subtext0);">Select one of your fields
+                                        as the primary
+                                        key</small>
+                                </div>
 
-                            <button type="submit" class="btn btn-primary">Create Table</button>
-                        </form>
+                                <button type="submit" class="btn btn-primary">Create Table</button>
+                            </form>
+                        </div>
 
-                        <h6>Select Table</h6>
-                        <form action="{{ url_for('select_table') }}" method="post" class="mb-3">
-                            <div class="input-group">
-                                <select name="table_name" class="form-select" required>
-                                    <option value="">Select a table</option>
-                                    {% for table in tables %}
-                                    <option value="{{ table }}" {% if current_table and current_table.name==table
-                                        %}selected{% endif %}>{{ table }}</option>
-                                    {% endfor %}
-                                </select>
-                                <button type="submit" class="btn btn-primary">Select</button>
-                            </div>
-                        </form>
+                        <!-- Select Table Form -->
+                        <div id="select-table-form" class="table-operation-form" style="display: none;">
+                            <h6>Select Table</h6>
+                            <form action="{{ url_for('select_table') }}" method="post" class="mb-3">
+                                <div class="input-group">
+                                    <select name="table_name" class="form-select" required>
+                                        <option value="">Select a table</option>
+                                        {% for table in tables %}
+                                        <option value="{{ table }}" {% if current_table and current_table.name==table
+                                            %}selected{% endif %}>{{ table }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <button type="submit" class="btn btn-primary">Select</button>
+                                </div>
+                            </form>
+                        </div>
 
-                        <h6>Delete Table</h6>
-                        <form action="{{ url_for('delete_table') }}" method="post" class="mb-3"
-                            onsubmit="return confirm('Are you sure you want to delete this table? This action cannot be undone.')">
-                            <div class="input-group">
-                                <select name="table_name" class="form-select" required>
-                                    <option value="">Select a table</option>
-                                    {% for table in tables %}
-                                    <option value="{{ table }}">{{ table }}</option>
-                                    {% endfor %}
-                                </select>
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </div>
-                        </form>
+                        <!-- Delete Table Form -->
+                        <div id="delete-table-form" class="table-operation-form" style="display: none;">
+                            <h6>Delete Table</h6>
+                            <form action="{{ url_for('delete_table') }}" method="post" class="mb-3"
+                                onsubmit="return confirm('Are you sure you want to delete this table? This action cannot be undone.')">
+                                <div class="input-group">
+                                    <select name="table_name" class="form-select" required>
+                                        <option value="">Select a table</option>
+                                        {% for table in tables %}
+                                        <option value="{{ table }}">{{ table }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </div>
+                            </form>
+                        </div>
 
                         {% if current_table %}
                         <div class="card schema-card mb-4">
@@ -722,7 +901,81 @@
 
             // Initialize the schema field management
             initSchemaFieldsManager();
+
+            // Initialize database operation buttons
+            initDatabaseOperationButtons();
+
+            // Initialize database form handlers
+            initDatabaseFormHandlers();
         });
+
+        function initDatabaseFormHandlers() {
+            // Add a message to forms that will reset the UI
+            const createDatabaseForm = document.getElementById('createDatabaseForm');
+            const selectDatabaseForm = document.getElementById('selectDatabaseForm');
+
+            if (createDatabaseForm) {
+                createDatabaseForm.addEventListener('submit', function () {
+                    // We don't need to do anything here as the backend will handle the reset
+                    // Just for user feedback, we could add a loading indicator
+                    console.log('Creating new database, UI will reset...');
+                });
+            }
+
+            if (selectDatabaseForm) {
+                selectDatabaseForm.addEventListener('submit', function () {
+                    // We don't need to do anything here as the backend will handle the reset
+                    // Just for user feedback, we could add a loading indicator
+                    console.log('Selecting different database, UI will reset...');
+                });
+            }
+        }
+
+        function initDatabaseOperationButtons() {
+            // Initialize database operation buttons
+            const dbOpButtons = document.querySelectorAll('.db-op-btn');
+            const dbOpForms = document.querySelectorAll('.db-operation-form');
+
+            // Add click event listeners to all database operation buttons
+            dbOpButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const operation = this.getAttribute('data-operation');
+
+                    // Hide all forms first
+                    dbOpForms.forEach(form => {
+                        form.style.display = 'none';
+                    });
+
+                    // Show the selected form
+                    const selectedForm = document.getElementById(`${operation}-db-form`);
+                    if (selectedForm) {
+                        selectedForm.style.display = 'block';
+                    }
+                });
+            });
+
+            // Initialize table operation buttons
+            const tableOpButtons = document.querySelectorAll('.table-op-btn');
+            const tableOpForms = document.querySelectorAll('.table-operation-form');
+
+            // Add click event listeners to all table operation buttons
+            tableOpButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const operation = this.getAttribute('data-operation');
+
+                    // Hide all forms first
+                    tableOpForms.forEach(form => {
+                        form.style.display = 'none';
+                    });
+
+                    // Show the selected form
+                    const selectedForm = document.getElementById(`${operation}-table-form`);
+                    if (selectedForm) {
+                        selectedForm.style.display = 'block';
+                    }
+                });
+            });
+        }
 
         function initSchemaFieldsManager() {
             const schemaFields = document.getElementById('schema_fields');
@@ -867,6 +1120,41 @@
                 })
                 .catch(error => console.error('Error loading table data:', error));
         }
+
+        // Override the default alert with a custom one that matches our dark theme
+        const originalAlert = window.alert;
+        window.alert = function (message) {
+            // Create a Bootstrap toast for alerts
+            const toastContainer = document.createElement('div');
+            toastContainer.className = 'toast-container position-fixed bottom-0 end-0 p-3';
+            toastContainer.style.zIndex = '11';
+
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.setAttribute('role', 'alert');
+            toast.setAttribute('aria-live', 'assertive');
+            toast.setAttribute('aria-atomic', 'true');
+            toast.innerHTML = `
+                <div class="toast-header" style="background-color: var(--surface1); color: var(--text);">
+                    <strong class="me-auto">Notification</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body" style="background-color: var(--mantle); color: var(--text);">
+                    ${message}
+                </div>
+            `;
+
+            toastContainer.appendChild(toast);
+            document.body.appendChild(toastContainer);
+
+            const toastInstance = new bootstrap.Toast(toast);
+            toastInstance.show();
+
+            // Remove the toast container after the toast is hidden
+            toast.addEventListener('hidden.bs.toast', () => {
+                document.body.removeChild(toastContainer);
+            });
+        };
     </script>
 </body>
 

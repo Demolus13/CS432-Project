@@ -46,12 +46,19 @@ def index():
 @app.route('/create_database', methods=['POST'])
 def create_database():
     """Create a new database."""
-    global db
+    global db, current_table
 
     db_name = request.form.get('db_name')
     if not db_name:
         flash('Database name is required', 'error')
         return redirect(url_for('index'))
+
+    # Reset current table when creating a new database
+    current_table = None
+
+    # Clear any query results from the session
+    if 'query_results' in session:
+        session.pop('query_results')
 
     # Create the database
     db = Database(db_name)
@@ -62,12 +69,19 @@ def create_database():
 @app.route('/select_database', methods=['POST'])
 def select_database():
     """Select an existing database."""
-    global db
+    global db, current_table
 
     db_name = request.form.get('db_name')
     if not db_name:
         flash('Database name is required', 'error')
         return redirect(url_for('index'))
+
+    # Reset current table when changing databases
+    current_table = None
+
+    # Clear any query results from the session
+    if 'query_results' in session:
+        session.pop('query_results')
 
     # Load the database
     db = Database(db_name)
@@ -466,15 +480,13 @@ def visualize_tree():
         # Create static directory if it doesn't exist
         os.makedirs('static', exist_ok=True)
 
-        # Generate a unique filename in the static directory
-        import time
-        timestamp = int(time.time())
-        filename = f'tree_{current_table.name}_{timestamp}'
+        # Generate a filename in the static directory without timestamp
+        filename = f'tree_{current_table.name}'
         filepath = os.path.join('static', filename)
         image_path = f'{filepath}.png'
 
         # Store the relative path for the template
-        relative_image_path = f'tree_{current_table.name}_{timestamp}.png'
+        relative_image_path = f'tree_{current_table.name}.png'
 
         # Visualize the tree using system Graphviz
         try:
@@ -549,13 +561,11 @@ def visualize_tree_matplotlib():
         # Create static directory if it doesn't exist
         os.makedirs('static', exist_ok=True)
 
-        # Generate a unique filename
-        import time
-        timestamp = int(time.time())
-        filename = f'static/tree_matplotlib_{current_table.name}_{timestamp}.png'
+        # Generate a filename without timestamp
+        filename = f'static/tree_matplotlib_{current_table.name}.png'
 
         # Store the relative path for the template
-        relative_image_path = f'tree_matplotlib_{current_table.name}_{timestamp}.png'
+        relative_image_path = f'tree_matplotlib_{current_table.name}.png'
 
         # Save the figure to a file in the static directory
         plt.savefig(filename, format='png', dpi=300)
