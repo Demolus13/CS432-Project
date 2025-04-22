@@ -116,7 +116,7 @@ class BPlusTreeLeafNode(BPlusTreeNode):
 
     def range_query(self, start_key: Any, end_key: Any) -> List[Tuple[Any, Any]]:
         """
-        Find all key-value pairs within a range.
+        Find all key-value pairs within a range using binary search for efficiency.
 
         Args:
             start_key: The lower bound of the range (inclusive)
@@ -126,10 +126,48 @@ class BPlusTreeLeafNode(BPlusTreeNode):
             A list of (key, value) tuples within the range
         """
         result = []
-        for i, key in enumerate(self.keys):
-            if start_key <= key <= end_key:
-                result.append((key, self.values[i]))
+
+        # Find the index of the first key >= start_key using binary search
+        start_idx = self._binary_search_lower_bound(start_key)
+
+        # Collect all keys in range [start_key, end_key]
+        for i in range(start_idx, len(self.keys)):
+            key = self.keys[i]
+            if key > end_key:
+                break
+            result.append((key, self.values[i]))
+
         return result
+
+    def _binary_search_lower_bound(self, key: Any) -> int:
+        """
+        Find the index of the first key that is greater than or equal to the given key.
+
+        Args:
+            key: The key to search for
+
+        Returns:
+            The index of the first key >= key, or len(self.keys) if all keys are < key
+        """
+        left, right = 0, len(self.keys) - 1
+
+        # Handle empty list or key greater than all keys
+        if not self.keys or key > self.keys[-1]:
+            return len(self.keys)
+
+        # Handle key less than all keys
+        if key <= self.keys[0]:
+            return 0
+
+        # Binary search
+        while left <= right:
+            mid = (left + right) // 2
+            if self.keys[mid] < key:
+                left = mid + 1
+            else:
+                right = mid - 1
+
+        return left
 
     def delete(self, key: Any) -> Tuple[bool, bool]:
         """
@@ -286,7 +324,7 @@ class BPlusTreeInternalNode(BPlusTreeNode):
 
     def find_child(self, key: Any) -> BPlusTreeNode:
         """
-        Find the child node that should contain the key.
+        Find the child node that should contain the key using binary search.
 
         Args:
             key: The key to search for
@@ -298,13 +336,28 @@ class BPlusTreeInternalNode(BPlusTreeNode):
         if not self.keys or key < self.keys[0]:
             return self.children[0]
 
-        # Find the appropriate child based on the key
-        for i, k in enumerate(self.keys):
-            if i + 1 < len(self.keys) and self.keys[i] <= key < self.keys[i + 1]:
-                return self.children[i + 1]
-
         # If the key is greater than or equal to the last key, return the last child
-        return self.children[-1]
+        if key >= self.keys[-1]:
+            return self.children[-1]
+
+        # Use binary search to find the appropriate child
+        left, right = 0, len(self.keys) - 1
+        while left <= right:
+            mid = (left + right) // 2
+
+            # If key is in the range [keys[mid], keys[mid+1]), return children[mid+1]
+            if mid + 1 < len(self.keys):
+                if self.keys[mid] <= key < self.keys[mid + 1]:
+                    return self.children[mid + 1]
+
+            # Adjust search range
+            if key < self.keys[mid]:
+                right = mid - 1
+            else:
+                left = mid + 1
+
+        # This should not happen, but return the appropriate child based on binary search result
+        return self.children[left]
 
     def find_child_index(self, child: BPlusTreeNode) -> int:
         """
@@ -515,7 +568,8 @@ class BPlusTree:
 
     def range_query(self, start_key: Any, end_key: Any) -> List[Tuple[Any, Any]]:
         """
-        Find all key-value pairs within a range.
+        Find all key-value pairs within a range with O(log n + k) time complexity,
+        where n is the total number of elements and k is the number of elements in the range.
 
         Args:
             start_key: The lower bound of the range (inclusive)
@@ -524,20 +578,24 @@ class BPlusTree:
         Returns:
             A list of (key, value) tuples within the range
         """
+        # Handle invalid range
+        if start_key > end_key:
+            return []
+
         result = []
 
-        # Find the leaf node where the start key should be
+        # Find the leaf node where the start key should be - O(log n) operation
         leaf_node = self._find_leaf_node(start_key)
 
-        # Collect all key-value pairs within the range
+        # Collect all key-value pairs within the range - O(k) operation
+        # where k is the number of elements in the range
         while leaf_node:
-            result.extend(leaf_node.range_query(start_key, end_key))
+            for i, key in enumerate(leaf_node.keys):
+                if key > end_key:
+                    return result
+                if key >= start_key:
+                    result.append((key, leaf_node.values[i]))
 
-            # If we've reached the end of the range, stop
-            if leaf_node.keys and leaf_node.keys[-1] >= end_key:
-                break
-
-            # Move to the next leaf node
             leaf_node = leaf_node.next_leaf
 
         return result
@@ -626,11 +684,11 @@ class BPlusTree:
             else:
                 node.merge_with_sibling(left_sibling, True, node_index - 1)
 
-            # Delete the parent key
-            success, underflow = parent.delete_key(node_index - 1)
+            # Delete the parent key and check for underflow
+            _, parent_underflow = parent.delete_key(node_index - 1)
 
             # If the parent is now underfilled, handle it recursively
-            if underflow and len(parent.keys) > 0:  # Don't handle empty root
+            if parent_underflow and len(parent.keys) > 0:  # Don't handle empty root
                 self._handle_underflow(parent)
         elif node_index < len(parent.children) - 1:
             # Merge with the right sibling if it exists
@@ -640,11 +698,11 @@ class BPlusTree:
             else:
                 node.merge_with_sibling(right_sibling, False, node_index)
 
-            # Delete the parent key
-            success, underflow = parent.delete_key(node_index)
+            # Delete the parent key and check for underflow
+            _, parent_underflow = parent.delete_key(node_index)
 
             # If the parent is now underfilled, handle it recursively
-            if underflow and len(parent.keys) > 0:  # Don't handle empty root
+            if parent_underflow and len(parent.keys) > 0:  # Don't handle empty root
                 self._handle_underflow(parent)
         else:
             # This is the rightmost child and has no siblings to merge with

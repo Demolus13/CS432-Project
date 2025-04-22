@@ -663,8 +663,8 @@ def run_performance_test():
             tree_order = int(request.form.get('tree_order', 4))
         else:
             # Use the specified sizes
-            sizes = [100, 500, 1000, 5000, 10000]
-            num_samples = 1
+            sizes = range(100, 10000, 1000)
+            num_samples = 3
             tree_order = 4
 
         # Create a performance analyzer with the specified tree order
