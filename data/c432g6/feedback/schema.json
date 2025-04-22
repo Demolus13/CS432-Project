@@ -1,1 +1,0 @@
-{"schema": {"Feedback_ID": "int", "Request_ID": "int", "Student_ID": "int", "Rating": "int", "Comments": "str"}, "primary_key": "Feedback_ID"}

@@ -20,10 +20,6 @@ class BruteForceDB:
             key: The key to insert
             value: The value associated with the key
         """
-        for k, v in self.data.items():
-            if k == key:
-                self.data[k] = value
-                return
         self.data[key] = value
     
     def find(self, key: Any) -> Optional[Any]:

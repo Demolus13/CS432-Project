@@ -157,6 +157,44 @@
             color: var(--crust);
         }
 
+        /* Table container styles */
+        .table-container {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            max-width: 100%;
+        }
+
+        /* Tables */
+        .table {
+            border-radius: 8px;
+            overflow: hidden;
+            border-collapse: separate;
+            border-spacing: 0;
+            color: var(--text);
+            width: 100%;
+            table-layout: auto;
+            min-width: 800px;
+            /* Ensures table doesn't get too small */
+        }
+
+        .table th {
+            background-color: var(--surface1);
+            color: var(--lavender);
+            font-weight: 600;
+            padding: 10px 12px;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .table td {
+            border-color: var(--surface0);
+            padding: 8px 12px;
+            vertical-align: middle;
+            word-break: break-word;
+        }
+
         /* Table striped style */
         .table-striped>tbody>tr:nth-of-type(odd) {
             background-color: rgba(180, 190, 254, 0.05);

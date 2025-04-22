@@ -1,0 +1,1 @@
+{"schema": {"Technician_ID": "int", "Name": "str", "Email": "str", "Contact_Number": "str", "Specialization": "str"}, "primary_key": "Technician_ID"}

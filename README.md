@@ -1,6 +1,6 @@
 # Lightweight DBMS with B+ Tree Index
 
-This project implements a lightweight database management system (DBMS) in Python that supports basic operations (insert, update, delete, select, aggregation, range queries) on tables stored with a B+ Tree index.
+This project implements a lightweight database management system (DBMS) in Python that supports basic operations (insert, update, delete, select, aggregation, range queries) on tables stored with a B+ Tree index. It includes a web-based user interface for interacting with the database.
 
 ## Features
 
@@ -9,12 +9,15 @@ This project implements a lightweight database management system (DBMS) in Pytho
 - Persistence functionality for storing tables on disk
 - Performance analysis tools for comparing the B+ Tree with a brute force approach
 - Visualization tools for the B+ Tree structure
+- Web-based UI for database operations
+- Dark mode interface with Catppuccin Mocha color scheme
+- Responsive design for better usability
 
 ## Directory Structure
 
 ```
 .
-├── database/
+├── database/              # Core database implementation
 │   ├── __init__.py
 │   ├── bplustree.py       # B+ Tree implementation
 │   ├── bruteforce.py      # Brute force approach for comparison
@@ -22,10 +25,16 @@ This project implements a lightweight database management system (DBMS) in Pytho
 │   ├── performance_analyzer.py  # Performance analysis tools
 │   ├── table.py           # Table implementation
 │   └── visualizer.py      # Tree visualization
-├── report.ipynb           # Report and Visualizations
-├── requirements.txt       # Project dependencies
-├── README.md              # This file
-└── test.py                # Test script
+├── templates/             # HTML templates for the web UI
+│   ├── index.html         # Main dashboard
+│   ├── visualization.html # B+ Tree visualization page
+│   └── performance.html   # Performance testing page
+├── static/               # Static files (CSS, images, etc.)
+├── data/                 # Database files
+├── app.py                # Flask web application
+├── report.ipynb          # Report and Visualizations
+├── requirements.txt      # Project dependencies
+└── README.md             # This file
 ```
 
 ## Installation
@@ -49,13 +58,37 @@ This project implements a lightweight database management system (DBMS) in Pytho
 
 ## Usage
 
-### Running the Test Script
+### Running the Web Application
 
 ```
-python test.py
+python app.py
 ```
 
-This will run a series of tests to demonstrate the functionality of the B+ Tree, database, and performance analyzer.
+This will start the Flask web server. Open your browser and navigate to `http://127.0.0.1:5000` to access the web interface.
+
+### Web Interface Features
+
+1. **Database Management**:
+   - Create, select, and delete databases
+   - Create, select, and delete tables with custom schemas
+   - View table schemas and data
+
+2. **Record Operations**:
+   - Insert new records
+   - Update existing records
+   - Delete records
+   - Select records by primary key
+   - Perform range queries
+
+3. **Visualization**:
+   - Visualize the B+ Tree structure of a table
+   - View tree properties (height, order, node count)
+   - See the relationships between nodes
+
+4. **Performance Testing**:
+   - Run performance tests comparing B+ Tree and brute force approaches
+   - View performance metrics for different operations
+   - Analyze results with interactive charts
 
 ### Using the Database
 

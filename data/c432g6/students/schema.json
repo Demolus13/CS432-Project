@@ -1,0 +1,1 @@
+{"schema": {"Student_ID": "int", "Name": "str", "Email": "str", "Contact_Number": "str", "Age": "int", "Image": "str"}, "primary_key": "Student_ID"}
