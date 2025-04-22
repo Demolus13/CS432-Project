@@ -5,9 +5,9 @@ import time
 import random
 import matplotlib.pyplot as plt
 import numpy as np
-import psutil
 import os
-from typing import List, Tuple, Dict, Any, Callable
+import sys
+from typing import List, Tuple, Dict, Any
 import gc
 
 from .bplustree import BPlusTree
@@ -282,41 +282,161 @@ class PerformanceAnalyzer:
 
         return b_plus_tree_time, brute_force_time
 
+    def get_bplus_tree_size(self, tree):
+        """
+        Calculate the memory usage of a B+ Tree by traversing all nodes.
+
+        Args:
+            tree: The B+ Tree to measure
+
+        Returns:
+            The total size in bytes
+        """
+        if tree is None:
+            return 0
+
+        # Use a set to track visited nodes and avoid counting cycles
+        visited = set()
+
+        # Start with the size of the tree object itself
+        total_size = sys.getsizeof(tree)
+
+        # Add the size of the tree's attributes
+        total_size += sys.getsizeof(tree.order)
+        total_size += sys.getsizeof(tree.height)
+
+        # Use a queue for breadth-first traversal to avoid recursion depth issues
+        queue = [tree.root]
+
+        while queue:
+            node = queue.pop(0)
+
+            # Skip if we've already visited this node
+            if id(node) in visited:
+                continue
+
+            # Mark as visited
+            visited.add(id(node))
+
+            # Add the size of the node itself
+            total_size += sys.getsizeof(node)
+
+            # Add the size of the node's keys
+            total_size += sys.getsizeof(node.keys)
+            for key in node.keys:
+                total_size += sys.getsizeof(key)
+
+            # For leaf nodes, add the size of values
+            if node.is_leaf:
+                total_size += sys.getsizeof(node.values)
+                for value in node.values:
+                    total_size += sys.getsizeof(value)
+
+                # Add the size of next_leaf reference
+                total_size += sys.getsizeof(node.next_leaf)
+
+                # Don't add children to queue for leaf nodes as they're values, not nodes
+            else:
+                # For internal nodes, add children to the queue
+                total_size += sys.getsizeof(node.children)
+                for child in node.children:
+                    if child is not None and id(child) not in visited:
+                        queue.append(child)
+
+        return total_size
+
+    def get_deep_size(self, obj, seen=None):
+        """
+        Recursively find the size of an object and all its contents.
+        This is a general-purpose function for objects other than B+ Trees.
+
+        Args:
+            obj: The object to measure
+            seen: Set of already seen objects (to handle cycles)
+
+        Returns:
+            The total size in bytes
+        """
+        # Special case for B+ Tree
+        from database.bplustree import BPlusTree
+        if isinstance(obj, BPlusTree):
+            return self.get_bplus_tree_size(obj)
+
+        # Initialize the set of seen objects if not provided
+        if seen is None:
+            seen = set()
+
+        # Get the object's id to check for cycles
+        obj_id = id(obj)
+
+        # If we've already seen this object, don't count it again
+        if obj_id in seen:
+            return 0
+
+        # Mark this object as seen
+        seen.add(obj_id)
+
+        # Get the size of the object itself
+        size = sys.getsizeof(obj)
+
+        # Add the size of the object's contents based on type
+        if isinstance(obj, dict):
+            # Handle dictionaries
+            for k, v in obj.items():
+                size += self.get_deep_size(k, seen)
+                size += self.get_deep_size(v, seen)
+        elif isinstance(obj, (list, tuple, set, frozenset)):
+            # Handle sequence types
+            for item in obj:
+                size += self.get_deep_size(item, seen)
+        elif hasattr(obj, '__dict__'):
+            # For custom objects, add the size of their attributes
+            size += self.get_deep_size(obj.__dict__, seen)
+
+        return size
+
     def measure_memory_usage(self, keys: List[Any]) -> Tuple[float, float]:
         """
-        Measure the memory usage of both data structures.
+        Measure the memory usage of both data structures using sys.getsizeof().
 
         Args:
             keys: The keys to insert
 
         Returns:
-            A tuple of (b_plus_tree_memory, brute_force_memory)
+            A tuple of (b_plus_tree_memory, brute_force_memory) in bytes
         """
         # Force garbage collection
         gc.collect()
 
-        # Measure B+ Tree memory usage
-        process = psutil.Process(os.getpid())
-        base_memory = process.memory_info().rss / 1024 / 1024  # MB
-
+        # Create and populate B+ Tree
         b_plus_tree = BPlusTree(self.b_plus_tree_order)
         for i in range(len(keys)):
             b_plus_tree.insert(keys[i], i)
 
-        b_plus_tree_memory = process.memory_info().rss / 1024 / 1024 - base_memory
+        # Measure B+ Tree memory usage using specialized B+ tree traversal
+        try:
+            # Use the specialized B+ tree size calculation function
+            b_plus_tree_memory = self.get_bplus_tree_size(b_plus_tree) / (1024 * 1024)  # Convert bytes to MB
+        except Exception as e:
+            print(f"Warning: Error measuring B+ Tree memory: {e}")
+            b_plus_tree_memory = sys.getsizeof(b_plus_tree) / (1024 * 1024)  # Convert bytes to MB
 
         # Force garbage collection
         del b_plus_tree
         gc.collect()
 
-        # Measure Brute Force DB memory usage
-        base_memory = process.memory_info().rss / 1024 / 1024  # MB
-
+        # Create and populate Brute Force DB
         brute_force_db = BruteForceDB()
         for i in range(len(keys)):
             brute_force_db.insert(keys[i], i)
 
-        brute_force_memory = process.memory_info().rss / 1024 / 1024 - base_memory
+        # Measure Brute Force DB memory usage using general-purpose deep size function
+        try:
+            # Use the general-purpose deep size function
+            brute_force_memory = self.get_deep_size(brute_force_db) / (1024 * 1024)  # Convert bytes to MB
+        except Exception as e:
+            print(f"Warning: Error measuring Brute Force DB memory: {e}")
+            brute_force_memory = sys.getsizeof(brute_force_db) / (1024 * 1024)  # Convert bytes to MB
 
         return b_plus_tree_memory, brute_force_memory
 
@@ -408,9 +528,15 @@ class PerformanceAnalyzer:
                 brute_force_random_times.append(brute_force_time)
 
                 # Measure memory usage
-                b_plus_tree_mem, brute_force_mem = self.measure_memory_usage(keys)
-                b_plus_tree_memory.append(b_plus_tree_mem)
-                brute_force_memory.append(brute_force_mem)
+                try:
+                    b_plus_tree_mem, brute_force_mem = self.measure_memory_usage(keys)
+                    b_plus_tree_memory.append(b_plus_tree_mem)
+                    brute_force_memory.append(brute_force_mem)
+                except Exception as e:
+                    print(f"Error in memory usage benchmark: {e}")
+                    # Use default values if the benchmark fails
+                    b_plus_tree_memory.append(0.0)
+                    brute_force_memory.append(0.0)
 
             # Calculate average times
             self.results['insertion']['b_plus_tree'].append(np.mean(b_plus_tree_insertion_times))
@@ -444,7 +570,7 @@ class PerformanceAnalyzer:
         operations = ['insertion', 'search', 'range_query', 'deletion', 'random']
 
         # Create a figure with subplots
-        fig, axs = plt.subplots(3, 2, figsize=(15, 15))
+        _, axs = plt.subplots(3, 2, figsize=(15, 15))
         axs = axs.flatten()
 
         # Plot time results
@@ -462,7 +588,7 @@ class PerformanceAnalyzer:
         axs[5].plot(sizes, self.results['memory']['brute_force'], 's-', label='Brute Force')
         axs[5].set_xlabel('Data Size')
         axs[5].set_ylabel('Memory (MB)')
-        axs[5].set_title('Memory Usage')
+        axs[5].set_title('Total Memory Usage')
         axs[5].legend()
         axs[5].grid(True)
 

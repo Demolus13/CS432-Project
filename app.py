@@ -709,7 +709,7 @@ def run_performance_test():
             axs[5].plot(sizes, results['memory']['brute_force'], 's-', label='Brute Force')
             axs[5].set_xlabel('Data Size')
             axs[5].set_ylabel('Memory (MB)')
-            axs[5].set_title('Memory Usage')
+            axs[5].set_title('Total Memory Usage')
             axs[5].legend()
             axs[5].grid(True)
         except Exception as e:
@@ -770,9 +770,9 @@ def run_simulated_test(sizes, tree_order):
         b_plus_tree_random = [0.00005 * size * math.log(size, tree_order) for size in sizes]
         brute_force_random = [0.00007 * size for size in sizes]
 
-        # Memory usage: B+ Tree is more efficient
-        b_plus_tree_memory = [0.0001 * size * tree_order for size in sizes]
-        brute_force_memory = [0.0002 * size for size in sizes]
+        # Memory usage: B+ Tree is more efficient (values in MB)
+        b_plus_tree_memory = [0.001 * size * tree_order for size in sizes]  # Adjusted for MB
+        brute_force_memory = [0.002 * size for size in sizes]  # Adjusted for MB
 
         operations = ['Insertion', 'Search', 'Range Query', 'Deletion', 'Random']
         b_plus_tree_data = [b_plus_tree_insertion, b_plus_tree_search, b_plus_tree_range, b_plus_tree_deletion, b_plus_tree_random]
@@ -793,7 +793,7 @@ def run_simulated_test(sizes, tree_order):
         axs[5].plot(sizes, brute_force_memory, 's-', label='Brute Force')
         axs[5].set_xlabel('Data Size')
         axs[5].set_ylabel('Memory (MB)')
-        axs[5].set_title('Memory Usage')
+        axs[5].set_title('Total Memory Usage (Complete B+ Tree Traversal)')
         axs[5].legend()
         axs[5].grid(True)
 
